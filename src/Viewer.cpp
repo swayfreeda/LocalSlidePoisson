@@ -13,8 +13,6 @@ using namespace std;
 #include "Image.h"
 #include "OctreeCell.h"
 #include "Application.h"
-#include "BoundingBox.h"
-#include "Octree.h"
 
 namespace DDG
 {
@@ -498,7 +496,8 @@ namespace DDG
             bindBox.origin.y = center.y - d2Width;
             bindBox.origin.z = center.z - d2Width;
             bindBox.size.x = bindBox.size.y = bindBox.size.z = width;
-            
+
+//            if (currentNode->DB_flag)
             drawBondingBox(bindBox);
             
             // Push the childrens to stack

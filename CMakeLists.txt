@@ -1,7 +1,11 @@
-cmake_minimum_required(VERSION 3.2)
+cmake_minimum_required(VERSION 3.1)
 project(Reconstructor)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -DGL_GLEXT_PROTOTYPES")
+# Debug
+SET(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -O0 -Wall -g -ggdb ")
+
+# Relase
+SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -O3 -Wall")
 
 set(SOURCE_FILES src/main.cpp)
 aux_source_directory(src SOURCE_FILES)
@@ -11,18 +15,37 @@ find_package(GLUT REQUIRED)
 find_package(OpenGL REQUIRED)
 
 # Add external include directory
-include_directories(include                    /usr/include/suitesparse
+IF(APPLE)
+include_directories(include
+                    /opt/local/include/
                     ${OPENGL_INCLUDE_DIRS}
                     ${GLUT_INCLUDE_DIRS})
-
+ENDIF()
+IF(LINUX)
+include_directories(include
+                    /usr/include/suitesparse
+                    ${OPENGL_INCLUDE_DIRS}
+                    ${GLUT_INCLUDE_DIRS})
+ENDIF()
 
 # Add external library directories
+IF(APPLE)
+link_directories(/opt/local/lib/
+                 /usr/lib)
+ENDIF()
+IF(LINUX)
 link_directories(/home/sway/Work/SFM/cmvs/lib/graclus1.2/
-                 /usr/lib/lapack/)
+                 /usr/lib)
+ENDIF()
 
+set(SUITESPARSE_LIB spqr cholmod metis colamd ccolamd camd amd umfpack)
 
-set(SUITESPARSE_LIB spqr cholmod metis colamd ccolamd camd amd m umfpack)
+IF(APPLE)
+set(BLAS_LIB lapack cblas)
+ENDIF()
+IF(LINUX)
 set(BLAS_LIB lapack blas gfortran)
+ENDIF()
 
 add_executable(Reconstructor ${SOURCE_FILES})
 target_link_libraries(Reconstructor ${SUITESPARSE_LIB} ${BLAS_LIB} ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})

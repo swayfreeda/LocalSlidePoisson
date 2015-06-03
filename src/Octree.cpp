@@ -109,44 +109,41 @@ void Octree::generateOctreeFrom(DDG::Mesh mesh, int depth)
     int nodeCount = 0;
     for (VertexIter vertex = mesh.vertices.begin();
                     vertex != mesh.vertices.end();
-                    vertex++)
-    {
+         vertex++) {
         OctreeCell *node = root;
         int currentDepth = 0;
         Vector3D position = vertex->position;
 
         // The center and width should refer to bounding box
         Vector3D currentCenter = center;
-        double currentRadius = maxWidth/2;
+        double currentRadius = maxWidth / 2;
 
         // Search from root to create node
         while (currentDepth < maxDepth) {
-            
+
             if (node->isLeaf()) {
                 node->addChild();
                 nodeCount += 8;
             }
-            
+
             // Find the corner index of given parent node, note that position need to
             int childIndex = OctreeCell::CornerIndex(currentCenter, position);
             node = node->getChildren(childIndex);
-            
+
             // Update the width
             currentRadius /= 2;
-            
+
             // Update the center position
-            ((childIndex & 1) != 0)?
-                currentCenter.x += currentRadius: currentCenter.x -= currentRadius;
-            ((childIndex & 2) != 0)?
-                currentCenter.y += currentRadius: currentCenter.y -= currentRadius;
-            ((childIndex & 4) != 0)?
-                currentCenter.z += currentRadius: currentCenter.z -= currentRadius;
+            ((childIndex & 1) != 0) ?
+                    currentCenter.x += currentRadius : currentCenter.x -= currentRadius;
+            ((childIndex & 2) != 0) ?
+                    currentCenter.y += currentRadius : currentCenter.y -= currentRadius;
+            ((childIndex & 4) != 0) ?
+                    currentCenter.z += currentRadius : currentCenter.z -= currentRadius;
 
             // Update the depth, go deeper!
-            currentDepth ++;
+            currentDepth++;
         }
-        
-        
+
     }
-    
 }
