@@ -7,7 +7,6 @@
 //
 #include"Polynomial.h"
 
-#include <iostream>
 using namespace std;
 
 #include "Viewer.h"
@@ -21,8 +20,8 @@ int main(int argc,char **argv)
     }
 
     Viewer viewer;
-   viewer.mesh.read( argv[1] );
-  viewer.init();
+    viewer.mesh.read(argv[1]);
+    viewer.init();
 
     return 0;
 }

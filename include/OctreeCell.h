@@ -30,9 +30,9 @@ protected:
     
     // The depth that the current cell located in an octree
     int depth;
-    
-    // Ptrs to neibors of the current cell
-    OctreeCell *neibors;
+
+    // Ptrs to neighbors of the current cell
+    OctreeCell **neighborCache;
     
     // Global offsets start from root node
     int globalOffsets[3];
@@ -46,8 +46,10 @@ protected:
     // Initial the global offsets based on root node. Note that this method
     // need parent's local offsets information
     void initGlobalOffsets();
-    
-    
+
+    // Initialize the neighbors
+    void initNeighbors();
+
 public:
     
     // Constructor
@@ -58,7 +60,6 @@ public:
     // Print info
     void printInfo();
 
-    
     // Generate a root node
     static OctreeCell* RootNode();
     
@@ -118,7 +119,18 @@ public:
     
     // Return the current cell's corner index based on its parent.
     int getCornerIndexOfParent();
-    
+
+    // Find the neighbor node at same depth via x,y,z, if has no neighbor node, return NULL
+    OctreeCell *neighbor(int x, int y, int z);
+
+    // Find the neighbor node via index, the range of index is [0, 27]
+    OctreeCell *neighbor(int index);
+
+    // Return the neibors array ptr
+    OctreeCell **neighbors();
+
+    // For DEBUG USE, TODO(Delete this later)
+    bool DB_flag = false;
 };
 
 #include "OctreeCell.inl.h"
