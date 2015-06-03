@@ -52,7 +52,7 @@ public:
     double operator()(const double& t) const;
 
     // approximating the Guassion funtion
-    static Polynomial ConstantFunction(const double& radius=0.5);
+    static Polynomial ConstantFunction(const double &width = 0.5);
     static Polynomial GuassianApproximation(const double &width =0.5);
     Polynomial<Degree +1> MovingAverage(const double &radius);
 

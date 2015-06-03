@@ -38,6 +38,7 @@ public:
     template<int Degree2>
     PolynomialItem <Degree + Degree2> operator * (const PolynomialItem<Degree2> & p)const;
 
+    // operator related class
     PolynomialItem <Degree>&operator-=(const double s);
     PolynomialItem <Degree>&operator+=(const double s);
     PolynomialItem <Degree>&operator*=(const double s);

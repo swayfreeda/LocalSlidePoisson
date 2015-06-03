@@ -130,7 +130,7 @@ public:
     OctreeCell **neighbors();
 
     // For DEBUG USE, TODO(Delete this later)
-    bool DB_flag = false;
+    bool DB_flag;
 };
 
 #include "OctreeCell.inl.h"

@@ -2,10 +2,10 @@ cmake_minimum_required(VERSION 3.1)
 project(Reconstructor)
 
 # Debug
-SET(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -O0 -Wall -g -ggdb ")
+SET(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -O0 -Wall -g -ggdb -DGL_GLEXT_PROTOTYPES")
 
 # Relase
-SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -O3 -Wall")
+SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -O3 -Wall -DGL_GLEXT_PROTOTYPES")
 
 set(SOURCE_FILES src/main.cpp)
 aux_source_directory(src SOURCE_FILES)
@@ -21,7 +21,7 @@ include_directories(include
                     ${OPENGL_INCLUDE_DIRS}
                     ${GLUT_INCLUDE_DIRS})
 ENDIF()
-IF(LINUX)
+IF(UNIX)
 include_directories(include
                     /usr/include/suitesparse
                     ${OPENGL_INCLUDE_DIRS}
@@ -33,7 +33,7 @@ IF(APPLE)
 link_directories(/opt/local/lib/
                  /usr/lib)
 ENDIF()
-IF(LINUX)
+IF(UNIX)
 link_directories(/home/sway/Work/SFM/cmvs/lib/graclus1.2/
                  /usr/lib)
 ENDIF()
@@ -43,7 +43,7 @@ set(SUITESPARSE_LIB spqr cholmod metis colamd ccolamd camd amd umfpack)
 IF(APPLE)
 set(BLAS_LIB lapack cblas)
 ENDIF()
-IF(LINUX)
+IF(UNIX)
 set(BLAS_LIB lapack blas gfortran)
 ENDIF()
 

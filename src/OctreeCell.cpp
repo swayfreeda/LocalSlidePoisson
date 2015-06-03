@@ -7,6 +7,7 @@
 //
 
 #include "OctreeCell.h"
+#include "string.h"
 
 #define NEIBORINDEX(x, y, z) (x)+3*(y)+9*(z)
 #define DIAGONALINDEX(index) (~index)  & 7
