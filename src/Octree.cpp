@@ -9,11 +9,11 @@
 #include "Octree.h"
 #include "OctreeCell.h"
 #include <float.h>
-
+#include <queue>
 
 using namespace DDG;
 
-//============================================================Octree=================================================//
+//============================================================ Octree =================================================//
 // Octree constructor
 Octree::Octree()
 {
@@ -25,9 +25,10 @@ Octree::Octree()
 }
 
 //============================================================~Octree================================================//
-// TODO, Deallocate the octree
+// TODO[Luwei]:Deallocate the octree
 Octree::~Octree()
 {
+    if (this->root == NULL);
 }
 
 //============================================================rootNode===============================================//
@@ -146,4 +147,32 @@ void Octree::generateOctreeFrom(DDG::Mesh mesh, int depth)
         }
 
     }
+}
+
+void Octree::deallocate()
+{
+    std::queue<OctreeCell*> del_collections;
+
+    // Find first leaf and push it to stack
+    del_collections.push(root);
+
+    OctreeCell* cell = NULL;
+    // Iterate the leaf to destory octree
+    while (!del_collections.empty())
+    {
+        cell = del_collections.front();
+
+        // If is not leaf, enqueue, delete the
+        // leaf node
+        if (!cell->isLeaf()) {
+            for (int i = 0; i < 8; ++i) {
+                OctreeCell *child = cell->getChildren(i);
+                if (child != NULL)
+                    del_collections.push(cell->getChildren(i));
+            }
+        }
+
+
+    }
+
 }

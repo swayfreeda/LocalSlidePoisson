@@ -31,7 +31,7 @@ public:
 
     // Deallocate the octree
     ~Octree();
-    
+
     // Return the center of the bounding box, note that the octree's
     // center is (0.5, 0.5, 0.5).
     Vector3D center();
@@ -47,10 +47,11 @@ public:
     // for the octree.
     void generateOctreeFrom(DDG::Mesh mesh, int depth);
 
-
     // return the Bounding Box pointer of the
     BoundingBox* getBoundingBox();
 
+    // Deallocate the octree
+    void deallocate();
 
     // TODO
     int nodeCounts();
