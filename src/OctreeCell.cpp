@@ -30,9 +30,30 @@ OctreeCell::OctreeCell()
 }
 
 //==================================================Destructor========================================================//
-// TODO[Luwei](Dellocate the Octree)
+// TODO[Luwei]: Deallocate the cell
+// Destructor of octree cell will not destory the childrens
 OctreeCell::~OctreeCell()
 {
+    if(this->childrens != NULL){
+        for (int i = 0; i < 8; ++i) {
+            this->childrens[i] = NULL;
+        }
+        delete this->childrens;
+        this->childrens = NULL;
+    }
+
+    this->parent = NULL;
+
+    if(this->neighborCache != NULL)
+    {
+        for (int j = 0; j < 27; ++j) {
+            this->neighborCache[j] = NULL;
+        }
+        delete this->neighborCache;
+        this->neighborCache = NULL;
+    }
+
+    this->depth = 0;
 }
 
 //==================================================RootNode==========================================================//
