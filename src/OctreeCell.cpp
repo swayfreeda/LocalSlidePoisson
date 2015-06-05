@@ -7,7 +7,6 @@
 //
 
 #include "OctreeCell.h"
-#include "string.h"
 
 #define NEIBORINDEX(x, y, z) (x)+3*(y)+9*(z)
 #define DIAGONALINDEX(index) (~index)  & 7
@@ -34,6 +33,11 @@ OctreeCell::OctreeCell()
 // Destructor of octree cell will not destory the childrens
 OctreeCell::~OctreeCell()
 {
+    for (int k = 0; k < 3; ++k) {
+        localOffsets[k] = 0;
+        globalOffsets[k] = 0;
+    }
+
     if(this->childrens != NULL){
         for (int i = 0; i < 8; ++i) {
             this->childrens[i] = NULL;
@@ -54,6 +58,7 @@ OctreeCell::~OctreeCell()
     }
 
     this->depth = 0;
+
 }
 
 //==================================================RootNode==========================================================//

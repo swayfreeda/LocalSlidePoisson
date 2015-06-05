@@ -24,11 +24,18 @@ Octree::Octree()
     boundingbox = new BoundingBox();
 }
 
-//============================================================~Octree================================================//
-// TODO[Luwei]:Deallocate the octree
+//============================================================ ~Octree ================================================//
+// Destory the octree
 Octree::~Octree()
 {
-    if (this->root == NULL);
+    // Destory the octree cells
+    if (this->root == NULL)
+        this->deallocate();
+    this->root = NULL;
+
+    // Destory the bounding box
+    delete this->boundingbox;
+    this->boundingbox = NULL;
 }
 
 //============================================================rootNode===============================================//
@@ -65,7 +72,7 @@ double Octree::scale()
     return maxWidth/root->width();
 }
 
-//========================================================generatOctreeFrom===========================================//
+//======================================================= generatOctreeFrom ===========================================//
 // Generate the octree from a given mesh, the para depth is the max depth
 // for the octree.
 void Octree::generateOctreeFrom(DDG::Mesh mesh, int depth)
@@ -94,18 +101,19 @@ void Octree::generateOctreeFrom(DDG::Mesh mesh, int depth)
     }
     
     Vector3D center = (max + min)/2;
-    
+
     boundingbox->origin = min;
     boundingbox->size = max - min;
-    
+
     // The maxwidth is the maximal of that of three dimensions of bounding box
     double maxWidth = -DBL_MAX;
     for (int i = 0; i < 3; i++) {
-        if (boundingbox->size[i] > maxWidth) {
-            maxWidth = boundingbox->size[i];
+        double width = max[i] - min[i];
+        if (width > maxWidth) {
+            maxWidth = width;
         }
     }
-    
+
     // Iterate the vertices' positon to generate the octree
     int nodeCount = 0;
     for (VertexIter vertex = mesh.vertices.begin();
@@ -157,13 +165,14 @@ void Octree::deallocate()
     del_collections.push(root);
 
     OctreeCell* cell = NULL;
-    // Iterate the leaf to destory octree
+
+    // Iterate the cell from root to its childrens to destory octree
     while (!del_collections.empty())
     {
         cell = del_collections.front();
+        del_collections.pop();
 
-        // If is not leaf, enqueue, delete the
-        // leaf node
+        // Push the children to stack
         if (!cell->isLeaf()) {
             for (int i = 0; i < 8; ++i) {
                 OctreeCell *child = cell->getChildren(i);
@@ -172,7 +181,50 @@ void Octree::deallocate()
             }
         }
 
+        // Delete current octree cell
+        delete cell;
+        cell = NULL;
+    }
+}
 
+// Count the cells, from root to its childrens
+long long Octree::nodeCounts() {
+    // If there is no nodes in octree
+    if (root == NULL) return 0;
+
+    std::queue<OctreeCell *> collections;
+
+    // Find first leaf and push it to stack
+    collections.push(root);
+
+    OctreeCell *cell = NULL;
+    long long count = 0;
+
+    // Iterate the cells
+    while (!collections.empty()) {
+        cell = collections.front();
+        collections.pop();
+
+        // Push the children to stack
+        if (!cell->isLeaf()) {
+            for (int i = 0; i < 8; ++i) {
+                OctreeCell *child = cell->getChildren(i);
+                if (child != NULL)
+                    collections.push(cell->getChildren(i));
+            }
+        }
+
+        count++;
     }
 
+    return count;
+}
+
+// Return the memroy load in bytes
+size_t Octree::memoryUse() {
+    int cellCounts = nodeCounts();
+
+    size_t sizeOfCell = sizeof(OctreeCell);
+
+    return sizeOfCell * cellCounts;
 }

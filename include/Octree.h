@@ -50,14 +50,14 @@ public:
     // return the Bounding Box pointer of the
     BoundingBox* getBoundingBox();
 
-    // Deallocate the octree
+    // Deallocate the octree, include the root node
     void deallocate();
 
-    // TODO
-    int nodeCounts();
-    
-    // TODO
-    int memoryUse();
+    // Count the cells, from root to its childrens
+    long long nodeCounts();
+
+    // Return the memroy load in bytes
+    size_t memoryUse();
 };
 
 #endif /* defined(__Reconstructor__Octree__) */

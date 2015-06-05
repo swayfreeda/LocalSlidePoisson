@@ -25,7 +25,12 @@ namespace DDG
             octree.generateOctreeFrom(mesh, 5);
             OctreeCell *cell = octree.rootNode()->getChildren(3)->getChildren(4)->getChildren(2);
 
-            OctreeCell *neighbor = cell->neighbor(1, 1, 1);
+            int nodeCounts = octree.nodeCounts();
+
+            // TEST: Deallocate the octree
+            octree.deallocate();
+
+            nodeCounts = octree.nodeCounts();
 
         }
         
