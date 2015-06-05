@@ -10,7 +10,7 @@
 #include "string.h"
 
 #define NEIBORINDEX(x, y, z) (x)+3*(y)+9*(z)
-#define DIAGONALINDEX(index) (~index)  & 7
+#define DIAGONALINDEX(index) (~index)  & 7   // 7 - index
 
 //===================================================Constructor======================================================//
 // Constructor
@@ -20,6 +20,7 @@ OctreeCell::OctreeCell()
     this->childrens = NULL;
     this->neighborCache = NULL;
     this->depth = 0;
+    this->DB_flag = true;
     
     // Set the global and local offsets value to -1
     for (int i = 0; i < 3; i++) {
@@ -187,10 +188,17 @@ int OctreeCell::getCornerIndexOfParent()
     return CornerIndex(this);
 }
 
+//================================================initNeighbours======================================================//
 // Initialize the neighborCache, compute the neighbor cells across the face,edge,and corner
 void OctreeCell::initNeighbors() {
 
-    if (neighborCache != NULL) { delete neighborCache; };
+    // initialization
+    if (neighborCache != NULL) {
+        for (int i = 0; i < 27; i++) {
+            if (neighborCache[i]) delete neighborCache[i];
+        }
+        delete neighborCache;
+    }
 
     // Initialize the neighborCache ptr, TODO[Luwei](better initialization method for ptr array)
     neighborCache = new OctreeCell *[27];
@@ -198,10 +206,13 @@ void OctreeCell::initNeighbors() {
         neighborCache[i] = NULL;
     }
 
+    // neighbours contain the current vertex
     neighborCache[NEIBORINDEX(1, 1, 1)] = this;
 
+    // root node has no neighbours
     if (parent == NULL) return;
 
+    // the index of current node to it's parent
     OctreeCell *parent = this->parent;
     int childIndex = this->getCornerIndexOfParent();
 
@@ -310,12 +321,14 @@ void OctreeCell::initNeighbors() {
 
 }
 
+//===================================================neighbour(x, y, z================================================//
 // Return the neighbor cell based on offsets (x,y,z)
 OctreeCell *OctreeCell::neighbor(int x, int y, int z) {
     if (neighborCache == NULL) initNeighbors();
     return neighborCache[NEIBORINDEX(x, y, z)];
 }
 
+//====================================================neighbour(int index)============================================//
 // Return the neighbor cell based on neighbor index [0, 27]
 OctreeCell *OctreeCell::neighbor(int index) {
     if (neighborCache == NULL)
@@ -323,6 +336,7 @@ OctreeCell *OctreeCell::neighbor(int index) {
     return neighborCache[index];
 }
 
+//===================================================neighbours()=====================================================//
 // Return the neighbors array ptr
 OctreeCell **OctreeCell::neighbors() {
     if (neighborCache == NULL)

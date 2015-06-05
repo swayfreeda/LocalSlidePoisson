@@ -24,9 +24,16 @@ namespace DDG
             // Test
             octree.generateOctreeFrom(mesh, 5);
             OctreeCell *cell = octree.rootNode()->getChildren(3)->getChildren(4)->getChildren(2);
-
-            OctreeCell *neighbor = cell->neighbor(1, 1, 1);
-
+//            cell->DB_flag =true;
+//            //OctreeCell** neighbours = cell->neighbors();
+//                for(int i=0; i< 3; i++){
+//                    for(int j=0; j<3; j++)
+//                        for(int k =0; k< 3; k++) {
+//                            OctreeCell *neighbor = cell->neighbor(1, 1, 1);
+//                            if (cell->neighbor(i, j, k))
+//                                cell->neighbor(i, j, k)->DB_flag = true;
+//                        }
+//                }
         }
         
     };

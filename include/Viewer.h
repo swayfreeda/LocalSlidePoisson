@@ -20,17 +20,12 @@ class OctreeCell;
 
 namespace DDG
 {
-    class Viewer
-    {
+    class Viewer {
+
     public:
+        // initialization
         static void init( void );
-        // displays the viewer until the program ends
-        
-        static Mesh mesh;
-        // surface mesh visualized by Viewer
-        
-        static Octree octree;
-        
+
     protected:
         // init
         static void initGLUT( void );
@@ -39,9 +34,11 @@ namespace DDG
         // GLUT callbacks
         static void display( void );
         static void idle( void );
-        static void keyboard( unsigned char c, int x, int y );
+
+        static void keyboard(unsigned char c, int x, int y); // keyboard callbacks
         static void special( int i, int x, int y );
-        static void mouse( int button, int state, int x, int y );
+
+        static void mouse(int button, int state, int x, int y); // mouse callbacks
         static void motion( int x, int y );
         static void menu( int value );
         static void view( int value );
@@ -61,8 +58,7 @@ namespace DDG
         static void mScreenshot( void );
         
         // unique identifiers for menus
-        enum
-        {
+        enum {
             menuProcess,
             menuResetMesh,
             menuWriteMesh,
@@ -94,22 +90,31 @@ namespace DDG
         
         static void storeViewerState( void );
         static void restoreViewerState( void );
+
+
+    public:
+        // surface mesh visualized by Viewer
+        static Mesh mesh;
+
+        // Octree Visualized by Viewer
+        static Octree octree;
+
         static int windowSize[2];
-        
+
         static bool renderWireframe;
         static bool renderPolygons;
         static bool renderOctree;
         static bool renderBoundingBox;
-        // draw wireframe
-        
-        static Camera camera;
+
         // keeps track of view state
-        
-        static GLuint surfaceDL;
+        static Camera camera;
+
         // display list for mesh
-        
-        static Shader shader;
+        static GLuint surfaceDL;
+
         // shader used to determine appearance of surface
+        static Shader shader;
+
     };
 }
 

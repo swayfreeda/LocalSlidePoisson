@@ -110,8 +110,11 @@ void Octree::generateOctreeFrom(DDG::Mesh mesh, int depth)
     for (VertexIter vertex = mesh.vertices.begin();
                     vertex != mesh.vertices.end();
          vertex++) {
+
         OctreeCell *node = root;
         int currentDepth = 0;
+
+        // poisition of the vertex
         Vector3D position = vertex->position;
 
         // The center and width should refer to bounding box
@@ -127,6 +130,7 @@ void Octree::generateOctreeFrom(DDG::Mesh mesh, int depth)
             }
 
             // Find the corner index of given parent node, note that position need to
+            // find which node cell the point falls in
             int childIndex = OctreeCell::CornerIndex(currentCenter, position);
             node = node->getChildren(childIndex);
 

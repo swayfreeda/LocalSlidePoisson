@@ -31,7 +31,7 @@ protected:
     // The depth that the current cell located in an octree
     int depth;
 
-    // Ptrs to neighbors of the current cell
+    // Ptrs to neighbors of the current cell // all the neighbours of the current cell
     OctreeCell **neighborCache;
     
     // Global offsets start from root node
