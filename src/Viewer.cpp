@@ -458,6 +458,8 @@ namespace DDG
     
     void Viewer :: drawOctree( void )
     {
+        if(octree.rootNode() == NULL) return;
+        
         shader.disable();
         glPushAttrib( GL_ALL_ATTRIB_BITS );
         
@@ -466,11 +468,11 @@ namespace DDG
         glEnable( GL_BLEND );
         glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
         
-        // Get the absolute center of octree
-        Vector3D absoluteCenter = octree.center();
+        // Get the absolute boundingBoxCenter of octree
+        Vector3D absoluteCenter = octree.boundingBoxCenter();
         Vector3D relativeRootCenter = octree.rootNode()->center();
         
-        double scale = octree.scale();
+        double scale = octree.boundingBoxScale();
         
         // Iterate the octree cell
         std::stack<OctreeCell*> collections;
@@ -485,7 +487,7 @@ namespace DDG
             // Draw the bounding box for current node
             BoundingBox bindBox;
             
-            // The relative center based on current node, range is [0,1]
+            // The relative boundingBoxCenter based on current node, range is [0,1]
             Vector3D relativeOffset = currentNode->center()-relativeRootCenter;
             Vector3D center = absoluteCenter + relativeOffset*scale;
             

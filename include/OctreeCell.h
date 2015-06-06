@@ -63,6 +63,12 @@ public:
     // Generate a root node
     static OctreeCell* RootNode();
     
+    // Set the depth of cell
+    inline void setDepth(int depth);
+    
+    // Return the depth of cell
+    inline int getDepth();
+    
     // Return the cell's width, assume that the root's width is 1.
     inline double width();
     
@@ -81,7 +87,7 @@ public:
     // Return the ptr of parents.
     inline OctreeCell* getParent();
     
-    inline void setDepth(int depth);
+    
     
     // Find Corner position according to the corner index.
     Vector3D cornerPosition(int index);
@@ -131,6 +137,7 @@ public:
 
     // For DEBUG USE, TODO(Delete this later)
     bool DB_flag;
+    
 };
 
 #include "OctreeCell.inl.h"

@@ -23,10 +23,22 @@ namespace DDG
         void run(Mesh& mesh, Octree &octree){
             // Test
             octree.generateOctreeFrom(mesh, 5);
-            OctreeCell *cell = octree.rootNode()->getChildren(3)->getChildren(4)->getChildren(2);
-
-            int nodeCounts = octree.nodeCounts();
-
+            
+            // TEST: iterator
+            long long nodeCounts = 0;
+            Octree::CellIterator itr;
+            for (itr = octree.begin();
+                 itr != octree.end();
+                 itr++) {
+                
+                nodeCounts++;
+                OctreeCell *cell = *(itr);
+                int depth = cell->getDepth();
+                printf("Depth: %d", depth);
+                
+            }
+            nodeCounts = octree.nodeCounts();
+            
             // TEST: Deallocate the octree
             octree.deallocate();
 

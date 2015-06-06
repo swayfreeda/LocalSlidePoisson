@@ -112,7 +112,7 @@ namespace DDG
    
    void Mesh::normalize( void )
    {
-      // compute center of mass
+      // compute boundingBoxCenter of mass
       Vector3D c( 0., 0., 0. );
       for( VertexCIter v = vertices.begin(); v != vertices.end(); v++ )
       {
