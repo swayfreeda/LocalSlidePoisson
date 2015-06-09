@@ -44,5 +44,5 @@ ELSEIF(UNIX)
 set(BLAS_LIB lapack blas gfortran)
 ENDIF()
 
-add_executable(Reconstructor ${SOURCE_FILES} src/IsoSurfaceExtractor.cpp include/IsoSurfaceExtractor.h)
+add_executable(Reconstructor ${SOURCE_FILES} src/IsoSurfaceExtractor.cpp include/IsoSurfaceExtractor.h include/MarchingCube.cpp include/MarchingCube.h)
 target_link_libraries(Reconstructor ${SUITESPARSE_LIB} ${BLAS_LIB} ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
