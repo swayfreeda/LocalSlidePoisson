@@ -57,10 +57,10 @@ public:
 
     // Deallocate the octree, include the root node
     void deallocate();
-
+    
     // Count the cells, from root to its childrens
     long long nodeCounts();
-
+    
     // Return the memroy load in bytes
     size_t memoryUse();
     
@@ -73,7 +73,7 @@ public:
         
         // Default iterator
         CellIterator(OctreeCell *cell);
-
+        
         // Reload '++' operator for iterating next cell
         CellIterator& operator ++ (int);
         
@@ -91,7 +91,7 @@ public:
         
         inline bool operator == (const CellIterator & rhs) const
         {
-           return ((currentNode != nullptr)? this->currentNode != rhs.currentNode: rhs.currentNode == nullptr);
+            return ((currentNode != nullptr)? this->currentNode != rhs.currentNode: rhs.currentNode == nullptr);
         }
         
         inline bool operator != (const CellIterator & rhs) const
