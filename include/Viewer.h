@@ -23,10 +23,14 @@ namespace DDG
     class Viewer
     {
     public:
+        Viewer();
+
+        ~Viewer();
+
         static void init( void );
         // displays the viewer until the program ends
-        
-        static Mesh mesh;
+
+        static Mesh *mesh;
         // surface mesh visualized by Viewer
         
         static Octree octree;

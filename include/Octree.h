@@ -50,7 +50,7 @@ public:
     
     // Generate the octree from a given mesh, the para depth is the max depth
     // for the octree.
-    void generateOctreeFrom(const DDG::Mesh mesh,const int depth);
+    void generateOctreeFrom(DDG::Mesh *mesh, const int depth);
 
     // return the Bounding Box pointer of the
     BoundingBox* getBoundingBox();

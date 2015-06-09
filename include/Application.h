@@ -20,29 +20,28 @@ namespace DDG
     class Application
     {
     public:
-        void run(Mesh& mesh, Octree &octree){
+        void run(Mesh *mesh, Octree &octree) {
             // Test
             octree.generateOctreeFrom(mesh, 5);
             
             // TEST: iterator
-            long long nodeCounts = 0;
-            Octree::CellIterator itr;
-            for (itr = octree.begin();
-                 itr != octree.end();
-                 itr++) {
-                
-                nodeCounts++;
-                OctreeCell *cell = *(itr);
-                int depth = cell->getDepth();
-                printf("Depth: %d", depth);
-                
-            }
-            nodeCounts = octree.nodeCounts();
+//            long long nodeCounts = 0;
+//            Octree::CellIterator itr;
+//            for (itr = octree.begin();
+//                 itr != octree.end();
+//                 itr++) {
+//
+//                nodeCounts++;
+//                OctreeCell *cell = *(itr);
+//                int depth = cell->getDepth();
+//                printf("Depth: %d", depth);
+//
+//            }
+            int nodeCounts = octree.nodeCounts();
             
             // TEST: Deallocate the octree
-            octree.deallocate();
+            //octree.deallocate();
 
-            nodeCounts = octree.nodeCounts();
 
         }
         

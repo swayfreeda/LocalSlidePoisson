@@ -9,7 +9,6 @@
 #include "Octree.h"
 #include "OctreeCell.h"
 #include <float.h>
-#include <queue>
 
 using namespace DDG;
 
@@ -75,7 +74,7 @@ double Octree::boundingBoxScale()
 //======================================================= generatOctreeFrom ===========================================//
 // Generate the octree from a given mesh, the para depth is the max depth
 // for the octree.
-void Octree::generateOctreeFrom(DDG::Mesh mesh, int depth)
+void Octree::generateOctreeFrom(DDG::Mesh *mesh, const int depth)
 {
     maxDepth = depth;
     
@@ -83,8 +82,8 @@ void Octree::generateOctreeFrom(DDG::Mesh mesh, int depth)
     Vector3D min(DBL_MAX, DBL_MAX, DBL_MAX);
     
     // Iterate the vertices to get max and min
-    for (VertexIter vertex = mesh.vertices.begin();
-         vertex != mesh.vertices.end();
+    for (VertexIter vertex = mesh->vertices.begin();
+         vertex != mesh->vertices.end();
          vertex++)
     {
         
@@ -116,8 +115,8 @@ void Octree::generateOctreeFrom(DDG::Mesh mesh, int depth)
     
     // Iterate the vertices' positon to generate the octree
     int nodeCount = 0;
-    for (VertexIter vertex = mesh.vertices.begin();
-         vertex != mesh.vertices.end();
+    for (VertexIter vertex = mesh->vertices.begin();
+         vertex != mesh->vertices.end();
          vertex++) {
         OctreeCell *node = root;
         int currentDepth = 0;

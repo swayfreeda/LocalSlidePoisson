@@ -20,7 +20,7 @@ int main(int argc,char **argv)
     }
 
     Viewer viewer;
-    viewer.mesh.read(argv[1]);
+    viewer.mesh->read(argv[1]);
     viewer.init();
 
     return 0;
