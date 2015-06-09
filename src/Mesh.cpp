@@ -2,7 +2,6 @@
 #include <fstream>
 #include "Mesh.h"
 #include "MeshIO.h"
-#include "DiscreteExteriorCalculus.h"
 
 using namespace std;
 
@@ -87,6 +86,17 @@ namespace DDG
       }
       return rval;
    }
+
+    // buildFromData the mesh from the exist MeshData that contains vertices and faces
+    int Mesh::buildFromData(const MeshData &data) {
+       int rval;
+       if( !( rval = MeshIO::build( data, *this )))
+       {
+          indexElements();
+          normalize();
+       }
+       return rval;
+    }
    
    int Mesh::write( const string& filename ) const
    // reads a mesh from a Wavefront OBJ file; return value is nonzero
@@ -187,5 +197,25 @@ namespace DDG
       }
       return sum / edges.size();
    }
+
+    // Compute faces and vertices normals
+    void Mesh::computeNormals()
+    {
+        VertexIter vertices[3];
+        // Iterate face to compute normals
+        for (FaceIter face= faces.begin(); face != faces.end(); face++)
+        {
+            HalfEdgeIter currentHF = face->he;
+
+            int i = 0;
+            do {
+                vertices[i] = currentHF->vertex;
+                currentHF = currentHF->next;
+            } while (currentHF != face->he);
+            
+        
+        }
+    }
+
 }
 

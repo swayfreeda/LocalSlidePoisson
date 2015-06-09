@@ -53,51 +53,61 @@
 
 namespace DDG
 {
-   class Mesh
-   {
-   public:
-      Mesh( void );
-      // constructs an empty mesh
-      
-      Mesh( const Mesh& mesh );
-      // constructs a copy of mesh
-      
-      const Mesh& operator=( const Mesh& mesh );
-      // copies mesh
-      
-      int read( const std::string& filename );
-      // reads a mesh from a Wavefront OBJ file; return value is nonzero
-      // only if there was an error
-      
-      int write( const std::string& filename ) const;
-      // writes a mesh to a Wavefront OBJ file; return value is nonzero
-      // only if there was an error
-      
-      bool reload( void );
-      // reloads a mesh from disk using the most recent input filename
-      
-      void normalize( void );
-      // centers around the origin and rescales to have unit radius
-      
-      double area( void ) const;
-      // returns total mesh area
-      
-      double meanEdgeLength( void  ) const;
-      // returns mean edge lenght
+    class MeshData;
 
-      std::vector<HalfEdge> halfedges;
-      std::vector<Vertex>   vertices;
-      std::vector<Edge>     edges;
-      std::vector<Face>     faces;
-      std::vector<Face>     boundaries;
-      // storage for mesh elements
-      
-   protected:
-      std::string inputFilename;
-      
-      void indexElements( void );
-      // assigns a unique, 0-based index to each mesh element
-   };
+    // TODO[Luwei]: Add compute vertices normal functions.
+    class Mesh
+    {
+    public:
+        Mesh( void );
+        // constructs an empty mesh
+
+        Mesh( const Mesh& mesh );
+        // constructs a copy of mesh
+
+        const Mesh& operator=( const Mesh& mesh );
+        // copies mesh
+
+        int read( const std::string& filename );
+        // reads a mesh from a Wavefront OBJ file; return value is nonzero
+        // only if there was an error
+
+        // Build the mesh from the exsit Mesh Data, reutnr the zero if there
+        // was an error
+        int buildFromData(const MeshData &data);
+
+        int write( const std::string& filename ) const;
+        // writes a mesh to a Wavefront OBJ file; return value is nonzero
+        // only if there was an error
+
+        bool reload( void );
+        // reloads a mesh from disk using the most recent input filename
+
+        void normalize( void );
+        // centers around the origin and rescales to have unit radius
+
+        double area( void ) const;
+        // returns total mesh area
+
+        double meanEdgeLength( void  ) const;
+        // returns mean edge lenght
+
+        std::vector<HalfEdge> halfedges;
+        std::vector<Vertex>   vertices;
+        std::vector<Edge>     edges;
+        std::vector<Face>     faces;
+        std::vector<Face>     boundaries;
+        // storage for mesh elements
+        
+        // Util: Compute normals for faces and vertices
+        void computeNormals();
+
+    protected:
+        std::string inputFilename;
+
+        void indexElements( void );
+        // assigns a unique, 0-based index to each mesh element
+    };
 }
 
 #endif
