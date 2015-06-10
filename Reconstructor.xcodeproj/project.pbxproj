@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+<<<<<<< HEAD
 		0F6D19D91B26DC9200584FB8 /* IsoSurfaceExtractor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0F6D19D81B26DC9200584FB8 /* IsoSurfaceExtractor.cpp */; };
+=======
+		0F66B9ED1B27537D00BDF904 /* BinaryTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0F66B9EB1B27537D00BDF904 /* BinaryTree.cpp */; };
+		0F66B9F31B2754AB00BDF904 /* BinaryNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0F66B9F11B2754AB00BDF904 /* BinaryNode.cpp */; };
+>>>>>>> d82e48f0df6ea2154a0bce41b691b98151748ae6
 		0FB9DE2D1B22044100E3DCAC /* libamd.2.3.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB9DE231B22044100E3DCAC /* libamd.2.3.1.a */; };
 		0FB9DE2E1B22044100E3DCAC /* libamd.2.4.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB9DE241B22044100E3DCAC /* libamd.2.4.0.dylib */; };
 		0FB9DE2F1B22044100E3DCAC /* libcamd.2.3.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB9DE251B22044100E3DCAC /* libcamd.2.3.1.a */; };
@@ -63,10 +68,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+<<<<<<< HEAD
 		0F6D19D81B26DC9200584FB8 /* IsoSurfaceExtractor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IsoSurfaceExtractor.cpp; sourceTree = "<group>"; };
 		0F6D19DA1B26DCB000584FB8 /* IsoSurfaceExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IsoSurfaceExtractor.h; sourceTree = "<group>"; };
 		0F6D19DB1B26DCB000584FB8 /* MeshData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeshData.h; sourceTree = "<group>"; };
 		0F6D19DC1B26DCB000584FB8 /* Index.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Index.h; sourceTree = "<group>"; };
+=======
+		0F66B9EB1B27537D00BDF904 /* BinaryTree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryTree.cpp; sourceTree = "<group>"; };
+		0F66B9EF1B27548300BDF904 /* BinaryTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinaryTree.h; sourceTree = "<group>"; };
+		0F66B9F01B27549100BDF904 /* BinaryNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinaryNode.h; sourceTree = "<group>"; };
+		0F66B9F11B2754AB00BDF904 /* BinaryNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryNode.cpp; sourceTree = "<group>"; };
+		0F66B9F21B2754AB00BDF904 /* BinaryNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinaryNode.h; sourceTree = "<group>"; };
+>>>>>>> d82e48f0df6ea2154a0bce41b691b98151748ae6
 		0FB9DE191B2203BC00E3DCAC /* Reconstructor */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Reconstructor; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FB9DE231B22044100E3DCAC /* libamd.2.3.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libamd.2.3.1.a; path = /opt/local/lib/libamd.2.3.1.a; sourceTree = "<absolute>"; };
 		0FB9DE241B22044100E3DCAC /* libamd.2.4.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libamd.2.4.0.dylib; path = /opt/local/lib/libamd.2.4.0.dylib; sourceTree = "<absolute>"; };
@@ -222,9 +235,12 @@
 		0FB9DE3C1B22047200E3DCAC /* include */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				0F6D19DA1B26DCB000584FB8 /* IsoSurfaceExtractor.h */,
 				0F6D19DB1B26DCB000584FB8 /* MeshData.h */,
 				0F6D19DC1B26DCB000584FB8 /* Index.h */,
+=======
+>>>>>>> d82e48f0df6ea2154a0bce41b691b98151748ae6
 				0FB9DE3D1B22047200E3DCAC /* Application.h */,
 				0FB9DE3E1B22047200E3DCAC /* BoundingBox.h */,
 				0FB9DE3F1B22047200E3DCAC /* Camera.h */,
@@ -262,6 +278,8 @@
 				0FB9DE5F1B22047200E3DCAC /* Vector3D.h */,
 				0FB9DE601B22047200E3DCAC /* Vertex.h */,
 				0FB9DE611B22047200E3DCAC /* Viewer.h */,
+				0F66B9EF1B27548300BDF904 /* BinaryTree.h */,
+				0F66B9F01B27549100BDF904 /* BinaryNode.h */,
 			);
 			path = include;
 			sourceTree = SOURCE_ROOT;
@@ -296,6 +314,9 @@
 				0FB9DE7A1B22047F00E3DCAC /* Vector3D.cpp */,
 				0FB9DE7B1B22047F00E3DCAC /* Vertex.cpp */,
 				0FB9DE7C1B22047F00E3DCAC /* Viewer.cpp */,
+				0F66B9EB1B27537D00BDF904 /* BinaryTree.cpp */,
+				0F66B9F11B2754AB00BDF904 /* BinaryNode.cpp */,
+				0F66B9F21B2754AB00BDF904 /* BinaryNode.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -374,11 +395,13 @@
 				0FB9DE7D1B22047F00E3DCAC /* BoundingBox.cpp in Sources */,
 				0FB9DE901B22047F00E3DCAC /* Shader.cpp in Sources */,
 				0FB9DE8A1B22047F00E3DCAC /* Mesh.cpp in Sources */,
+				0F66B9F31B2754AB00BDF904 /* BinaryNode.cpp in Sources */,
 				0FB9DE891B22047F00E3DCAC /* main.cpp in Sources */,
 				0FB9DE8C1B22047F00E3DCAC /* Octree.cpp in Sources */,
 				0FB9DE851B22047F00E3DCAC /* LinearContext.cpp in Sources */,
 				0FB9DE951B22047F00E3DCAC /* Vertex.cpp in Sources */,
 				0FB9DE811B22047F00E3DCAC /* Edge.cpp in Sources */,
+				0F66B9ED1B27537D00BDF904 /* BinaryTree.cpp in Sources */,
 				0FB9DE921B22047F00E3DCAC /* Variable.cpp in Sources */,
 				0F6D19D91B26DC9200584FB8 /* IsoSurfaceExtractor.cpp in Sources */,
 				0FB9DE941B22047F00E3DCAC /* Vector3D.cpp in Sources */,
