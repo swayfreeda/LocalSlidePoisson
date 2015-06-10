@@ -31,7 +31,7 @@ namespace DDG
       HalfEdgeCIter h = he;
       do
       {
-         N += h->face->normal();
+         if(!h->onBoundary) N += h->face->normal();
          h = h->flip->next;
       }
       while( h != he );
