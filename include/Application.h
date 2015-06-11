@@ -51,10 +51,10 @@ namespace DDG
             Eigen::VectorXd b(3), x(3);
 
             A.insert(0, 0) = 3;
-            A.insert(0, 1) = 2;
-            A.insert(1, 0) = 1;
-            A.insert(2, 1) = 2;
+            A.insert(1, 1) = 2;
             A.insert(2, 2) = 1;
+            A.insert(1, 0) = 2;
+            A.insert(0, 1) = 2;
 
             b[0] = 1;
             b[1] = 2;
