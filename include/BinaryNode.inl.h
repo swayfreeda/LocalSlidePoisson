@@ -6,6 +6,7 @@
 #define RECONSTRUCTOR_BINARYNODE_INL_H
 
 #include <BinaryNode.h>
+#include <iostream>
 
 BinaryNode* BinaryNode::leftChild() {
     return this->leftChild_;
