@@ -9,6 +9,8 @@
 #ifndef Reconstructor_BinaryTree_h
 #define Reconstructor_BinaryTree_h
 
+#include <queue>
+
 class BinaryNode;
 
 class BinaryTree {
@@ -20,16 +22,22 @@ class BinaryTree {
     int depth_;
     
 public:
-    
+
+    // Constructor
+    BinaryTree();
+
+    // Deconstructor
+    ~BinaryTree();
+
     // Deallocate the octree, include the root node
     void deallocate();
     
     // return the ptr of root node
-    BinaryNode* rootNode();
+    inline BinaryNode* rootNode();
     
     // Count the cells, from root to its childrens
     long long nodeCounts();
-    
+
     // Iterator, pre-order iterate the nodes
     class NodeIterator
     {
@@ -38,7 +46,7 @@ public:
         NodeIterator();
         
         // Default iterator
-        NodeIterator(OctreeCell *cell);
+        NodeIterator(BinaryNode *cell);
         
         // Reload '++' operator for iterating next cell
         NodeIterator& operator ++ (int);
@@ -55,22 +63,28 @@ public:
             return currentNode;
         }
         
-        inline bool operator == (const BinaryNode & rhs) const
+        inline bool operator == (const NodeIterator & rhs) const
         {
             return ((currentNode != nullptr)? this->currentNode != rhs.currentNode: rhs.currentNode == nullptr);
         }
         
-        inline bool operator != (const BinaryNode & rhs) const
+        inline bool operator != (const NodeIterator & rhs) const
         {
             // Currently we compare the ptr address
             return ((currentNode != nullptr)? this->currentNode != rhs.currentNode: rhs.currentNode != nullptr);
         }
         
     private:
-        std::queue<BinaryNode*> iteration_queue;
+        std::queue<BinaryNode*> iterationQueue;
         BinaryNode* currentNode;
     };
+
+    // Iterator methods
+    NodeIterator begin();
+    NodeIterator end();
+
 };
 
+#include "BinaryTree.inl.h"
 
 #endif

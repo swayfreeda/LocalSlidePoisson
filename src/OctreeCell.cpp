@@ -6,20 +6,20 @@
 //  Copyright (c) 2015 None. All rights reserved.
 //
 
-#include "OctreeCell.h"
+#include <OctreeCell.h>
 
 #define NEIBORINDEX(x, y, z) (x)+3*(y)+9*(z)
 #define DIAGONALINDEX(index) (~index)  & 7
 
 //===================================================Constructor======================================================//
 // Constructor
-OctreeCell::OctreeCell()
+OctreeCell::OctreeCell():
+    parent(nullptr),
+    childrens(nullptr),
+    neighborCache(nullptr),
+    depth(0)
 {
-    this->parent = nullptr;
-    this->childrens = nullptr;
-    this->neighborCache = nullptr;
-    this->depth = 0;
-    
+
     // Set the global and local offsets value to -1
     for (int i = 0; i < 3; i++) {
         this->globalOffsets[i] = -1;

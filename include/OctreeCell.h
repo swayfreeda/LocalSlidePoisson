@@ -27,13 +27,13 @@ protected:
     
     // Ptrs point to childrens
     OctreeCell **childrens;
-    
-    // The depth that the current cell located in an octree
-    int depth;
 
     // Ptrs to neighbors of the current cell
     OctreeCell **neighborCache;
-    
+
+    // The depth that the current cell located in an octree
+    int depth;
+
     // Global offsets start from root node
     int globalOffsets[3];
     
