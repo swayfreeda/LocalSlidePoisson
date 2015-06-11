@@ -6,22 +6,20 @@
 //  Copyright (c) 2015 None. All rights reserved.
 //
 
-#include "OctreeCell.h"
-#include "string.h"
+#include <OctreeCell.h>
 
 #define NEIBORINDEX(x, y, z) (x)+3*(y)+9*(z)
-#define DIAGONALINDEX(index) (~index)  & 7   // 7 - index
+#define DIAGONALINDEX(index) (~index)  & 7
 
 //===================================================Constructor======================================================//
 // Constructor
-OctreeCell::OctreeCell()
+OctreeCell::OctreeCell():
+    parent(nullptr),
+    childrens(nullptr),
+    neighborCache(nullptr),
+    depth(0)
 {
-    this->parent = NULL;
-    this->childrens = NULL;
-    this->neighborCache = NULL;
-    this->depth = 0;
-    this->DB_flag = true;
-    
+
     // Set the global and local offsets value to -1
     for (int i = 0; i < 3; i++) {
         this->globalOffsets[i] = -1;
@@ -31,9 +29,36 @@ OctreeCell::OctreeCell()
 }
 
 //==================================================Destructor========================================================//
-// TODO[Luwei](Dellocate the Octree)
+// TODO[Luwei]: Deallocate the cell
+// Destructor of octree cell will not destory the childrens
 OctreeCell::~OctreeCell()
 {
+    for (int k = 0; k < 3; ++k) {
+        localOffsets[k] = 0;
+        globalOffsets[k] = 0;
+    }
+
+    if(this->childrens != nullptr){
+        for (int i = 0; i < 8; ++i) {
+            this->childrens[i] = nullptr;
+        }
+        delete this->childrens;
+        this->childrens = nullptr;
+    }
+
+    this->parent = nullptr;
+
+    if(this->neighborCache != nullptr)
+    {
+        for (int j = 0; j < 27; ++j) {
+            this->neighborCache[j] = nullptr;
+        }
+        delete this->neighborCache;
+        this->neighborCache = nullptr;
+    }
+
+    this->depth = 0;
+
 }
 
 //==================================================RootNode==========================================================//
@@ -51,8 +76,8 @@ OctreeCell* OctreeCell::RootNode()
     
     return rootCell;
 }
-//====================================================center==========================================================//
-// Return the cell's center, the range is [0, 1]
+//====================================================boundingBoxCenter==========================================================//
+// Return the cell's boundingBoxCenter, the range is [0, 1]
 Vector3D OctreeCell::center()
 {
     Vector3D ceter;
@@ -74,7 +99,7 @@ Vector3D OctreeCell::center()
 // need parent's local offsets information
 void OctreeCell::initGlobalOffsets()
 {
-    if (this->parent == NULL) {
+    if (this->parent == nullptr) {
         memset(globalOffsets, 0, sizeof(globalOffsets));
         return;
     }
@@ -138,7 +163,7 @@ void OctreeCell::addChild()
 {
     childrens = new OctreeCell*[8];
     for (int i = 0; i < 8; i ++) {
-        childrens [i] = NULL;
+        childrens [i] = nullptr;
     }
 
     for (int i = 0; i < 8; i++) {
@@ -163,13 +188,13 @@ void OctreeCell::addChild()
 int OctreeCell::CornerIndex(OctreeCell *child_node)
 {
     // If node is parent
-    if (child_node->parent == NULL)
+    if (child_node->parent == nullptr)
         return 0;
     
     OctreeCell *parent = child_node->parent;
     
     // If the child_node is root node, return -1
-    if (parent == NULL)
+    if (parent == nullptr)
         return -1;
     
     for (int i = 0; i < 8; i++)    {
@@ -188,31 +213,21 @@ int OctreeCell::getCornerIndexOfParent()
     return CornerIndex(this);
 }
 
-//================================================initNeighbours======================================================//
 // Initialize the neighborCache, compute the neighbor cells across the face,edge,and corner
 void OctreeCell::initNeighbors() {
 
-    // initialization
-    if (neighborCache != NULL) {
-        for (int i = 0; i < 27; i++) {
-            if (neighborCache[i]) delete neighborCache[i];
-        }
-        delete neighborCache;
-    }
+    if (neighborCache != nullptr) { delete neighborCache; };
 
     // Initialize the neighborCache ptr, TODO[Luwei](better initialization method for ptr array)
     neighborCache = new OctreeCell *[27];
     for (int i = 0; i < 27; ++i) {
-        neighborCache[i] = NULL;
+        neighborCache[i] = nullptr;
     }
 
-    // neighbours contain the current vertex
     neighborCache[NEIBORINDEX(1, 1, 1)] = this;
 
-    // root node has no neighbours
-    if (parent == NULL) return;
+    if (parent == nullptr) return;
 
-    // the index of current node to it's parent
     OctreeCell *parent = this->parent;
     int childIndex = this->getCornerIndexOfParent();
 
@@ -232,8 +247,8 @@ void OctreeCell::initNeighbors() {
     }
 
     // Get the parents neighborCache
-    OctreeCell **parentNeighbors = NULL;
-    if (parent->neighborCache == NULL)   //if parent has no neighborCache cache, initialize the neighborCache
+    OctreeCell **parentNeighbors = nullptr;
+    if (parent->neighborCache == nullptr)   //if parent has no neighborCache cache, initialize the neighborCache
         parent->initNeighbors();
     parentNeighbors = parent->neighborCache;
 
@@ -241,8 +256,8 @@ void OctreeCell::initNeighbors() {
     int i, j, k;
     i = x1 << 1;
     OctreeCell *adjFaceNode1 = parentNeighbors[NEIBORINDEX(i, 1, 1)];
-    if (adjFaceNode1 != NULL) {
-        if (adjFaceNode1->childrens == NULL) { adjFaceNode1->addChild(); }
+    if (adjFaceNode1 != nullptr) {
+        if (adjFaceNode1->childrens == nullptr) { adjFaceNode1->addChild(); }
         for (j = 0; j < 2; j++) {
             for (k = 0; k < 2; k++) {
                 neighborCache[NEIBORINDEX(i, y2 + j, z2 + k)] =
@@ -253,8 +268,8 @@ void OctreeCell::initNeighbors() {
 
     j = y1 << 1;
     OctreeCell *adjFaceNode2 = parentNeighbors[NEIBORINDEX(1, j, 1)];
-    if (adjFaceNode2 != NULL) {
-        if (adjFaceNode2->childrens == NULL) { adjFaceNode2->addChild(); }
+    if (adjFaceNode2 != nullptr) {
+        if (adjFaceNode2->childrens == nullptr) { adjFaceNode2->addChild(); }
         for (i = 0; i < 2; i++) {
             for (k = 0; k < 2; k++) {
                 neighborCache[NEIBORINDEX(x2 + i, j, z2 + k)] =
@@ -265,8 +280,8 @@ void OctreeCell::initNeighbors() {
 
     k = z1 << 1;
     OctreeCell *adjFaceNode3 = parentNeighbors[NEIBORINDEX(1, 1, k)];
-    if (adjFaceNode3 != NULL) {
-        if (adjFaceNode3->childrens == NULL) { adjFaceNode3->addChild(); }
+    if (adjFaceNode3 != nullptr) {
+        if (adjFaceNode3->childrens == nullptr) { adjFaceNode3->addChild(); }
         for (i = 0; i < 2; i++) {
             for (j = 0; j < 2; j++) {
                 neighborCache[NEIBORINDEX(x2 + i, y2 + j, k)] =
@@ -279,8 +294,8 @@ void OctreeCell::initNeighbors() {
     i = x1 << 1;
     j = y1 << 1;
     OctreeCell *adjEdgeNode1 = parentNeighbors[NEIBORINDEX(i, j, 1)];
-    if (adjEdgeNode1 != NULL) {
-        if (adjEdgeNode1->childrens == NULL) { adjEdgeNode1->addChild(); }
+    if (adjEdgeNode1 != nullptr) {
+        if (adjEdgeNode1->childrens == nullptr) { adjEdgeNode1->addChild(); }
         for (k = 0; k < 2; k++) {
             neighborCache[NEIBORINDEX(i, j, z2 + k)] =
                     adjEdgeNode1->childrens[CornerIndex(x2, y2, k)];
@@ -290,8 +305,8 @@ void OctreeCell::initNeighbors() {
     i = x1 << 1;
     k = z1 << 1;
     OctreeCell *adjEdgeNode2 = parentNeighbors[NEIBORINDEX(i, 1, k)];
-    if (adjEdgeNode2 != NULL) {
-        if (adjEdgeNode2->childrens == NULL) { adjEdgeNode2->addChild(); }
+    if (adjEdgeNode2 != nullptr) {
+        if (adjEdgeNode2->childrens == nullptr) { adjEdgeNode2->addChild(); }
         for (j = 0; j < 2; j++) {
             neighborCache[NEIBORINDEX(i, y2 + j, k)] =
                     adjEdgeNode2->childrens[CornerIndex(x2, j, z2)];
@@ -301,8 +316,8 @@ void OctreeCell::initNeighbors() {
     j = y1 << 1;
     k = z1 << 1;
     OctreeCell *adjEdgeNode3 = parentNeighbors[NEIBORINDEX(1, j, k)];
-    if (adjEdgeNode3 != NULL) {
-        if (adjEdgeNode3->childrens == NULL) { adjEdgeNode3->addChild(); }
+    if (adjEdgeNode3 != nullptr) {
+        if (adjEdgeNode3->childrens == nullptr) { adjEdgeNode3->addChild(); }
         for (i = 0; i < 2; i++) {
             neighborCache[NEIBORINDEX(x2 + i, j, k)] =
                     adjEdgeNode3->childrens[CornerIndex(i, y2, z2)];
@@ -314,32 +329,29 @@ void OctreeCell::initNeighbors() {
     j = y1 << 1;
     k = z1 << 1;
     OctreeCell *adjCornerNode = parentNeighbors[NEIBORINDEX(i, j, k)];
-    if (adjCornerNode != NULL) {
-        if (adjCornerNode->childrens == NULL) { adjCornerNode->addChild(); }
+    if (adjCornerNode != nullptr) {
+        if (adjCornerNode->childrens == nullptr) { adjCornerNode->addChild(); }
         neighborCache[NEIBORINDEX(i, j, k)] = adjCornerNode->childrens[CornerIndex(x2, y2, z2)];
     }
 
 }
 
-//===================================================neighbour(x, y, z================================================//
 // Return the neighbor cell based on offsets (x,y,z)
 OctreeCell *OctreeCell::neighbor(int x, int y, int z) {
-    if (neighborCache == NULL) initNeighbors();
+    if (neighborCache == nullptr) initNeighbors();
     return neighborCache[NEIBORINDEX(x, y, z)];
 }
 
-//====================================================neighbour(int index)============================================//
 // Return the neighbor cell based on neighbor index [0, 27]
 OctreeCell *OctreeCell::neighbor(int index) {
-    if (neighborCache == NULL)
+    if (neighborCache == nullptr)
         initNeighbors();
     return neighborCache[index];
 }
 
-//===================================================neighbours()=====================================================//
 // Return the neighbors array ptr
 OctreeCell **OctreeCell::neighbors() {
-    if (neighborCache == NULL)
+    if (neighborCache == nullptr)
         initNeighbors();
     return neighborCache;
 }

@@ -106,7 +106,7 @@ namespace DDG
    }
 
    void LinearSystem::buildSparseMatrix( void )
-   // build the sparse matrix representation of our current system
+   // buildFromData the sparse matrix representation of our current system
    {
       A = SparseMatrix<Real>( nEquations, nVariables );
 
@@ -124,7 +124,7 @@ namespace DDG
    }
 
    void LinearSystem::buildRightHandSide( void )
-   // build the data vector for our current system
+   // buildFromData the data vector for our current system
    {
       b = DenseMatrix<Real>( nEquations, 1 );
 

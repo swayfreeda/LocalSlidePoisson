@@ -16,8 +16,8 @@ using namespace std;
 
 namespace DDG
 {
-    // declare [static] member variables
-    Mesh Viewer::mesh;
+    // declare static member variables
+    Mesh *Viewer::mesh;
     GLuint Viewer::surfaceDL = 0;
     int Viewer::windowSize[2] = { 512, 512 };
     Camera Viewer::camera;
@@ -26,10 +26,22 @@ namespace DDG
     bool Viewer::renderOctree = false;
     bool Viewer::renderBoundingBox = false;
     bool Viewer::renderPolygons = true;
+    
     Octree Viewer::octree;
 
-    //==================================================init==========================================================//
-    void Viewer::init(void) {
+    Viewer::Viewer() {
+        mesh = new Mesh();
+    }
+
+    Viewer::~Viewer() {
+        if (mesh != nullptr) {
+            delete mesh;
+            mesh = nullptr;
+        }
+    }
+    
+    void Viewer :: init( void )
+    {
         restoreViewerState();
         initGLUT();
         setGL();
@@ -37,19 +49,19 @@ namespace DDG
         updateDisplayList();
         glutMainLoop();
     }
-
-    //==================================================initGLUT======================================================//
-    void Viewer::initGLUT(void) {
+    
+    void Viewer :: initGLUT( void )
+    {
         int argc = 0;
         vector< vector<char> > argv(1);
         
         // initialize window
-        glutInitWindowSize(windowSize[0], windowSize[1]); // size of window
+        glutInitWindowSize( windowSize[0], windowSize[1] );
         glutInitDisplayMode( GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH );
         glutInit( &argc, (char**)&argv );
-        glutCreateWindow("DDG"); // create window
-
-        // specify callbacks functions
+        glutCreateWindow( "DDG" );
+        
+        // specify callbacks
         glutDisplayFunc  ( Viewer::display  );
         glutIdleFunc     ( Viewer::idle     );
         glutKeyboardFunc ( Viewer::keyboard );
@@ -76,15 +88,15 @@ namespace DDG
         glutAddSubMenu( "View", viewMenu );
         glutAttachMenu( GLUT_RIGHT_BUTTON );
     }
-
-    //====================================================initGLSL====================================================//
-    void Viewer::initGLSL(void) {
+    
+    void Viewer :: initGLSL( void )
+    {
         shader.loadVertex( "shaders/vertex.glsl" );
         shader.loadFragment( "shaders/fragment.glsl" );
     }
-
-    //====================================================menu=========================================================//
-    void Viewer::menu(int value) {
+    
+    void Viewer :: menu( int value )
+    {
         switch( value )
         {
             case( menuProcess ):
@@ -106,11 +118,11 @@ namespace DDG
                 break;
         }
     }
-
-    //===================================================view========================================================//
-    void Viewer::view(int value) {
-
-        switch (value) {
+    
+    void Viewer :: view( int value )
+    {
+        switch( value )
+        {
             case(menuPolygons):
                 mPolygons();
                 break;
@@ -130,11 +142,11 @@ namespace DDG
                 break;
         }
     }
-
-    //==================================================keyboard======================================================//
-    void Viewer::keyboard(unsigned char c, int x, int y) {
-
-        switch (c) {
+    
+    void Viewer :: keyboard( unsigned char c, int x, int y )
+    {
+        switch( c )
+        {
             case 'b':
                 mBoundingBox();
                 break;
@@ -166,9 +178,9 @@ namespace DDG
                 break;
         }
     }
-
-    //==================================================special=====================================================//
-    void Viewer::special(int i, int x, int y) {
+    
+    void Viewer :: special( int i, int x, int y )
+    {
         switch( i )
         {
             case GLUT_KEY_UP:
@@ -184,30 +196,28 @@ namespace DDG
                 break;
         }
     }
-
-    //====================================================mouse=====================================================//
-    void Viewer::mouse(int button, int state, int x, int y) {
+    
+    void Viewer :: mouse( int button, int state, int x, int y )
+    {
         if( ( glutGetModifiers() and GLUT_ACTIVE_SHIFT) and state == GLUT_UP )
             pickVertex(x, y);
         else
             camera.mouse( button, state, x, y );
     }
-
-    //===================================================motion=====================================================//
-    void Viewer::motion(int x, int y) {
+    
+    void Viewer :: motion( int x, int y )
+    {
         camera.motion( x, y );
     }
-
-
-    //===================================================idle=======================================================//
-    void Viewer::idle(void) {
+    
+    void Viewer :: idle( void )
+    {
         camera.idle();
         glutPostRedisplay();
     }
-
-    //====================================================storeViewerState==========================================//
-    void Viewer::storeViewerState(void) {
-
+    
+    void Viewer :: storeViewerState( void )
+    {
         ofstream out( ".viewer_state.txt" );
         
         out << camera.rLast[0] << endl;
@@ -220,8 +230,7 @@ namespace DDG
         out << view[2] << endl;
         out << view[3] << endl;
     }
-
-    //====================================================restoreViewerState========================================//
+    
     void Viewer :: restoreViewerState( void )
     {
         ifstream in( ".viewer_state.txt" );
@@ -234,63 +243,61 @@ namespace DDG
         in >> windowSize[0];
         in >> windowSize[1];
     }
-
-    //===================================================mProcess====================================================//
-    // process mesh
-    void Viewer::mProcess(void) {
+    
+    void Viewer :: mProcess( void )
+    {
         Application app;
         app.run(mesh, octree);
         updateDisplayList();
     }
-
-    //===================================================resetMesh===================================================//
-    void Viewer::mResetMesh(void) {
-        mesh.reload();
+    
+    void Viewer :: mResetMesh( void )
+    {
+        mesh->reload();
         updateDisplayList();
     }
-
-    //===================================================wWriteMesh==================================================//
-    void Viewer::mWriteMesh(void) {
-        mesh.write( "out.obj" );
+    
+    void Viewer :: mWriteMesh( void )
+    {
+        mesh->write("out.obj");
     }
-
-    //===================================================mExit=======================================================//
-    void Viewer::mExit(void) {
+    
+    void Viewer :: mExit( void )
+    {
         //storeViewerState();
         exit( 0 );
     }
-
-    //===================================================mWireframe==================================================//
-    void Viewer::mWireframe(void) {
+    
+    void Viewer :: mWireframe( void )
+    {
         renderWireframe = !renderWireframe;
         updateDisplayList();
     }
-
-    //===================================================mOctree======================================================//
-    // display mOctree
-    void Viewer::mOctree(void) {
+    
+    void Viewer :: mOctree( void )
+    {
         renderOctree = !renderOctree;
         updateDisplayList();
     }
-
-    //===================================================mBoundingBox=================================================//
-    void Viewer::mBoundingBox() {
+    
+    void Viewer::mBoundingBox()
+    {
         renderBoundingBox = !renderBoundingBox;
         updateDisplayList();
     }
-
-    //===================================================mZoomIn======================================================//
-    void Viewer::mZoomIn(void) {
+    
+    void Viewer :: mZoomIn( void )
+    {
         camera.zoomIn();
     }
-
-    //===================================================mZoomOut====================================================//
-    void Viewer::mZoomOut(void) {
+    
+    void Viewer :: mZoomOut( void )
+    {
         camera.zoomOut();
     }
-
-    //===================================================mScreenshot=================================================//
-    void Viewer::mScreenshot(void) {
+    
+    void Viewer :: mScreenshot( void )
+    {
         static int index = 0;
         
         // get window width and height
@@ -309,9 +316,9 @@ namespace DDG
         
         index++;
     }
-
-    //====================================================display====================================================//
-    void Viewer::display(void) {
+    
+    void Viewer :: display( void )
+    {
         glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
         shader.enable();
         
@@ -351,11 +358,11 @@ namespace DDG
         shader.disable();
         glutSwapBuffers();
     }
-
-    //=======================================================updateDisplayList======================================//
-    void Viewer::updateDisplayList(void) {
-
-        if (surfaceDL) {
+    
+    void Viewer :: updateDisplayList( void )
+    {
+        if( surfaceDL )
+        {
             glDeleteLists( surfaceDL, 1 );
             surfaceDL = 0;
         }
@@ -366,23 +373,23 @@ namespace DDG
         drawScene();
         glEndList();
     }
-
-    //======================================================setGL====================================================//
-    void Viewer::setGL(void) {
+    
+    void Viewer :: setGL( void )
+    {
         glClearColor( .5, .5, .5, 1. );
         setLighting();
     }
-
-    //=====================================================setLighting===============================================//
-    void Viewer::setLighting(void) {
-        GLfloat position[4] = {20., 30., 40., 0.}; // position of light source
+    
+    void Viewer :: setLighting( void )
+    {
+        GLfloat position[4] = { 20., 30., 40., 0. };
         glLightfv( GL_LIGHT0, GL_POSITION, position );
         glEnable( GL_LIGHT0 );
         glEnable( GL_NORMALIZE );
     }
-
-    //=====================================================setMeshMaterial==========================================//
-    void Viewer::setMeshMaterial(void) {
+    
+    void Viewer :: setMeshMaterial( void )
+    {
         GLfloat  diffuse[4] = { .8, .5, .3, 1. };
         GLfloat specular[4] = { .3, .3, .3, 1. };
         GLfloat  ambient[4] = { .2, .2, .5, 1. };
@@ -392,19 +399,18 @@ namespace DDG
         glMaterialfv( GL_FRONT_AND_BACK, GL_AMBIENT,   ambient  );
         glMaterialf ( GL_FRONT_AND_BACK, GL_SHININESS, 16.      );
     }
-
-    //=====================================================callDisplayList==========================================//
-    void Viewer::callDisplayList(void) {
+    
+    void Viewer :: callDisplayList( void )
+    {
         glPushAttrib( GL_ALL_ATTRIB_BITS );
         glEnable( GL_DEPTH_TEST );
         glEnable( GL_LIGHTING );
         glCallList( surfaceDL );
         glPopAttrib();
     }
-
-    //=====================================================drawScene================================================//
-    void Viewer::drawScene(void) {
-
+    
+    void Viewer :: drawScene( void )
+    {
         glPushAttrib( GL_ALL_ATTRIB_BITS );
         
         if (renderPolygons) {
@@ -414,8 +420,9 @@ namespace DDG
             drawPolygons();
             glDisable(GL_POLYGON_OFFSET_FILL);
         }
-
-        if (renderBoundingBox) {
+        
+        if (renderBoundingBox)
+        {
             BoundingBox box = *(octree.getBoundingBox());
             drawBondingBox(box);
         }
@@ -426,23 +433,27 @@ namespace DDG
         
         glPopAttrib();
     }
-
-    //===================================================drawPolygons================================================//
-    void Viewer::drawPolygons(void) {
-
-        for (FaceCIter f = mesh.faces.begin(); f != mesh.faces.end(); f++) {
-
+    
+    void Viewer :: drawPolygons( void )
+    {
+        for (FaceCIter f = mesh->faces.begin();
+             f != mesh->faces.end();
+            f ++ )
+        {
             if( f->isBoundary() ) continue;
             
             glBegin( GL_POLYGON );
-            if (renderWireframe) {
+            if( renderWireframe )
+            {
                 Vector3D N = f->normal();
                 glNormal3dv( &N[0] );
             }
             
             HalfEdgeCIter he = f->he;
-            do {
-                if (not renderWireframe) {
+            do
+            {
+                if( not renderWireframe )
+                {
                     Vector3D N = he->vertex->normal();
                     glNormal3dv( &N[0] );
                 }
@@ -455,10 +466,11 @@ namespace DDG
             glEnd();
         }
     }
-
-    //================================================drawOctree=====================================================//
+    
     void Viewer :: drawOctree( void )
     {
+        if (octree.rootNode() == nullptr) return;
+        
         shader.disable();
         glPushAttrib( GL_ALL_ATTRIB_BITS );
         
@@ -467,13 +479,11 @@ namespace DDG
         glEnable( GL_BLEND );
         glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
         
-        // Get the absolute center of octree
-        Vector3D absoluteCenter = octree.center();
-
-        // (0.5, 0.5)
+        // Get the absolute boundingBoxCenter of octree
+        Vector3D absoluteCenter = octree.boundingBoxCenter();
         Vector3D relativeRootCenter = octree.rootNode()->center();
         
-        double scale = octree.scale();
+        double scale = octree.boundingBoxScale();
         
         // Iterate the octree cell
         std::stack<OctreeCell*> collections;
@@ -488,7 +498,7 @@ namespace DDG
             // Draw the bounding box for current node
             BoundingBox bindBox;
             
-            // The relative center based on current node, range is [0,1]
+            // The relative boundingBoxCenter based on current node, range is [0,1]
             Vector3D relativeOffset = currentNode->center()-relativeRootCenter;
             Vector3D center = absoluteCenter + relativeOffset*scale;
             
@@ -500,7 +510,7 @@ namespace DDG
             bindBox.origin.z = center.z - d2Width;
             bindBox.size.x = bindBox.size.y = bindBox.size.z = width;
 
-            if (currentNode->DB_flag)
+//            if (currentNode->DB_flag)
             drawBondingBox(bindBox);
             
             // Push the childrens to stack
@@ -513,10 +523,9 @@ namespace DDG
         
         glPopAttrib();
     }
-
-    //=======================================================drawBoundingBox==========================================//
-    void Viewer::drawBondingBox(BoundingBox box) {
-
+    
+    void Viewer::drawBondingBox(BoundingBox box)
+    {
         glBegin(GL_LINES);
         
         //1
@@ -561,10 +570,9 @@ namespace DDG
         
         glEnd();
     }
-
-    //======================================================drawWireframe=============================================//
-    void Viewer::drawWireframe(void) {
-
+    
+    void Viewer :: drawWireframe( void )
+    {
         shader.disable();
         glPushAttrib( GL_ALL_ATTRIB_BITS );
         
@@ -572,11 +580,12 @@ namespace DDG
         glColor4f( 0., 0., 0., 0.5 );
         glEnable( GL_BLEND );
         glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
-
-        glBegin(GL_LINES);  // tranvese all the edges
-        for( EdgeCIter e  = mesh.edges.begin();
-            e != mesh.edges.end();
-             e++) {
+        
+        glBegin( GL_LINES );
+        for (EdgeCIter e = mesh->edges.begin();
+             e != mesh->edges.end();
+            e ++ )
+        {
             glVertex3dv( &e->he->vertex->position[0] );
             glVertex3dv( &e->he->flip->vertex->position[0] );
         }
@@ -584,9 +593,9 @@ namespace DDG
         
         glPopAttrib();
     }
-
-    //======================================================drawIsolatedVertices=======================================//
-    void Viewer::drawIsolatedVertices(void) {
+    
+    void Viewer :: drawIsolatedVertices( void )
+    {
         glPushAttrib( GL_ALL_ATTRIB_BITS );
         
         glPointSize( 5 );
@@ -595,8 +604,8 @@ namespace DDG
         glColor3f( 1., 0., 0. );
         
         glBegin( GL_POINTS );
-        for( VertexCIter v  = mesh.vertices.begin();
-            v != mesh.vertices.end();
+        for (VertexCIter v = mesh->vertices.begin();
+             v != mesh->vertices.end();
             v ++ )
         {
             if( v->isIsolated() )
@@ -608,12 +617,11 @@ namespace DDG
         
         glPopAttrib();
     }
-
-    //=====================================================drawVertices==============================================//
+    
     void Viewer :: drawVertices( void )
     {
-        for( VertexCIter v = mesh.vertices.begin();
-            v != mesh.vertices.end();
+        for (VertexCIter v = mesh->vertices.begin();
+             v != mesh->vertices.end();
             v ++ )
         {
             glLoadName(v->index);
@@ -622,9 +630,9 @@ namespace DDG
             glEnd();
         }
     }
-
-    //======================================================drawSelecetdVertices=====================================//
-    void Viewer::drawSelectedVertices(void) {
+    
+    void Viewer :: drawSelectedVertices( void )
+    {
         shader.disable();
         glPushAttrib( GL_ALL_ATTRIB_BITS );
         
@@ -635,8 +643,8 @@ namespace DDG
         glPointSize( 20 );
         
         glBegin(GL_POINTS);
-        for( VertexCIter v = mesh.vertices.begin();
-            v != mesh.vertices.end();
+        for (VertexCIter v = mesh->vertices.begin();
+             v != mesh->vertices.end();
             v ++ )
         {
             if( v->tag ) glVertex3dv( &v->position[0] );
@@ -645,14 +653,14 @@ namespace DDG
         
         glPopAttrib();
     }
-
-    //=====================================================pickVertex================================================//
-    void Viewer::pickVertex(int x, int y) {
+    
+    void Viewer :: pickVertex(int x, int y)
+    {
         int width  = glutGet(GLUT_WINDOW_WIDTH );
         int height = glutGet(GLUT_WINDOW_HEIGHT);
         if( x < 0 || x >= width || y < 0 || y >= height ) return;
-        
-        int bufSize = mesh.vertices.size();
+
+        int bufSize = mesh->vertices.size();
         GLuint* buf = new GLuint[bufSize];
         glSelectBuffer(bufSize, buf);
         
@@ -697,7 +705,7 @@ namespace DDG
         
         if (index >= 0)
         {
-            mesh.vertices[index].toggleTag();
+            mesh->vertices[index].toggleTag();
             updateDisplayList();
         }
     }
@@ -706,5 +714,7 @@ namespace DDG
         renderPolygons = !renderPolygons;
         updateDisplayList();
     }
+
+
 }
 

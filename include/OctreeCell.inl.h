@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 None. All rights reserved.
 //
 
-#include "OctreeCell.h"
+#include <OctreeCell.h>
 
 //======================================================getChildren==================================================//
 OctreeCell* OctreeCell::getChildren(int index)
@@ -31,6 +31,10 @@ void OctreeCell::setDepth(int depth)
     this->depth = depth;
 }
 
+int OctreeCell::getDepth()
+{
+    return this->depth;
+}
 
 //=======================================================width=======================================================//
 // Return the cell's width, assume that the root's width is 1.

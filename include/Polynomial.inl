@@ -9,14 +9,14 @@
 template<int Degree>
 Polynomial<Degree>::Polynomial(void ) {
     polyCount = 0;
-    polys = NULL;
+    polys = nullptr;
 }
 
 
 template<int Degree>
 Polynomial<Degree>::Polynomial(const Polynomial<Degree> &p) {
     polyCount = 0;
-    polys = NULL;
+    polys = nullptr;
     set(p.polyCount);
     memcpy(polys, p.polys, sizeof(StartingPolynomialItem<Degree>)*p.polyCount);
 
@@ -34,7 +34,7 @@ template<int Degree>
 Polynomial<Degree>::~Polynomial<Degree>(void) {
     if(polyCount){free(polys);}
     polyCount=0;
-    polys=NULL;
+    polys=nullptr;
 }
 
 
@@ -42,7 +42,7 @@ template<int Degree>
 void Polynomial<Degree>::set(const int &size) {
     if(polyCount){free(polys);}
     polyCount=0;
-    polys=NULL;
+    polys=nullptr;
     polyCount=size;
     if(size){
         polys=(StartingPolynomialItem<Degree>*)malloc(sizeof(StartingPolynomialItem<Degree>)*size);

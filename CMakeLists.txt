@@ -15,13 +15,12 @@ find_package(GLUT REQUIRED)
 find_package(OpenGL REQUIRED)
 
 # Add external include directory
-IF(APPLE)
+IF(APPLE)  # for Mac OS X
 include_directories(include
                     /opt/local/include/
                     ${OPENGL_INCLUDE_DIRS}
                     ${GLUT_INCLUDE_DIRS})
-ENDIF()
-IF(UNIX)
+ELSEIF(UNIX) # for linux
 include_directories(include
                     /usr/include/suitesparse
                     ${OPENGL_INCLUDE_DIRS}
@@ -32,8 +31,7 @@ ENDIF()
 IF(APPLE)
 link_directories(/opt/local/lib/
                  /usr/lib)
-ENDIF()
-IF(UNIX)
+ELSEIF(UNIX)
 link_directories(/home/sway/Work/SFM/cmvs/lib/graclus1.2/
                  /usr/lib)
 ENDIF()
@@ -42,8 +40,7 @@ set(SUITESPARSE_LIB spqr cholmod metis colamd ccolamd camd amd umfpack)
 
 IF(APPLE)
 set(BLAS_LIB lapack cblas)
-ENDIF()
-IF(UNIX)
+ELSEIF(UNIX)
 set(BLAS_LIB lapack blas gfortran)
 ENDIF()
 

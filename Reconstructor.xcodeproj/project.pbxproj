@@ -1,0 +1,540 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0F30B8D81B2968B90075CC95 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0F30B8D31B2968B90075CC95 /* main.cpp */; };
+		0F30B8D91B2968B90075CC95 /* BinaryNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0F30B8D41B2968B90075CC95 /* BinaryNode.cpp */; };
+		0F30B8DA1B2968B90075CC95 /* BinaryTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0F30B8D61B2968B90075CC95 /* BinaryTree.cpp */; };
+		0F6D19D91B26DC9200584FB8 /* IsoSurfaceExtractor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0F6D19D81B26DC9200584FB8 /* IsoSurfaceExtractor.cpp */; };
+		0FB9DE2D1B22044100E3DCAC /* libamd.2.3.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB9DE231B22044100E3DCAC /* libamd.2.3.1.a */; };
+		0FB9DE2E1B22044100E3DCAC /* libamd.2.4.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB9DE241B22044100E3DCAC /* libamd.2.4.0.dylib */; };
+		0FB9DE2F1B22044100E3DCAC /* libcamd.2.3.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB9DE251B22044100E3DCAC /* libcamd.2.3.1.a */; };
+		0FB9DE301B22044100E3DCAC /* libccolamd.2.8.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB9DE261B22044100E3DCAC /* libccolamd.2.8.0.a */; };
+		0FB9DE311B22044100E3DCAC /* libcholmod.2.1.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB9DE271B22044100E3DCAC /* libcholmod.2.1.2.a */; };
+		0FB9DE321B22044100E3DCAC /* libcolamd.2.8.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB9DE281B22044100E3DCAC /* libcolamd.2.8.0.a */; };
+		0FB9DE331B22044100E3DCAC /* libcxsparse.3.1.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB9DE291B22044100E3DCAC /* libcxsparse.3.1.2.a */; };
+		0FB9DE341B22044100E3DCAC /* libspqr.1.3.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB9DE2A1B22044100E3DCAC /* libspqr.1.3.1.a */; };
+		0FB9DE351B22044100E3DCAC /* libsuitesparseconfig.4.2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB9DE2B1B22044100E3DCAC /* libsuitesparseconfig.4.2.1.a */; };
+		0FB9DE361B22044100E3DCAC /* libumfpack.5.6.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB9DE2C1B22044100E3DCAC /* libumfpack.5.6.2.a */; };
+		0FB9DE381B22044700E3DCAC /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB9DE371B22044700E3DCAC /* OpenGL.framework */; };
+		0FB9DE3A1B22044B00E3DCAC /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB9DE391B22044B00E3DCAC /* GLUT.framework */; };
+		0FB9DE7D1B22047F00E3DCAC /* BoundingBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE631B22047F00E3DCAC /* BoundingBox.cpp */; };
+		0FB9DE7E1B22047F00E3DCAC /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE641B22047F00E3DCAC /* Camera.cpp */; };
+		0FB9DE7F1B22047F00E3DCAC /* Complex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE651B22047F00E3DCAC /* Complex.cpp */; };
+		0FB9DE801B22047F00E3DCAC /* DenseMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE661B22047F00E3DCAC /* DenseMatrix.cpp */; };
+		0FB9DE811B22047F00E3DCAC /* Edge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE671B22047F00E3DCAC /* Edge.cpp */; };
+		0FB9DE821B22047F00E3DCAC /* Face.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE681B22047F00E3DCAC /* Face.cpp */; };
+		0FB9DE831B22047F00E3DCAC /* HalfEdge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE691B22047F00E3DCAC /* HalfEdge.cpp */; };
+		0FB9DE841B22047F00E3DCAC /* Image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE6A1B22047F00E3DCAC /* Image.cpp */; };
+		0FB9DE851B22047F00E3DCAC /* LinearContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE6B1B22047F00E3DCAC /* LinearContext.cpp */; };
+		0FB9DE861B22047F00E3DCAC /* LinearEquation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE6C1B22047F00E3DCAC /* LinearEquation.cpp */; };
+		0FB9DE871B22047F00E3DCAC /* LinearPolynomial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE6D1B22047F00E3DCAC /* LinearPolynomial.cpp */; };
+		0FB9DE881B22047F00E3DCAC /* LinearSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE6E1B22047F00E3DCAC /* LinearSystem.cpp */; };
+		0FB9DE891B22047F00E3DCAC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE6F1B22047F00E3DCAC /* main.cpp */; };
+		0FB9DE8A1B22047F00E3DCAC /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE701B22047F00E3DCAC /* Mesh.cpp */; };
+		0FB9DE8B1B22047F00E3DCAC /* MeshIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE711B22047F00E3DCAC /* MeshIO.cpp */; };
+		0FB9DE8C1B22047F00E3DCAC /* Octree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE721B22047F00E3DCAC /* Octree.cpp */; };
+		0FB9DE8D1B22047F00E3DCAC /* OctreeCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE731B22047F00E3DCAC /* OctreeCell.cpp */; };
+		0FB9DE8E1B22047F00E3DCAC /* Quaternion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE741B22047F00E3DCAC /* Quaternion.cpp */; };
+		0FB9DE8F1B22047F00E3DCAC /* Real.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE751B22047F00E3DCAC /* Real.cpp */; };
+		0FB9DE901B22047F00E3DCAC /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE761B22047F00E3DCAC /* Shader.cpp */; };
+		0FB9DE911B22047F00E3DCAC /* SparseMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE771B22047F00E3DCAC /* SparseMatrix.cpp */; };
+		0FB9DE921B22047F00E3DCAC /* Variable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE781B22047F00E3DCAC /* Variable.cpp */; };
+		0FB9DE931B22047F00E3DCAC /* Vector2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE791B22047F00E3DCAC /* Vector2D.cpp */; };
+		0FB9DE941B22047F00E3DCAC /* Vector3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE7A1B22047F00E3DCAC /* Vector3D.cpp */; };
+		0FB9DE951B22047F00E3DCAC /* Vertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE7B1B22047F00E3DCAC /* Vertex.cpp */; };
+		0FB9DE961B22047F00E3DCAC /* Viewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE7C1B22047F00E3DCAC /* Viewer.cpp */; };
+		0FB9DE981B2204C500E3DCAC /* libcblas.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB9DE971B2204C500E3DCAC /* libcblas.dylib */; };
+		0FB9DE9A1B2204D500E3DCAC /* liblapack.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB9DE991B2204D500E3DCAC /* liblapack.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0FB9DE171B2203BC00E3DCAC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0F30B8CA1B2968A60075CC95 /* BinaryNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinaryNode.h; sourceTree = "<group>"; };
+		0F30B8CB1B2968A60075CC95 /* BinaryTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinaryTree.h; sourceTree = "<group>"; };
+		0F30B8CE1B2968A60075CC95 /* Polynomial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Polynomial.h; sourceTree = "<group>"; };
+		0F30B8D31B2968B90075CC95 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		0F30B8D41B2968B90075CC95 /* BinaryNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryNode.cpp; sourceTree = "<group>"; };
+		0F30B8D61B2968B90075CC95 /* BinaryTree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryTree.cpp; sourceTree = "<group>"; };
+		0F6D19D81B26DC9200584FB8 /* IsoSurfaceExtractor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IsoSurfaceExtractor.cpp; sourceTree = "<group>"; };
+		0F6D19DA1B26DCB000584FB8 /* IsoSurfaceExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IsoSurfaceExtractor.h; sourceTree = "<group>"; };
+		0F6D19DB1B26DCB000584FB8 /* MeshData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeshData.h; sourceTree = "<group>"; };
+		0F6D19DC1B26DCB000584FB8 /* Index.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Index.h; sourceTree = "<group>"; };
+		0FB9DE191B2203BC00E3DCAC /* Reconstructor */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Reconstructor; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FB9DE231B22044100E3DCAC /* libamd.2.3.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libamd.2.3.1.a; path = /opt/local/lib/libamd.2.3.1.a; sourceTree = "<absolute>"; };
+		0FB9DE241B22044100E3DCAC /* libamd.2.4.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libamd.2.4.0.dylib; path = /opt/local/lib/libamd.2.4.0.dylib; sourceTree = "<absolute>"; };
+		0FB9DE251B22044100E3DCAC /* libcamd.2.3.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcamd.2.3.1.a; path = /opt/local/lib/libcamd.2.3.1.a; sourceTree = "<absolute>"; };
+		0FB9DE261B22044100E3DCAC /* libccolamd.2.8.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libccolamd.2.8.0.a; path = /opt/local/lib/libccolamd.2.8.0.a; sourceTree = "<absolute>"; };
+		0FB9DE271B22044100E3DCAC /* libcholmod.2.1.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcholmod.2.1.2.a; path = /opt/local/lib/libcholmod.2.1.2.a; sourceTree = "<absolute>"; };
+		0FB9DE281B22044100E3DCAC /* libcolamd.2.8.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcolamd.2.8.0.a; path = /opt/local/lib/libcolamd.2.8.0.a; sourceTree = "<absolute>"; };
+		0FB9DE291B22044100E3DCAC /* libcxsparse.3.1.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcxsparse.3.1.2.a; path = /opt/local/lib/libcxsparse.3.1.2.a; sourceTree = "<absolute>"; };
+		0FB9DE2A1B22044100E3DCAC /* libspqr.1.3.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libspqr.1.3.1.a; path = /opt/local/lib/libspqr.1.3.1.a; sourceTree = "<absolute>"; };
+		0FB9DE2B1B22044100E3DCAC /* libsuitesparseconfig.4.2.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsuitesparseconfig.4.2.1.a; path = /opt/local/lib/libsuitesparseconfig.4.2.1.a; sourceTree = "<absolute>"; };
+		0FB9DE2C1B22044100E3DCAC /* libumfpack.5.6.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libumfpack.5.6.2.a; path = /opt/local/lib/libumfpack.5.6.2.a; sourceTree = "<absolute>"; };
+		0FB9DE371B22044700E3DCAC /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		0FB9DE391B22044B00E3DCAC /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		0FB9DE3D1B22047200E3DCAC /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Application.h; sourceTree = "<group>"; };
+		0FB9DE3E1B22047200E3DCAC /* BoundingBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoundingBox.h; sourceTree = "<group>"; };
+		0FB9DE3F1B22047200E3DCAC /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
+		0FB9DE401B22047200E3DCAC /* Complex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Complex.h; sourceTree = "<group>"; };
+		0FB9DE411B22047200E3DCAC /* DenseMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DenseMatrix.h; sourceTree = "<group>"; };
+		0FB9DE421B22047200E3DCAC /* DenseMatrix.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DenseMatrix.inl; sourceTree = "<group>"; };
+		0FB9DE431B22047200E3DCAC /* DiscreteExteriorCalculus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscreteExteriorCalculus.h; sourceTree = "<group>"; };
+		0FB9DE441B22047200E3DCAC /* DiscreteExteriorCalculus.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DiscreteExteriorCalculus.inl; sourceTree = "<group>"; };
+		0FB9DE451B22047200E3DCAC /* Edge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Edge.h; sourceTree = "<group>"; };
+		0FB9DE461B22047200E3DCAC /* Face.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Face.h; sourceTree = "<group>"; };
+		0FB9DE471B22047200E3DCAC /* HalfEdge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalfEdge.h; sourceTree = "<group>"; };
+		0FB9DE481B22047200E3DCAC /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
+		0FB9DE491B22047200E3DCAC /* LinearContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearContext.h; sourceTree = "<group>"; };
+		0FB9DE4A1B22047200E3DCAC /* LinearEquation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearEquation.h; sourceTree = "<group>"; };
+		0FB9DE4B1B22047200E3DCAC /* LinearPolynomial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearPolynomial.h; sourceTree = "<group>"; };
+		0FB9DE4C1B22047200E3DCAC /* LinearSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearSystem.h; sourceTree = "<group>"; };
+		0FB9DE4D1B22047200E3DCAC /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
+		0FB9DE4E1B22047200E3DCAC /* MeshIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeshIO.h; sourceTree = "<group>"; };
+		0FB9DE4F1B22047200E3DCAC /* Octree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Octree.h; sourceTree = "<group>"; };
+		0FB9DE501B22047200E3DCAC /* OctreeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OctreeCell.h; sourceTree = "<group>"; };
+		0FB9DE511B22047200E3DCAC /* OctreeCell.inl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OctreeCell.inl.h; sourceTree = "<group>"; };
+		0FB9DE521B22047200E3DCAC /* Polynomial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Polynomial.h; sourceTree = "<group>"; };
+		0FB9DE531B22047200E3DCAC /* Polynomial.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Polynomial.inl; sourceTree = "<group>"; };
+		0FB9DE541B22047200E3DCAC /* PolynomialItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PolynomialItem.h; sourceTree = "<group>"; };
+		0FB9DE551B22047200E3DCAC /* PolynomialItem.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PolynomialItem.inl; sourceTree = "<group>"; };
+		0FB9DE561B22047200E3DCAC /* Quaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quaternion.h; sourceTree = "<group>"; };
+		0FB9DE571B22047200E3DCAC /* Real.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Real.h; sourceTree = "<group>"; };
+		0FB9DE581B22047200E3DCAC /* Shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
+		0FB9DE591B22047200E3DCAC /* SparseMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparseMatrix.h; sourceTree = "<group>"; };
+		0FB9DE5A1B22047200E3DCAC /* SparseMatrix.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SparseMatrix.inl; sourceTree = "<group>"; };
+		0FB9DE5B1B22047200E3DCAC /* Types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Types.h; sourceTree = "<group>"; };
+		0FB9DE5C1B22047200E3DCAC /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		0FB9DE5D1B22047200E3DCAC /* Variable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Variable.h; sourceTree = "<group>"; };
+		0FB9DE5E1B22047200E3DCAC /* Vector2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector2D.h; sourceTree = "<group>"; };
+		0FB9DE5F1B22047200E3DCAC /* Vector3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3D.h; sourceTree = "<group>"; };
+		0FB9DE601B22047200E3DCAC /* Vertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vertex.h; sourceTree = "<group>"; };
+		0FB9DE611B22047200E3DCAC /* Viewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Viewer.h; sourceTree = "<group>"; };
+		0FB9DE631B22047F00E3DCAC /* BoundingBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoundingBox.cpp; sourceTree = "<group>"; };
+		0FB9DE641B22047F00E3DCAC /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
+		0FB9DE651B22047F00E3DCAC /* Complex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Complex.cpp; sourceTree = "<group>"; };
+		0FB9DE661B22047F00E3DCAC /* DenseMatrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DenseMatrix.cpp; sourceTree = "<group>"; };
+		0FB9DE671B22047F00E3DCAC /* Edge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Edge.cpp; sourceTree = "<group>"; };
+		0FB9DE681B22047F00E3DCAC /* Face.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Face.cpp; sourceTree = "<group>"; };
+		0FB9DE691B22047F00E3DCAC /* HalfEdge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HalfEdge.cpp; sourceTree = "<group>"; };
+		0FB9DE6A1B22047F00E3DCAC /* Image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Image.cpp; sourceTree = "<group>"; };
+		0FB9DE6B1B22047F00E3DCAC /* LinearContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LinearContext.cpp; sourceTree = "<group>"; };
+		0FB9DE6C1B22047F00E3DCAC /* LinearEquation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LinearEquation.cpp; sourceTree = "<group>"; };
+		0FB9DE6D1B22047F00E3DCAC /* LinearPolynomial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LinearPolynomial.cpp; sourceTree = "<group>"; };
+		0FB9DE6E1B22047F00E3DCAC /* LinearSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LinearSystem.cpp; sourceTree = "<group>"; };
+		0FB9DE6F1B22047F00E3DCAC /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		0FB9DE701B22047F00E3DCAC /* Mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = "<group>"; };
+		0FB9DE711B22047F00E3DCAC /* MeshIO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MeshIO.cpp; sourceTree = "<group>"; };
+		0FB9DE721B22047F00E3DCAC /* Octree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Octree.cpp; sourceTree = "<group>"; };
+		0FB9DE731B22047F00E3DCAC /* OctreeCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OctreeCell.cpp; sourceTree = "<group>"; };
+		0FB9DE741B22047F00E3DCAC /* Quaternion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Quaternion.cpp; sourceTree = "<group>"; };
+		0FB9DE751B22047F00E3DCAC /* Real.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Real.cpp; sourceTree = "<group>"; };
+		0FB9DE761B22047F00E3DCAC /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
+		0FB9DE771B22047F00E3DCAC /* SparseMatrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SparseMatrix.cpp; sourceTree = "<group>"; };
+		0FB9DE781B22047F00E3DCAC /* Variable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Variable.cpp; sourceTree = "<group>"; };
+		0FB9DE791B22047F00E3DCAC /* Vector2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector2D.cpp; sourceTree = "<group>"; };
+		0FB9DE7A1B22047F00E3DCAC /* Vector3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector3D.cpp; sourceTree = "<group>"; };
+		0FB9DE7B1B22047F00E3DCAC /* Vertex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vertex.cpp; sourceTree = "<group>"; };
+		0FB9DE7C1B22047F00E3DCAC /* Viewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Viewer.cpp; sourceTree = "<group>"; };
+		0FB9DE971B2204C500E3DCAC /* libcblas.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcblas.dylib; path = usr/lib/libcblas.dylib; sourceTree = SDKROOT; };
+		0FB9DE991B2204D500E3DCAC /* liblapack.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblapack.dylib; path = usr/lib/liblapack.dylib; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0FB9DE161B2203BC00E3DCAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FB9DE9A1B2204D500E3DCAC /* liblapack.dylib in Frameworks */,
+				0FB9DE981B2204C500E3DCAC /* libcblas.dylib in Frameworks */,
+				0FB9DE3A1B22044B00E3DCAC /* GLUT.framework in Frameworks */,
+				0FB9DE381B22044700E3DCAC /* OpenGL.framework in Frameworks */,
+				0FB9DE2D1B22044100E3DCAC /* libamd.2.3.1.a in Frameworks */,
+				0FB9DE2E1B22044100E3DCAC /* libamd.2.4.0.dylib in Frameworks */,
+				0FB9DE2F1B22044100E3DCAC /* libcamd.2.3.1.a in Frameworks */,
+				0FB9DE301B22044100E3DCAC /* libccolamd.2.8.0.a in Frameworks */,
+				0FB9DE311B22044100E3DCAC /* libcholmod.2.1.2.a in Frameworks */,
+				0FB9DE321B22044100E3DCAC /* libcolamd.2.8.0.a in Frameworks */,
+				0FB9DE331B22044100E3DCAC /* libcxsparse.3.1.2.a in Frameworks */,
+				0FB9DE341B22044100E3DCAC /* libspqr.1.3.1.a in Frameworks */,
+				0FB9DE351B22044100E3DCAC /* libsuitesparseconfig.4.2.1.a in Frameworks */,
+				0FB9DE361B22044100E3DCAC /* libumfpack.5.6.2.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0FB9DE101B2203BC00E3DCAC = {
+			isa = PBXGroup;
+			children = (
+				0FB9DE991B2204D500E3DCAC /* liblapack.dylib */,
+				0FB9DE971B2204C500E3DCAC /* libcblas.dylib */,
+				0FB9DE3B1B22045200E3DCAC /* lib */,
+				0FB9DE1B1B2203BC00E3DCAC /* Reconstructor */,
+				0FB9DE1A1B2203BC00E3DCAC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0FB9DE1A1B2203BC00E3DCAC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0FB9DE191B2203BC00E3DCAC /* Reconstructor */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0FB9DE1B1B2203BC00E3DCAC /* Reconstructor */ = {
+			isa = PBXGroup;
+			children = (
+				0FB9DE621B22047F00E3DCAC /* src */,
+				0FB9DE3C1B22047200E3DCAC /* include */,
+			);
+			path = Reconstructor;
+			sourceTree = "<group>";
+		};
+		0FB9DE3B1B22045200E3DCAC /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				0FB9DE391B22044B00E3DCAC /* GLUT.framework */,
+				0FB9DE371B22044700E3DCAC /* OpenGL.framework */,
+				0FB9DE231B22044100E3DCAC /* libamd.2.3.1.a */,
+				0FB9DE241B22044100E3DCAC /* libamd.2.4.0.dylib */,
+				0FB9DE251B22044100E3DCAC /* libcamd.2.3.1.a */,
+				0FB9DE261B22044100E3DCAC /* libccolamd.2.8.0.a */,
+				0FB9DE271B22044100E3DCAC /* libcholmod.2.1.2.a */,
+				0FB9DE281B22044100E3DCAC /* libcolamd.2.8.0.a */,
+				0FB9DE291B22044100E3DCAC /* libcxsparse.3.1.2.a */,
+				0FB9DE2A1B22044100E3DCAC /* libspqr.1.3.1.a */,
+				0FB9DE2B1B22044100E3DCAC /* libsuitesparseconfig.4.2.1.a */,
+				0FB9DE2C1B22044100E3DCAC /* libumfpack.5.6.2.a */,
+			);
+			name = lib;
+			sourceTree = "<group>";
+		};
+		0FB9DE3C1B22047200E3DCAC /* include */ = {
+			isa = PBXGroup;
+			children = (
+				0F30B8CA1B2968A60075CC95 /* BinaryNode.h */,
+				0F30B8CB1B2968A60075CC95 /* BinaryTree.h */,
+				0F30B8CE1B2968A60075CC95 /* Polynomial.h */,
+				0F6D19DA1B26DCB000584FB8 /* IsoSurfaceExtractor.h */,
+				0F6D19DB1B26DCB000584FB8 /* MeshData.h */,
+				0F6D19DC1B26DCB000584FB8 /* Index.h */,
+				0FB9DE3D1B22047200E3DCAC /* Application.h */,
+				0FB9DE3E1B22047200E3DCAC /* BoundingBox.h */,
+				0FB9DE3F1B22047200E3DCAC /* Camera.h */,
+				0FB9DE401B22047200E3DCAC /* Complex.h */,
+				0FB9DE411B22047200E3DCAC /* DenseMatrix.h */,
+				0FB9DE421B22047200E3DCAC /* DenseMatrix.inl */,
+				0FB9DE431B22047200E3DCAC /* DiscreteExteriorCalculus.h */,
+				0FB9DE441B22047200E3DCAC /* DiscreteExteriorCalculus.inl */,
+				0FB9DE451B22047200E3DCAC /* Edge.h */,
+				0FB9DE461B22047200E3DCAC /* Face.h */,
+				0FB9DE471B22047200E3DCAC /* HalfEdge.h */,
+				0FB9DE481B22047200E3DCAC /* Image.h */,
+				0FB9DE491B22047200E3DCAC /* LinearContext.h */,
+				0FB9DE4A1B22047200E3DCAC /* LinearEquation.h */,
+				0FB9DE4B1B22047200E3DCAC /* LinearPolynomial.h */,
+				0FB9DE4C1B22047200E3DCAC /* LinearSystem.h */,
+				0FB9DE4D1B22047200E3DCAC /* Mesh.h */,
+				0FB9DE4E1B22047200E3DCAC /* MeshIO.h */,
+				0FB9DE4F1B22047200E3DCAC /* Octree.h */,
+				0FB9DE501B22047200E3DCAC /* OctreeCell.h */,
+				0FB9DE511B22047200E3DCAC /* OctreeCell.inl.h */,
+				0FB9DE521B22047200E3DCAC /* Polynomial.h */,
+				0FB9DE531B22047200E3DCAC /* Polynomial.inl */,
+				0FB9DE541B22047200E3DCAC /* PolynomialItem.h */,
+				0FB9DE551B22047200E3DCAC /* PolynomialItem.inl */,
+				0FB9DE561B22047200E3DCAC /* Quaternion.h */,
+				0FB9DE571B22047200E3DCAC /* Real.h */,
+				0FB9DE581B22047200E3DCAC /* Shader.h */,
+				0FB9DE591B22047200E3DCAC /* SparseMatrix.h */,
+				0FB9DE5A1B22047200E3DCAC /* SparseMatrix.inl */,
+				0FB9DE5B1B22047200E3DCAC /* Types.h */,
+				0FB9DE5C1B22047200E3DCAC /* Utility.h */,
+				0FB9DE5D1B22047200E3DCAC /* Variable.h */,
+				0FB9DE5E1B22047200E3DCAC /* Vector2D.h */,
+				0FB9DE5F1B22047200E3DCAC /* Vector3D.h */,
+				0FB9DE601B22047200E3DCAC /* Vertex.h */,
+				0FB9DE611B22047200E3DCAC /* Viewer.h */,
+			);
+			path = include;
+			sourceTree = SOURCE_ROOT;
+		};
+		0FB9DE621B22047F00E3DCAC /* src */ = {
+			isa = PBXGroup;
+			children = (
+				0F30B8D31B2968B90075CC95 /* main.cpp */,
+				0F30B8D41B2968B90075CC95 /* BinaryNode.cpp */,
+				0F30B8D61B2968B90075CC95 /* BinaryTree.cpp */,
+				0F6D19D81B26DC9200584FB8 /* IsoSurfaceExtractor.cpp */,
+				0FB9DE631B22047F00E3DCAC /* BoundingBox.cpp */,
+				0FB9DE641B22047F00E3DCAC /* Camera.cpp */,
+				0FB9DE651B22047F00E3DCAC /* Complex.cpp */,
+				0FB9DE661B22047F00E3DCAC /* DenseMatrix.cpp */,
+				0FB9DE671B22047F00E3DCAC /* Edge.cpp */,
+				0FB9DE681B22047F00E3DCAC /* Face.cpp */,
+				0FB9DE691B22047F00E3DCAC /* HalfEdge.cpp */,
+				0FB9DE6A1B22047F00E3DCAC /* Image.cpp */,
+				0FB9DE6B1B22047F00E3DCAC /* LinearContext.cpp */,
+				0FB9DE6C1B22047F00E3DCAC /* LinearEquation.cpp */,
+				0FB9DE6D1B22047F00E3DCAC /* LinearPolynomial.cpp */,
+				0FB9DE6E1B22047F00E3DCAC /* LinearSystem.cpp */,
+				0FB9DE6F1B22047F00E3DCAC /* main.cpp */,
+				0FB9DE701B22047F00E3DCAC /* Mesh.cpp */,
+				0FB9DE711B22047F00E3DCAC /* MeshIO.cpp */,
+				0FB9DE721B22047F00E3DCAC /* Octree.cpp */,
+				0FB9DE731B22047F00E3DCAC /* OctreeCell.cpp */,
+				0FB9DE741B22047F00E3DCAC /* Quaternion.cpp */,
+				0FB9DE751B22047F00E3DCAC /* Real.cpp */,
+				0FB9DE761B22047F00E3DCAC /* Shader.cpp */,
+				0FB9DE771B22047F00E3DCAC /* SparseMatrix.cpp */,
+				0FB9DE781B22047F00E3DCAC /* Variable.cpp */,
+				0FB9DE791B22047F00E3DCAC /* Vector2D.cpp */,
+				0FB9DE7A1B22047F00E3DCAC /* Vector3D.cpp */,
+				0FB9DE7B1B22047F00E3DCAC /* Vertex.cpp */,
+				0FB9DE7C1B22047F00E3DCAC /* Viewer.cpp */,
+			);
+			path = src;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0FB9DE181B2203BC00E3DCAC /* Reconstructor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0FB9DE201B2203BD00E3DCAC /* Build configuration list for PBXNativeTarget "Reconstructor" */;
+			buildPhases = (
+				0FB9DE151B2203BC00E3DCAC /* Sources */,
+				0FB9DE161B2203BC00E3DCAC /* Frameworks */,
+				0FB9DE171B2203BC00E3DCAC /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Reconstructor;
+			productName = Reconstructor;
+			productReference = 0FB9DE191B2203BC00E3DCAC /* Reconstructor */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0FB9DE111B2203BC00E3DCAC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = "Luwei Yang";
+				TargetAttributes = {
+					0FB9DE181B2203BC00E3DCAC = {
+						CreatedOnToolsVersion = 6.2;
+					};
+				};
+			};
+			buildConfigurationList = 0FB9DE141B2203BC00E3DCAC /* Build configuration list for PBXProject "Reconstructor" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0FB9DE101B2203BC00E3DCAC;
+			productRefGroup = 0FB9DE1A1B2203BC00E3DCAC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0FB9DE181B2203BC00E3DCAC /* Reconstructor */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0FB9DE151B2203BC00E3DCAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FB9DE871B22047F00E3DCAC /* LinearPolynomial.cpp in Sources */,
+				0FB9DE861B22047F00E3DCAC /* LinearEquation.cpp in Sources */,
+				0FB9DE821B22047F00E3DCAC /* Face.cpp in Sources */,
+				0FB9DE801B22047F00E3DCAC /* DenseMatrix.cpp in Sources */,
+				0FB9DE8B1B22047F00E3DCAC /* MeshIO.cpp in Sources */,
+				0FB9DE7F1B22047F00E3DCAC /* Complex.cpp in Sources */,
+				0FB9DE931B22047F00E3DCAC /* Vector2D.cpp in Sources */,
+				0FB9DE881B22047F00E3DCAC /* LinearSystem.cpp in Sources */,
+				0FB9DE831B22047F00E3DCAC /* HalfEdge.cpp in Sources */,
+				0FB9DE7E1B22047F00E3DCAC /* Camera.cpp in Sources */,
+				0FB9DE841B22047F00E3DCAC /* Image.cpp in Sources */,
+				0FB9DE911B22047F00E3DCAC /* SparseMatrix.cpp in Sources */,
+				0FB9DE8D1B22047F00E3DCAC /* OctreeCell.cpp in Sources */,
+				0FB9DE8F1B22047F00E3DCAC /* Real.cpp in Sources */,
+				0F30B8DA1B2968B90075CC95 /* BinaryTree.cpp in Sources */,
+				0FB9DE8E1B22047F00E3DCAC /* Quaternion.cpp in Sources */,
+				0FB9DE7D1B22047F00E3DCAC /* BoundingBox.cpp in Sources */,
+				0FB9DE901B22047F00E3DCAC /* Shader.cpp in Sources */,
+				0FB9DE8A1B22047F00E3DCAC /* Mesh.cpp in Sources */,
+				0F30B8D91B2968B90075CC95 /* BinaryNode.cpp in Sources */,
+				0F30B8D81B2968B90075CC95 /* main.cpp in Sources */,
+				0FB9DE891B22047F00E3DCAC /* main.cpp in Sources */,
+				0FB9DE8C1B22047F00E3DCAC /* Octree.cpp in Sources */,
+				0FB9DE851B22047F00E3DCAC /* LinearContext.cpp in Sources */,
+				0FB9DE951B22047F00E3DCAC /* Vertex.cpp in Sources */,
+				0FB9DE811B22047F00E3DCAC /* Edge.cpp in Sources */,
+				0FB9DE921B22047F00E3DCAC /* Variable.cpp in Sources */,
+				0F6D19D91B26DC9200584FB8 /* IsoSurfaceExtractor.cpp in Sources */,
+				0FB9DE941B22047F00E3DCAC /* Vector3D.cpp in Sources */,
+				0FB9DE961B22047F00E3DCAC /* Viewer.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0FB9DE1E1B2203BD00E3DCAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		0FB9DE1F1B2203BD00E3DCAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		0FB9DE211B2203BD00E3DCAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/opt/local/include/,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/local/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0FB9DE221B2203BD00E3DCAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/opt/local/include/,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/local/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0FB9DE141B2203BC00E3DCAC /* Build configuration list for PBXProject "Reconstructor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0FB9DE1E1B2203BD00E3DCAC /* Debug */,
+				0FB9DE1F1B2203BD00E3DCAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0FB9DE201B2203BD00E3DCAC /* Build configuration list for PBXNativeTarget "Reconstructor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0FB9DE211B2203BD00E3DCAC /* Debug */,
+				0FB9DE221B2203BD00E3DCAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0FB9DE111B2203BC00E3DCAC /* Project object */;
+}
