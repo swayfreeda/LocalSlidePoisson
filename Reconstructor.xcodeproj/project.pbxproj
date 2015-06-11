@@ -69,10 +69,6 @@
 		0F30B8CA1B2968A60075CC95 /* BinaryNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinaryNode.h; sourceTree = "<group>"; };
 		0F30B8CB1B2968A60075CC95 /* BinaryTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinaryTree.h; sourceTree = "<group>"; };
 		0F30B8CE1B2968A60075CC95 /* Polynomial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Polynomial.h; sourceTree = "<group>"; };
-		0F30B8CF1B2968A60075CC95 /* CGSolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGSolver.h; sourceTree = "<group>"; };
-		0F30B8D01B2968A60075CC95 /* CholeskySolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CholeskySolver.h; sourceTree = "<group>"; };
-		0F30B8D11B2968A60075CC95 /* QRSolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRSolver.h; sourceTree = "<group>"; };
-		0F30B8D21B2968A60075CC95 /* LUSolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LUSolver.h; sourceTree = "<group>"; };
 		0F30B8D31B2968B90075CC95 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		0F30B8D41B2968B90075CC95 /* BinaryNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryNode.cpp; sourceTree = "<group>"; };
 		0F30B8D61B2968B90075CC95 /* BinaryTree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryTree.cpp; sourceTree = "<group>"; };
@@ -238,10 +234,6 @@
 				0F30B8CA1B2968A60075CC95 /* BinaryNode.h */,
 				0F30B8CB1B2968A60075CC95 /* BinaryTree.h */,
 				0F30B8CE1B2968A60075CC95 /* Polynomial.h */,
-				0F30B8CF1B2968A60075CC95 /* CGSolver.h */,
-				0F30B8D01B2968A60075CC95 /* CholeskySolver.h */,
-				0F30B8D11B2968A60075CC95 /* QRSolver.h */,
-				0F30B8D21B2968A60075CC95 /* LUSolver.h */,
 				0F6D19DA1B26DCB000584FB8 /* IsoSurfaceExtractor.h */,
 				0F6D19DB1B26DCB000584FB8 /* MeshData.h */,
 				0F6D19DC1B26DCB000584FB8 /* Index.h */,
