@@ -13,7 +13,7 @@
 #include "SparseMatrix.h"
 #include "DiscreteExteriorCalculus.h"
 #include "IsoSurfaceExtractor.h"
-
+#include <LinearSolver.h>
 
 //template class Polynomial<2>;
 namespace DDG
@@ -45,6 +45,21 @@ namespace DDG
             // TEST: Deallocate the octree
             //octree.deallocate();
 
+            // TEST: Solve matrix via CG
+            Eigen::SparseMatrix<double> A(3,3);
+            Eigen::VectorXd b(3), x(3);
+
+            A.insert(0, 0) = 3;
+            A.insert(0, 1) = 2;
+            A.insert(1, 0) = 1;
+            A.insert(2, 1) = 2;
+            A.insert(2, 2) = 1;
+
+            b[2] = 3;
+            b[1] = 2;
+            b[0] = 1;
+
+            CGSolver<double>::solve(A,b,x);
 
         }
         
