@@ -17,7 +17,7 @@ using namespace std;
 namespace DDG
 {
     // declare static member variables
-    Mesh Viewer::mesh;
+    Mesh *Viewer::mesh;
     GLuint Viewer::surfaceDL = 0;
     int Viewer::windowSize[2] = { 512, 512 };
     Camera Viewer::camera;
@@ -28,6 +28,17 @@ namespace DDG
     bool Viewer::renderPolygons = true;
     
     Octree Viewer::octree;
+
+    Viewer::Viewer() {
+        mesh = new Mesh();
+    }
+
+    Viewer::~Viewer() {
+        if (mesh != nullptr) {
+            delete mesh;
+            mesh = nullptr;
+        }
+    }
     
     void Viewer :: init( void )
     {
@@ -242,13 +253,13 @@ namespace DDG
     
     void Viewer :: mResetMesh( void )
     {
-        mesh.reload();
+        mesh->reload();
         updateDisplayList();
     }
     
     void Viewer :: mWriteMesh( void )
     {
-        mesh.write( "out.obj" );
+        mesh->write("out.obj");
     }
     
     void Viewer :: mExit( void )
@@ -425,8 +436,8 @@ namespace DDG
     
     void Viewer :: drawPolygons( void )
     {
-        for( FaceCIter f  = mesh.faces.begin();
-            f != mesh.faces.end();
+        for (FaceCIter f = mesh->faces.begin();
+             f != mesh->faces.end();
             f ++ )
         {
             if( f->isBoundary() ) continue;
@@ -458,6 +469,8 @@ namespace DDG
     
     void Viewer :: drawOctree( void )
     {
+        if (octree.rootNode() == nullptr) return;
+        
         shader.disable();
         glPushAttrib( GL_ALL_ATTRIB_BITS );
         
@@ -466,11 +479,11 @@ namespace DDG
         glEnable( GL_BLEND );
         glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
         
-        // Get the absolute center of octree
-        Vector3D absoluteCenter = octree.center();
+        // Get the absolute boundingBoxCenter of octree
+        Vector3D absoluteCenter = octree.boundingBoxCenter();
         Vector3D relativeRootCenter = octree.rootNode()->center();
         
-        double scale = octree.scale();
+        double scale = octree.boundingBoxScale();
         
         // Iterate the octree cell
         std::stack<OctreeCell*> collections;
@@ -485,7 +498,7 @@ namespace DDG
             // Draw the bounding box for current node
             BoundingBox bindBox;
             
-            // The relative center based on current node, range is [0,1]
+            // The relative boundingBoxCenter based on current node, range is [0,1]
             Vector3D relativeOffset = currentNode->center()-relativeRootCenter;
             Vector3D center = absoluteCenter + relativeOffset*scale;
             
@@ -569,8 +582,8 @@ namespace DDG
         glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
         
         glBegin( GL_LINES );
-        for( EdgeCIter e  = mesh.edges.begin();
-            e != mesh.edges.end();
+        for (EdgeCIter e = mesh->edges.begin();
+             e != mesh->edges.end();
             e ++ )
         {
             glVertex3dv( &e->he->vertex->position[0] );
@@ -591,8 +604,8 @@ namespace DDG
         glColor3f( 1., 0., 0. );
         
         glBegin( GL_POINTS );
-        for( VertexCIter v  = mesh.vertices.begin();
-            v != mesh.vertices.end();
+        for (VertexCIter v = mesh->vertices.begin();
+             v != mesh->vertices.end();
             v ++ )
         {
             if( v->isIsolated() )
@@ -607,8 +620,8 @@ namespace DDG
     
     void Viewer :: drawVertices( void )
     {
-        for( VertexCIter v = mesh.vertices.begin();
-            v != mesh.vertices.end();
+        for (VertexCIter v = mesh->vertices.begin();
+             v != mesh->vertices.end();
             v ++ )
         {
             glLoadName(v->index);
@@ -630,8 +643,8 @@ namespace DDG
         glPointSize( 20 );
         
         glBegin(GL_POINTS);
-        for( VertexCIter v = mesh.vertices.begin();
-            v != mesh.vertices.end();
+        for (VertexCIter v = mesh->vertices.begin();
+             v != mesh->vertices.end();
             v ++ )
         {
             if( v->tag ) glVertex3dv( &v->position[0] );
@@ -646,8 +659,8 @@ namespace DDG
         int width  = glutGet(GLUT_WINDOW_WIDTH );
         int height = glutGet(GLUT_WINDOW_HEIGHT);
         if( x < 0 || x >= width || y < 0 || y >= height ) return;
-        
-        int bufSize = mesh.vertices.size();
+
+        int bufSize = mesh->vertices.size();
         GLuint* buf = new GLuint[bufSize];
         glSelectBuffer(bufSize, buf);
         
@@ -692,7 +705,7 @@ namespace DDG
         
         if (index >= 0)
         {
-            mesh.vertices[index].toggleTag();
+            mesh->vertices[index].toggleTag();
             updateDisplayList();
         }
     }
@@ -701,5 +714,7 @@ namespace DDG
         renderPolygons = !renderPolygons;
         updateDisplayList();
     }
+
+
 }
 

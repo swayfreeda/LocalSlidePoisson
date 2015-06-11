@@ -12,6 +12,7 @@
 #include "DenseMatrix.h"
 #include "SparseMatrix.h"
 #include "DiscreteExteriorCalculus.h"
+#include "IsoSurfaceExtractor.h"
 
 
 //template class Polynomial<2>;
@@ -20,12 +21,30 @@ namespace DDG
     class Application
     {
     public:
-        void run(Mesh& mesh, Octree &octree){
+        void run(Mesh *mesh, Octree &octree) {
             // Test
-            octree.generateOctreeFrom(mesh, 5);
-            OctreeCell *cell = octree.rootNode()->getChildren(3)->getChildren(4)->getChildren(2);
+            //octree.generateOctreeFrom(mesh, 5);
 
-            OctreeCell *neighbor = cell->neighbor(1, 1, 1);
+            octree.generateOctreeFrom(mesh, 4);
+
+            // TEST: iterator
+            long long nodeCounts = 0;
+
+            for (Octree::CellIterator itr = octree.begin();
+                 itr != octree.end();
+                 itr++) {
+
+                nodeCounts++;
+                OctreeCell *cell = *(itr);
+                int depth = cell->getDepth();
+                printf("Depth: %d", depth);
+
+            }
+            //int nodeCounts = octree.nodeCounts();
+            
+            // TEST: Deallocate the octree
+            //octree.deallocate();
+
 
         }
         

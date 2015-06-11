@@ -31,6 +31,10 @@ void OctreeCell::setDepth(int depth)
     this->depth = depth;
 }
 
+int OctreeCell::getDepth()
+{
+    return this->depth;
+}
 
 //=======================================================width=======================================================//
 // Return the cell's width, assume that the root's width is 1.

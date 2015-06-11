@@ -11,6 +11,8 @@
 
 #include "Mesh.h"
 #include "BoundingBox.h"
+#include <queue>
+
 class OctreeCell;
 
 class Octree {
@@ -31,32 +33,83 @@ public:
 
     // Deallocate the octree
     ~Octree();
-    
+
+    // Insert a cell based on position
+    void insert(Vector3D position);
+
     // Return the center of the bounding box, note that the octree's
     // center is (0.5, 0.5, 0.5).
-    Vector3D center();
+    Vector3D boundingBoxCenter();
 
     // Return the scale of the octree, the scale is the ratio of minimal width
     // of Bounding Box and the width of octree's root node (default is 1.0).
-    double scale();
+    double boundingBoxScale();
     
     // Return the ptr of root node.
     OctreeCell* rootNode();
     
     // Generate the octree from a given mesh, the para depth is the max depth
     // for the octree.
-    void generateOctreeFrom(DDG::Mesh mesh, int depth);
-
+    void generateOctreeFrom(DDG::Mesh *mesh, const int depth);
 
     // return the Bounding Box pointer of the
     BoundingBox* getBoundingBox();
 
-
-    // TODO
-    int nodeCounts();
+    // Deallocate the octree, include the root node
+    void deallocate();
     
-    // TODO
-    int memoryUse();
+    // Count the cells, from root to its childrens
+    long long nodeCounts();
+    
+    // Return the memroy load in bytes
+    size_t memoryUse();
+    
+    // Iterator class defination, BFS search the tree
+    class CellIterator
+    {
+    public:
+        // Default iterator with NULL ptr
+        CellIterator();
+        
+        // Default iterator
+        CellIterator(OctreeCell *cell);
+        
+        // Reload '++' operator for iterating next cell
+        CellIterator& operator ++ (int);
+        
+        // Get the cell ptr
+        inline OctreeCell* operator *()
+        {
+            return currentNode;
+        }
+        
+        // Treat the iterator as OctreeCell ptr
+        inline OctreeCell* operator ->()
+        {
+            return currentNode;
+        }
+        
+        inline bool operator == (const CellIterator & rhs) const
+        {
+            return ((currentNode != nullptr)? this->currentNode != rhs.currentNode: rhs.currentNode == nullptr);
+        }
+        
+        inline bool operator != (const CellIterator & rhs) const
+        {
+            // Currently we compare the ptr address
+            return ((currentNode != nullptr)? this->currentNode != rhs.currentNode: rhs.currentNode != nullptr);
+        }
+        
+    private:
+        std::queue<OctreeCell*> iteration_queue;
+        OctreeCell* currentNode;
+    };
+    
+    // Get the begin iterator
+    CellIterator begin();
+    
+    // Get the end iterator
+    static CellIterator end();
 };
 
 #endif /* defined(__Reconstructor__Octree__) */
