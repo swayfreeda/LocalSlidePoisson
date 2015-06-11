@@ -21,7 +21,7 @@ BinaryNode *BinaryNode::parent() {
 }
 
 bool BinaryNode::isLeaf() {
-    return (leftChild_ == nullptr && rightChild_ == nullptr);
+    return (leftChild_ == NULL && rightChild_ == NULL);
 }
 
 

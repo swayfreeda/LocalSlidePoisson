@@ -23,6 +23,7 @@ include_directories(include
 ELSEIF(UNIX) # for linux
 include_directories(include
                     /usr/include/suitesparse
+                     /home/sway/myLibs/eigen3.2.4/
                     ${OPENGL_INCLUDE_DIRS}
                     ${GLUT_INCLUDE_DIRS})
 ENDIF()

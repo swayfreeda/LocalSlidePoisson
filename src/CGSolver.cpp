@@ -16,3 +16,5 @@ int CGSolver<T>::solve(const SparseMatrix<T> &A, const VectorXd &b, VectorXd &x)
     // Temporarily can not got any error
     return 0;
 }
+
+template class CGSolver<double>;

@@ -23,7 +23,7 @@ BinaryTree::~BinaryTree() {
     deallocate();
 
     // Set ptr to null
-    this->root_ = nullptr;
+    this->root_ = NULL;
 
     // Deal with miscellaneious things
     this->depth_ = 0;
@@ -35,7 +35,7 @@ void BinaryTree::deallocate() {
     // Find first leaf and push it to stack
     delCollections.push(root_);
 
-    BinaryNode* cell = nullptr;
+    BinaryNode* cell = NULL;
 
     // Iterate the cell from root to its childrens to destory
     // binary tree
@@ -48,16 +48,16 @@ void BinaryTree::deallocate() {
         if (!cell->isLeaf()) {
             BinaryNode *leftChild = cell->leftChild();
             BinaryNode *rightChild = cell->rightChild();
-            if (leftChild != nullptr) delCollections.push(leftChild);
-            if (rightChild != nullptr) delCollections.push(rightChild);
+            if (leftChild != NULL) delCollections.push(leftChild);
+            if (rightChild != NULL) delCollections.push(rightChild);
         }
 
         // Delete current octree cell
         delete cell;
-        cell = nullptr;
+        cell = NULL;
     }
 
-    this->root_ = nullptr;
+    this->root_ = NULL;
 }
 
 
@@ -70,7 +70,7 @@ long long BinaryTree::nodeCounts() {
 
     // Iterate the cell from root to its childrens to destory
     // binary tree
-    BinaryNode* cell = nullptr;
+    BinaryNode* cell = NULL;
     while (!collections.empty())
     {
         cell = collections.front();
@@ -80,8 +80,8 @@ long long BinaryTree::nodeCounts() {
         if (!cell->isLeaf()) {
             BinaryNode *leftChild = cell->leftChild();
             BinaryNode *rightChild = cell->rightChild();
-            if (leftChild != nullptr) collections.push(leftChild);
-            if (rightChild != nullptr) collections.push(rightChild);
+            if (leftChild != NULL) collections.push(leftChild);
+            if (rightChild != NULL) collections.push(rightChild);
         }
 
         // Count the current node
@@ -100,12 +100,12 @@ BinaryTree::NodeIterator BinaryTree::begin()
 // Get the end iterator
 BinaryTree::NodeIterator BinaryTree::end()
 {
-    return BinaryTree::NodeIterator(nullptr);
+    return BinaryTree::NodeIterator(NULL);
 }
 
 // Default constructor of iterator, init with NULL ptr
 BinaryTree::NodeIterator::NodeIterator()
-        :currentNode(nullptr)
+        :currentNode(NULL)
 {
 }
 
@@ -113,14 +113,14 @@ BinaryTree::NodeIterator::NodeIterator()
 BinaryTree::NodeIterator::NodeIterator(BinaryNode *cell)
         :currentNode(cell)
 {
-    if(cell != nullptr)
+    if(cell != NULL)
     {
         // Enqueue the cells children
         if (!currentNode->isLeaf()) {
             BinaryNode *leftChild = currentNode->leftChild();
             BinaryNode *rightChild = currentNode->rightChild();
-            if (leftChild != nullptr) iterationQueue.push(leftChild);
-            if (rightChild != nullptr) iterationQueue.push(rightChild);
+            if (leftChild != NULL) iterationQueue.push(leftChild);
+            if (rightChild != NULL) iterationQueue.push(rightChild);
         }
     }
 }
@@ -131,7 +131,7 @@ BinaryTree::NodeIterator& BinaryTree::NodeIterator::operator++(int)
     // Check if have iterated to the end
     if (iterationQueue.empty())
     {
-        currentNode = nullptr;
+        currentNode = NULL;
         return (*this);
     }
 
@@ -142,8 +142,8 @@ BinaryTree::NodeIterator& BinaryTree::NodeIterator::operator++(int)
     if (!currentNode->isLeaf()) {
         BinaryNode *leftChild = currentNode->leftChild();
         BinaryNode *rightChild = currentNode->rightChild();
-        if (leftChild != nullptr) iterationQueue.push(leftChild);
-        if (rightChild != nullptr) iterationQueue.push(rightChild);
+        if (leftChild != NULL) iterationQueue.push(leftChild);
+        if (rightChild != NULL) iterationQueue.push(rightChild);
     }
 
     return (*this);

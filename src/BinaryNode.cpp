@@ -12,9 +12,9 @@
 
 
 BinaryNode::BinaryNode():
-        parent_(nullptr),
-        leftChild_(nullptr),
-        rightChild_(nullptr),
+        parent_(NULL),
+        leftChild_(NULL),
+        rightChild_(NULL),
         depth_(0)
 {
 }
@@ -23,21 +23,21 @@ BinaryNode::~BinaryNode() {
 
     // Note that we will not destory childrens
     // and parent in destructor
-    if (leftChild_ != nullptr)
-        leftChild_ = nullptr;
+    if (leftChild_ != NULL)
+        leftChild_ = NULL;
 
-    if (rightChild_ != nullptr)
-        rightChild_ = nullptr;
+    if (rightChild_ != NULL)
+        rightChild_ = NULL;
 
-    if (parent_ != nullptr)
-        parent_ = nullptr;
+    if (parent_ != NULL)
+        parent_ = NULL;
 
     depth_ = 0;
 }
 
 void BinaryNode::addChild() {
-    assert(leftChild_ != nullptr);
-    assert(rightChild_!= nullptr);
+    assert(leftChild_ != NULL);
+    assert(rightChild_!= NULL);
 
     leftChild_ = new BinaryNode();
     leftChild_->parent_ = this;

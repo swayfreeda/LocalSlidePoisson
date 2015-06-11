@@ -28,13 +28,13 @@ Octree::Octree()
 Octree::~Octree()
 {
     // Destory the octree cells
-    if (this->root == nullptr)
+    if (this->root == NULL)
         this->deallocate();
-    this->root = nullptr;
+    this->root = NULL;
     
     // Destory the bounding box
     delete this->boundingbox;
-    this->boundingbox = nullptr;
+    this->boundingbox = NULL;
 }
 
 //============================================================rootNode===============================================//
@@ -168,7 +168,7 @@ void Octree::deallocate()
     // Find first leaf and push it to stack
     del_collections.push(root);
     
-    OctreeCell* cell = nullptr;
+    OctreeCell* cell = NULL;
     
     // Iterate the cell from root to its childrens to destory octree
     while (!del_collections.empty())
@@ -180,30 +180,30 @@ void Octree::deallocate()
         if (!cell->isLeaf()) {
             for (int i = 0; i < 8; ++i) {
                 OctreeCell *child = cell->getChildren(i);
-                if (child != nullptr)
+                if (child != NULL)
                     del_collections.push(cell->getChildren(i));
             }
         }
         
         // Delete current octree cell
         delete cell;
-        cell = nullptr;
+        cell = NULL;
     }
     
-    this->root = nullptr;
+    this->root = NULL;
 }
 
 // Count the cells, from root to its childrens
 long long Octree::nodeCounts() {
     // If there is no nodes in octree
-    if (root == nullptr) return 0;
+    if (root == NULL) return 0;
     
     std::queue<OctreeCell *> collections;
     
     // Find first leaf and push it to stack
     collections.push(root);
     
-    OctreeCell *cell = nullptr;
+    OctreeCell *cell = NULL;
     long long count = 1;
     
     // Iterate the cells
@@ -215,7 +215,7 @@ long long Octree::nodeCounts() {
         if (!cell->isLeaf()) {
             for (int i = 0; i < 8; ++i) {
                 OctreeCell *child = cell->getChildren(i);
-                if (child != nullptr)
+                if (child != NULL)
                     collections.push(cell->getChildren(i));
             }
         }
@@ -244,12 +244,12 @@ Octree::CellIterator Octree::begin()
 // Get the end iterator
 Octree::CellIterator Octree::end()
 {
-    return Octree::CellIterator(nullptr);
+    return Octree::CellIterator(NULL);
 }
 
 // Default constructor of iterator, init with NULL ptr
 Octree::CellIterator::CellIterator()
-:currentNode(nullptr)
+:currentNode(NULL)
 {
 }
 
@@ -257,7 +257,7 @@ Octree::CellIterator::CellIterator()
 Octree::CellIterator::CellIterator(OctreeCell *cell)
 :currentNode(cell)
 {
-    if(cell != nullptr)
+    if(cell != NULL)
     {
         // Enqueue the cells children
         if (!currentNode->isLeaf()) {
@@ -274,7 +274,7 @@ Octree::CellIterator& Octree::CellIterator::operator++(int)
     // Check if have iterated to the end
     if (iteration_queue.empty())
     {
-        currentNode = nullptr;
+        currentNode = NULL;
         return (*this);
     }
     

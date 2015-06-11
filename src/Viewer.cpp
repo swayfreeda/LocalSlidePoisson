@@ -34,9 +34,9 @@ namespace DDG
     }
 
     Viewer::~Viewer() {
-        if (mesh != nullptr) {
+        if (mesh != NULL) {
             delete mesh;
-            mesh = nullptr;
+            mesh = NULL;
         }
     }
     
@@ -469,7 +469,7 @@ namespace DDG
     
     void Viewer :: drawOctree( void )
     {
-        if (octree.rootNode() == nullptr) return;
+        if (octree.rootNode() == NULL) return;
         
         shader.disable();
         glPushAttrib( GL_ALL_ATTRIB_BITS );

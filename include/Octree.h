@@ -91,13 +91,13 @@ public:
         
         inline bool operator == (const CellIterator & rhs) const
         {
-            return ((currentNode != nullptr)? this->currentNode != rhs.currentNode: rhs.currentNode == nullptr);
+            return ((currentNode != NULL)? this->currentNode != rhs.currentNode: rhs.currentNode == NULL);
         }
         
         inline bool operator != (const CellIterator & rhs) const
         {
             // Currently we compare the ptr address
-            return ((currentNode != nullptr)? this->currentNode != rhs.currentNode: rhs.currentNode != nullptr);
+            return ((currentNode != NULL)? this->currentNode != rhs.currentNode: rhs.currentNode != NULL);
         }
         
     private:

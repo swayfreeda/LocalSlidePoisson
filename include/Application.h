@@ -15,6 +15,7 @@
 #include "IsoSurfaceExtractor.h"
 #include <LinearSolver.h>
 
+#undef complex
 //template class Polynomial<2>;
 namespace DDG
 {
@@ -55,12 +56,14 @@ namespace DDG
             A.insert(2, 1) = 2;
             A.insert(2, 2) = 1;
 
-            b[2] = 3;
-            b[1] = 2;
             b[0] = 1;
+            b[1] = 2;
+            b[2] = 3;
 
             CGSolver<double>::solve(A,b,x);
-
+            cout<<endl;
+            cout<<"A: "<<A<<endl;
+            cout<<"x: "<<x<<endl;
         }
         
     };
