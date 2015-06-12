@@ -119,9 +119,9 @@ DDG::Mesh *IsoSurfaceExtractor::ExtractVoxel(Vector3D start, Vector3D end, doubl
                 // End of building vertex List
 
                 // Append to vertices list
-                for (int i = 0; triangle_table[cubeIndex][i] != -1; i++)
+                for (int i = 0; triangle_table_[cubeIndex][i] != -1; i++)
                 {
-                    dataum.positions.push_back(vertexList[triangle_table[cubeIndex][i]]);
+                    dataum.positions.push_back(vertexList[triangle_table_[cubeIndex][i]]);
                     dataum.normals.push_back(Vector3D(0, 0, 0));
                     dataum.texcoords.push_back(Vector3D(0, 0, 0));
                 }
@@ -186,7 +186,7 @@ int IsoSurfaceExtractor::edge_table_[256] = {
 };
 
 // The Triangle Table That used in Marching Cube.
-int IsoSurfaceExtractor::triangle_table[256][16] =
+int IsoSurfaceExtractor::triangle_table_[256][16] =
         {{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
          {0, 8, 3, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
          {0, 1, 9, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},

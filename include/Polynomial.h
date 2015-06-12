@@ -5,7 +5,7 @@
 #ifndef RECONSTRUCTOR_POLYNOMIAL_H
 #define RECONSTRUCTOR_POLYNOMIAL_H
 
-#include <PolynomialItem.h>
+#include "PolynomialItem.h"
 #include <stdlib.h>
 #include <vector>
 

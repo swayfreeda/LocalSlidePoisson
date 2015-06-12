@@ -7,7 +7,7 @@
 using namespace Eigen;
 
 template <typename T>
-int CGSolver<T>::Solve(const SparseMatrix<T> &A, const Eigen::Matrix<T, Eigen::Dynamic, 1> &b,
+int CGSolver<T>::Solve(const Eigen::SparseMatrix<T> &A, const Eigen::Matrix<T, Eigen::Dynamic, 1> &b,
                        Eigen::Matrix<T, Eigen::Dynamic, 1> &x) {
 
     ConjugateGradient<SparseMatrix<T> > cg;
@@ -19,7 +19,7 @@ int CGSolver<T>::Solve(const SparseMatrix<T> &A, const Eigen::Matrix<T, Eigen::D
 }
 
 template <typename T>
-int CGSolver<T>::Solve(const SparseMatrix<T> &A, const Eigen::Matrix<T, Eigen::Dynamic, 1> &b,
+int CGSolver<T>::Solve(const Eigen::SparseMatrix<T> &A, const Eigen::Matrix<T, Eigen::Dynamic, 1> &b,
                        Eigen::Matrix<T, Eigen::Dynamic, 1> &x,
                        const int max_iteration, const double torlerance)
 {

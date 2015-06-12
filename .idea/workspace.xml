@@ -12,28 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d923894f-892c-448b-aa57-61d4fcc57201" name="Default" comment="make some changes on the configuration to make it work on UINIX">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Reconstructor.xcodeproj/project.xcworkspace/xcuserdata/corsy.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/MarchingCube.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/MarchingCube.h" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/Application.h" afterPath="$PROJECT_DIR$/include/Application.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BinaryNode.cpp" afterPath="$PROJECT_DIR$/src/BinaryNode.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/BinaryNode.h" afterPath="$PROJECT_DIR$/include/BinaryNode.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/BinaryNode.inl.h" afterPath="$PROJECT_DIR$/include/BinaryNode.inl.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BinaryTree.cpp" afterPath="$PROJECT_DIR$/src/BinaryTree.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/BinaryTree.h" afterPath="$PROJECT_DIR$/include/BinaryTree.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/BinaryTree.inl.h" afterPath="$PROJECT_DIR$/include/BinaryTree.inl.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/BoundingBox.h" afterPath="$PROJECT_DIR$/include/BoundingBox.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CGSolver.cpp" afterPath="$PROJECT_DIR$/src/CGSolver.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IsoSurfaceExtractor.cpp" afterPath="$PROJECT_DIR$/src/IsoSurfaceExtractor.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/IsoSurfaceExtractor.h" afterPath="$PROJECT_DIR$/include/IsoSurfaceExtractor.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/LinearSolver.h" afterPath="$PROJECT_DIR$/include/LinearSolver.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Octree.cpp" afterPath="$PROJECT_DIR$/src/Octree.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/Octree.h" afterPath="$PROJECT_DIR$/include/Octree.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OctreeCell.cpp" afterPath="$PROJECT_DIR$/src/OctreeCell.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/OctreeCell.h" afterPath="$PROJECT_DIR$/include/OctreeCell.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/OctreeCell.inl.h" afterPath="$PROJECT_DIR$/include/OctreeCell.inl.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.cpp" afterPath="$PROJECT_DIR$/src/main.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="LocalSlidePoisson.iws" />
@@ -59,18 +40,20 @@
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="4" column="76" selection-start-line="4" selection-start-column="76" selection-end-line="4" selection-end-column="76" />
+              <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Octree.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Octree.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Octree.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="16" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="16" />
-              <folding />
+            <state vertical-scroll-proportion="0.7916667">
+              <caret line="296" column="0" selection-start-line="296" selection-start-column="0" selection-end-line="296" selection-end-column="0" />
+              <folding>
+                <element signature="e#131#150#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -87,12 +70,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IsoSurfaceExtractor.h" pinned="false" current-in-tab="true">
+      <file leaf-file-name="IsoSurfaceExtractor.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/include/IsoSurfaceExtractor.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8854167">
-              <caret line="35" column="75" selection-start-line="35" selection-start-column="75" selection-end-line="35" selection-end-column="75" />
-              <folding />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+              <folding>
+                <element signature="e#132#149#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -225,7 +210,6 @@
         <option value="$PROJECT_DIR$/include/Viewer.h" />
         <option value="$PROJECT_DIR$/src/Viewer.cpp" />
         <option value="$PROJECT_DIR$/include/BinaryNode.h" />
-        <option value="$PROJECT_DIR$/include/IsoSurfaceExtractor.h" />
         <option value="$PROJECT_DIR$/src/IsoSurfaceExtractor.cpp" />
         <option value="$PROJECT_DIR$/src/Octree.cpp" />
         <option value="$PROJECT_DIR$/include/LinearSolver.h" />
@@ -239,9 +223,10 @@
         <option value="$PROJECT_DIR$/src/BinaryTree.cpp" />
         <option value="$PROJECT_DIR$/src/CGSolver.cpp" />
         <option value="$PROJECT_DIR$/src/OctreeCell.cpp" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/include/Application.h" />
         <option value="$PROJECT_DIR$/include/BoundingBox.h" />
+        <option value="$PROJECT_DIR$/include/IsoSurfaceExtractor.h" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
       </list>
     </option>
   </component>
@@ -296,34 +281,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="LocalSlidePoisson" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LocalSlidePoisson" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LocalSlidePoisson" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LocalSlidePoisson" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LocalSlidePoisson" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="include" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -787,7 +744,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
           <folding>
-            <marker date="1434117574000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1434118072000" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -797,7 +754,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
-            <marker date="1434117585000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1434118072000" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -820,26 +777,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Octree.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="16" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/include/string.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="73" column="9" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="76" selection-start-line="4" selection-start-column="76" selection-end-line="4" selection-end-column="76" />
           <folding />
         </state>
       </provider>
@@ -882,9 +823,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/include/IsoSurfaceExtractor.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8854167">
-          <caret line="35" column="75" selection-start-line="35" selection-start-column="75" selection-end-line="35" selection-end-column="75" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+          <folding>
+            <element signature="e#132#149#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Octree.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7916667">
+          <caret line="296" column="0" selection-start-line="296" selection-start-column="0" selection-end-line="296" selection-end-column="0" />
+          <folding>
+            <element signature="e#131#150#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

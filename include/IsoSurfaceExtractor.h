@@ -16,7 +16,7 @@ protected:
     static int edge_table_[256];
 
     // Marching Cube's Triangle Table
-    static int triangle_table[256][16];
+    static int triangle_table_[256][16];
 
     // Intepolate method for Marching Cube
     static Vector3D intepolate(Vector3D position1, Vector3D position2,

@@ -5,8 +5,6 @@
 //  Created by Luwei Yang on 5/26/15.
 //  Copyright (c) 2015 None. All rights reserved.
 //
-#include"Polynomial.h"
-
 using namespace std;
 
 #include "Viewer.h"
@@ -14,17 +12,17 @@ using namespace std;
 
 #define SPAN 2.0
 
-extern double Sphere(double x, double y, double z)
+static double Sphere(double x, double y, double z)
 {
     return x * x + y * y + z * z - 1.0f;
 }
 
-extern double CrazyFunction(double x, double y, double z)
+static double CrazyFunction(double x, double y, double z)
 {
     return sinf(x * y + x * z + y * z) + sinf(x * y) + sinf(y * z) + sinf(x * z) - 1.0f;
 }
 
-extern double Heart(const double x,const double y, const double z)
+static double Heart(const double x,const double y, const double z)
 {
     double r = (x*x + (9/4)*y*y + z*z - 1);
     return r*r*r - x*x*z*z*z - (9/80)*y*y*z*z*z;

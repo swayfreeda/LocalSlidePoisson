@@ -37,6 +37,7 @@ link_directories(/home/sway/Work/SFM/cmvs/lib/graclus1.2/
                  /usr/lib)
 ENDIF()
 
+# Set libraraies
 set(SUITESPARSE_LIB spqr cholmod metis colamd ccolamd camd amd umfpack)
 
 IF(APPLE)
