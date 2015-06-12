@@ -8,15 +8,15 @@
 
 // The Defination of Relative positions, note the order
 #define P0 x, y, z
-#define P1 x , y + strideWidth, z
-#define P2 x + strideWidth, y + strideWidth, z
-#define P3 x + strideWidth, y, z
-#define P4 x, y, z + strideWidth
-#define P5 x , y + strideWidth, z+ strideWidth
-#define P6 x + strideWidth, y + strideWidth, z + strideWidth
-#define P7 x + strideWidth, y, z+ strideWidth
+#define P1 x , y + stride_width, z
+#define P2 x + stride_width, y + stride_width, z
+#define P3 x + stride_width, y, z
+#define P4 x, y, z + stride_width
+#define P5 x , y + stride_width, z+ stride_width
+#define P6 x + stride_width, y + stride_width, z + stride_width
+#define P7 x + stride_width, y, z+ stride_width
 
-DDG::Mesh *IsoSurfaceExtractor::extractVoxel(Vector3D start, Vector3D end, double strideWidth,
+DDG::Mesh *IsoSurfaceExtractor::ExtractVoxel(Vector3D start, Vector3D end, double stride_width,
                                              double (*func)(double, double, double))
 {
     // Extract Mesh via Marching Cube,
@@ -25,103 +25,103 @@ DDG::Mesh *IsoSurfaceExtractor::extractVoxel(Vector3D start, Vector3D end, doubl
     //the poisiton of the twelve vertices
     Vector3D vertexList[12];
     
-    Vector3D cornerPositions[8];
-    double cornerValues[8];
+    Vector3D corner_positions[8];
+    double corner_values[8];
 
     // Data that will contains vertices and face indices
     MeshData dataum;
 
     //Determine the index into the edge table which
     //tells us which vertices are inside of the surface
-    for (double x = start.x; x < end.x; x += strideWidth) {
-        for (double y = start.y; y < end.y; y += strideWidth) {
-            for (double z = start.z; z < end.z; z += strideWidth) {
+    for (double x = start.x; x < end.x; x += stride_width) {
+        for (double y = start.y; y < end.y; y += stride_width) {
+            for (double z = start.z; z < end.z; z += stride_width) {
 
 
                 // First we comput the corner values
-                cornerValues[0] = func(P0);
-                cornerValues[1] = func(P1);
-                cornerValues[2] = func(P2);
-                cornerValues[3] = func(P3);
-                cornerValues[4] = func(P4);
-                cornerValues[5] = func(P5);
-                cornerValues[6] = func(P6);
-                cornerValues[7] = func(P7);
+                corner_values[0] = func(P0);
+                corner_values[1] = func(P1);
+                corner_values[2] = func(P2);
+                corner_values[3] = func(P3);
+                corner_values[4] = func(P4);
+                corner_values[5] = func(P5);
+                corner_values[6] = func(P6);
+                corner_values[7] = func(P7);
 
                 int cubeIndex = 0;
-                if (cornerValues[0] < 0.0f) cubeIndex |= 1;
-                if (cornerValues[1] < 0.0f) cubeIndex |= 2;
-                if (cornerValues[2] < 0.0f) cubeIndex |= 4;
-                if (cornerValues[3] < 0.0f) cubeIndex |= 8;
-                if (cornerValues[4] < 0.0f) cubeIndex |= 16;
-                if (cornerValues[5] < 0.0f) cubeIndex |= 32;
-                if (cornerValues[6] < 0.0f) cubeIndex |= 64;
-                if (cornerValues[7] < 0.0f) cubeIndex |= 128;
+                if (corner_values[0] < 0.0f) cubeIndex |= 1;
+                if (corner_values[1] < 0.0f) cubeIndex |= 2;
+                if (corner_values[2] < 0.0f) cubeIndex |= 4;
+                if (corner_values[3] < 0.0f) cubeIndex |= 8;
+                if (corner_values[4] < 0.0f) cubeIndex |= 16;
+                if (corner_values[5] < 0.0f) cubeIndex |= 32;
+                if (corner_values[6] < 0.0f) cubeIndex |= 64;
+                if (corner_values[7] < 0.0f) cubeIndex |= 128;
                 
                 // Corner positions
-                cornerPositions[0] = Vector3D(P0);
-                cornerPositions[1] = Vector3D(P1);
-                cornerPositions[2] = Vector3D(P2);
-                cornerPositions[3] = Vector3D(P3);
-                cornerPositions[4] = Vector3D(P4);
-                cornerPositions[5] = Vector3D(P5);
-                cornerPositions[6] = Vector3D(P6);
-                cornerPositions[7] = Vector3D(P7);
+                corner_positions[0] = Vector3D(P0);
+                corner_positions[1] = Vector3D(P1);
+                corner_positions[2] = Vector3D(P2);
+                corner_positions[3] = Vector3D(P3);
+                corner_positions[4] = Vector3D(P4);
+                corner_positions[5] = Vector3D(P5);
+                corner_positions[6] = Vector3D(P6);
+                corner_positions[7] = Vector3D(P7);
                 
-                if ((edgeTable[cubeIndex] & 1) == 1)
+                if ((edge_table_[cubeIndex] & 1) == 1)
                     vertexList[0] =
-                            intepolate(cornerPositions[0], cornerPositions[1],
-                                       cornerValues[0], cornerValues[1]);
-                if ((edgeTable[cubeIndex] & 2) == 2)
+                            intepolate(corner_positions[0], corner_positions[1],
+                                       corner_values[0], corner_values[1]);
+                if ((edge_table_[cubeIndex] & 2) == 2)
                     vertexList[1] =
-                            intepolate(cornerPositions[1] , cornerPositions[2],
-                                       cornerValues[1], cornerValues[2]);
-                if ((edgeTable[cubeIndex] & 4) == 4)
+                            intepolate(corner_positions[1] , corner_positions[2],
+                                       corner_values[1], corner_values[2]);
+                if ((edge_table_[cubeIndex] & 4) == 4)
                     vertexList[2] =
-                            intepolate(cornerPositions[2],cornerPositions[3],
-                                       cornerValues[2], cornerValues[3]);
-                if ((edgeTable[cubeIndex] & 8) == 8)
+                            intepolate(corner_positions[2], corner_positions[3],
+                                       corner_values[2], corner_values[3]);
+                if ((edge_table_[cubeIndex] & 8) == 8)
                     vertexList[3] =
-                            intepolate(cornerPositions[3], cornerPositions[0],
-                                       cornerValues[3], cornerValues[0]);
-                if ((edgeTable[cubeIndex] & 16) == 16)
+                            intepolate(corner_positions[3], corner_positions[0],
+                                       corner_values[3], corner_values[0]);
+                if ((edge_table_[cubeIndex] & 16) == 16)
                     vertexList[4] =
-                            intepolate(cornerPositions[4] , cornerPositions[5],
-                                       cornerValues[4], cornerValues[5]);
-                if ((edgeTable[cubeIndex] & 32) == 32)
+                            intepolate(corner_positions[4] , corner_positions[5],
+                                       corner_values[4], corner_values[5]);
+                if ((edge_table_[cubeIndex] & 32) == 32)
                     vertexList[5] =
-                            intepolate(cornerPositions[5] , cornerPositions[6],
-                                       cornerValues[5], cornerValues[6]);
-                if ((edgeTable[cubeIndex] & 64) == 64)
+                            intepolate(corner_positions[5] , corner_positions[6],
+                                       corner_values[5], corner_values[6]);
+                if ((edge_table_[cubeIndex] & 64) == 64)
                     vertexList[6] =
-                            intepolate(cornerPositions[6], cornerPositions[7],
-                                       cornerValues[6], cornerValues[7]);
-                if ((edgeTable[cubeIndex] & 128) == 128)
+                            intepolate(corner_positions[6], corner_positions[7],
+                                       corner_values[6], corner_values[7]);
+                if ((edge_table_[cubeIndex] & 128) == 128)
                     vertexList[7] =
-                            intepolate(cornerPositions[7], cornerPositions[4],
-                                       cornerValues[7], cornerValues[4]);
-                if ((edgeTable[cubeIndex] & 256) == 256)
+                            intepolate(corner_positions[7], corner_positions[4],
+                                       corner_values[7], corner_values[4]);
+                if ((edge_table_[cubeIndex] & 256) == 256)
                     vertexList[8] =
-                            intepolate(cornerPositions[0] , cornerPositions[4],
-                                       cornerValues[0], cornerValues[4]);
-                if ((edgeTable[cubeIndex] & 512) == 512)
+                            intepolate(corner_positions[0] , corner_positions[4],
+                                       corner_values[0], corner_values[4]);
+                if ((edge_table_[cubeIndex] & 512) == 512)
                     vertexList[9] =
-                            intepolate(cornerPositions[1] , cornerPositions[5],
-                                       cornerValues[1], cornerValues[5]);
-                if ((edgeTable[cubeIndex] & 1024) == 1024)
+                            intepolate(corner_positions[1] , corner_positions[5],
+                                       corner_values[1], corner_values[5]);
+                if ((edge_table_[cubeIndex] & 1024) == 1024)
                     vertexList[10] =
-                            intepolate(cornerPositions[2] , cornerPositions[6],
-                                       cornerValues[2], cornerValues[6]);
-                if ((edgeTable[cubeIndex] & 2048) == 2048)
+                            intepolate(corner_positions[2] , corner_positions[6],
+                                       corner_values[2], corner_values[6]);
+                if ((edge_table_[cubeIndex] & 2048) == 2048)
                     vertexList[11] =
-                            intepolate(cornerPositions[3] , cornerPositions[7],
-                                       cornerValues[3], cornerValues[7]);
+                            intepolate(corner_positions[3] , corner_positions[7],
+                                       corner_values[3], corner_values[7]);
                 // End of building vertex List
 
                 // Append to vertices list
-                for (int i = 0; triangleTable[cubeIndex][i] != -1; i++)
+                for (int i = 0; triangle_table[cubeIndex][i] != -1; i++)
                 {
-                    dataum.positions.push_back(vertexList[triangleTable[cubeIndex][i]]);
+                    dataum.positions.push_back(vertexList[triangle_table[cubeIndex][i]]);
                     dataum.normals.push_back(Vector3D(0, 0, 0));
                     dataum.texcoords.push_back(Vector3D(0, 0, 0));
                 }
@@ -150,7 +150,7 @@ DDG::Mesh *IsoSurfaceExtractor::extractVoxel(Vector3D start, Vector3D end, doubl
 
 
 // The Edge table that used in Marching Cube
-int IsoSurfaceExtractor::edgeTable[256] = {
+int IsoSurfaceExtractor::edge_table_[256] = {
         0x0  , 0x109, 0x203, 0x30a, 0x406, 0x50f, 0x605, 0x70c,
         0x80c, 0x905, 0xa0f, 0xb06, 0xc0a, 0xd03, 0xe09, 0xf00,
         0x190, 0x99 , 0x393, 0x29a, 0x596, 0x49f, 0x795, 0x69c,
@@ -186,7 +186,7 @@ int IsoSurfaceExtractor::edgeTable[256] = {
 };
 
 // The Triangle Table That used in Marching Cube.
-int IsoSurfaceExtractor::triangleTable[256][16] =
+int IsoSurfaceExtractor::triangle_table[256][16] =
         {{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
          {0, 8, 3, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
          {0, 1, 9, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},

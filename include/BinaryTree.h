@@ -10,7 +10,7 @@
 #define Reconstructor_BinaryTree_h
 
 #include <queue>
-#include<iostream>
+#include <iostream>
 
 class BinaryNode;
 
@@ -55,29 +55,29 @@ public:
         // Get the cell ptr
         inline BinaryNode* operator *()
         {
-            return currentNode;
+            return current_node;
         }
         
         // Treat the iterator as OctreeCell ptr
         inline BinaryNode* operator ->()
         {
-            return currentNode;
+            return current_node;
         }
         
         inline bool operator == (const NodeIterator & rhs) const
         {
-            return ((currentNode != NULL)? this->currentNode != rhs.currentNode: rhs.currentNode == NULL);
+            return ((current_node != NULL)? this->current_node != rhs.current_node : rhs.current_node == NULL);
         }
         
         inline bool operator != (const NodeIterator & rhs) const
         {
             // Currently we compare the ptr address
-            return ((currentNode != NULL)? this->currentNode != rhs.currentNode: rhs.currentNode != NULL);
+            return ((current_node != NULL)? this->current_node != rhs.current_node : rhs.current_node != NULL);
         }
         
     private:
-        std::queue<BinaryNode*> iterationQueue;
-        BinaryNode* currentNode;
+        std::queue<BinaryNode*> iteation_queue;
+        BinaryNode*current_node;
     };
 
     // Iterator methods

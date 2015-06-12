@@ -17,10 +17,10 @@ using namespace DDG;
 Octree::Octree()
 {
     // constructing root node
-    root = OctreeCell::RootNode();
+    root_ = OctreeCell::RootNode();
     
     //Initializing bounding Box
-    boundingbox = new BoundingBox();
+    bounding_box_ = new BoundingBox();
 }
 
 //============================================================ ~Octree ================================================//
@@ -28,27 +28,27 @@ Octree::Octree()
 Octree::~Octree()
 {
     // Destory the octree cells
-    if (this->root == NULL)
+    if (this->root_ == NULL)
         this->deallocate();
-    this->root = NULL;
+    this->root_ = NULL;
     
     // Destory the bounding box
-    delete this->boundingbox;
-    this->boundingbox = NULL;
+    delete this->bounding_box_;
+    this->bounding_box_ = NULL;
 }
 
 //============================================================rootNode===============================================//
 // Return the ptr of root node.
 OctreeCell* Octree::rootNode()
 {
-    return root;
+    return root_;
 }
 
 //===========================================================getBoundingBox===========================================//
-// Return the boundingbox
+// Return the bounding_box_
 BoundingBox* Octree::getBoundingBox()
 {
-    return boundingbox;
+    return bounding_box_;
 }
 
 //===========================================================Center===================================================//
@@ -56,19 +56,19 @@ BoundingBox* Octree::getBoundingBox()
 // boundingBoxCenter is (0.5, 0.5).
 Vector3D Octree::boundingBoxCenter()
 {
-    return boundingbox->origin + boundingbox->size/2;
+    return bounding_box_->origin + bounding_box_->size/2;
 }
 
 //==========================================================boundingBoxScale=====================================================//
 double Octree::boundingBoxScale()
 {
     // Determin the boundingBoxScale
-    double maxWidth = - DBL_MAX;
+    double max_width = - DBL_MAX;
     for (int i = 0; i < 3; i++) {
-        if (boundingbox->size[i] > maxWidth) maxWidth = boundingbox->size[i];
+        if (bounding_box_->size[i] > max_width) max_width = bounding_box_->size[i];
     }
     
-    return maxWidth/root->width();
+    return max_width / root_->width();
 }
 
 //======================================================= generatOctreeFrom ===========================================//
@@ -76,7 +76,7 @@ double Octree::boundingBoxScale()
 // for the octree.
 void Octree::generateOctreeFrom(DDG::Mesh *mesh, const int depth)
 {
-    maxDepth = depth;
+    max_depth_ = depth;
     
     Vector3D max(-DBL_MAX, -DBL_MAX, -DBL_MAX);
     Vector3D min(DBL_MAX, DBL_MAX, DBL_MAX);
@@ -101,60 +101,60 @@ void Octree::generateOctreeFrom(DDG::Mesh *mesh, const int depth)
     
     Vector3D center = (max + min)/2;
     
-    boundingbox->origin = min;
-    boundingbox->size = max - min;
+    bounding_box_->origin = min;
+    bounding_box_->size = max - min;
     
     // The maxwidth is the maximal of that of three dimensions of bounding box
-    double maxWidth = -DBL_MAX;
+    double max_width = -DBL_MAX;
     for (int i = 0; i < 3; i++) {
         double width = max[i] - min[i];
-        if (width > maxWidth) {
-            maxWidth = width;
+        if (width > max_width) {
+            max_width = width;
         }
     }
     
     // Iterate the vertices' positon to generate the octree
-    int nodeCount = 0;
+    int node_count = 0;
     for (VertexIter vertex = mesh->vertices.begin();
          vertex != mesh->vertices.end();
          vertex++) {
 
-        OctreeCell *node = root;
-        int currentDepth = 0;
+        OctreeCell *node = root_;
+        int current_depth = 0;
 
         // poisition of the vertex
         Vector3D position = vertex->position;
         
         // The boundingBoxCenter and width should refer to bounding box
-        Vector3D currentCenter = center;
-        double currentRadius = maxWidth / 2;
+        Vector3D current_center = center;
+        double current_radius = max_width / 2;
         
         // Search from root to create node
-        while (currentDepth < maxDepth) {
+        while (current_depth < max_depth_) {
             
             if (node->isLeaf()) {
                 node->addChild();
-                nodeCount += 8;
+                node_count += 8;
             }
             
             // Find the corner index of given parent node, note that position need to
             // find which node cell the point falls in
-            int childIndex = OctreeCell::CornerIndex(currentCenter, position);
-            node = node->getChildren(childIndex);
+            int child_index = OctreeCell::CornerIndex(current_center, position);
+            node = node->getChildren(child_index);
             
             // Update the width
-            currentRadius /= 2;
+            current_radius /= 2;
             
             // Update the boundingBoxCenter position
-            ((childIndex & 1) != 0) ?
-            currentCenter.x += currentRadius : currentCenter.x -= currentRadius;
-            ((childIndex & 2) != 0) ?
-            currentCenter.y += currentRadius : currentCenter.y -= currentRadius;
-            ((childIndex & 4) != 0) ?
-            currentCenter.z += currentRadius : currentCenter.z -= currentRadius;
+            ((child_index & 1) != 0) ?
+            current_center.x += current_radius : current_center.x -= current_radius;
+            ((child_index & 2) != 0) ?
+            current_center.y += current_radius : current_center.y -= current_radius;
+            ((child_index & 4) != 0) ?
+            current_center.z += current_radius : current_center.z -= current_radius;
             
             // Update the depth, go deeper!
-            currentDepth++;
+            current_depth++;
         }
         
     }
@@ -166,7 +166,7 @@ void Octree::deallocate()
     std::queue<OctreeCell*> del_collections;
     
     // Find first leaf and push it to stack
-    del_collections.push(root);
+    del_collections.push(root_);
     
     OctreeCell* cell = NULL;
     
@@ -190,18 +190,18 @@ void Octree::deallocate()
         cell = NULL;
     }
     
-    this->root = NULL;
+    this->root_ = NULL;
 }
 
 // Count the cells, from root to its childrens
 long long Octree::nodeCounts() {
     // If there is no nodes in octree
-    if (root == NULL) return 0;
+    if (root_ == NULL) return 0;
     
     std::queue<OctreeCell *> collections;
     
     // Find first leaf and push it to stack
-    collections.push(root);
+    collections.push(root_);
     
     OctreeCell *cell = NULL;
     long long count = 1;
@@ -228,17 +228,17 @@ long long Octree::nodeCounts() {
 
 // Return the memroy load in bytes
 size_t Octree::memoryUse() {
-    long long cellCounts = nodeCounts();
+    long long cell_counts = nodeCounts();
     
-    size_t sizeOfCell = sizeof(OctreeCell);
+    size_t size_of_Cell = sizeof(OctreeCell);
     
-    return sizeOfCell * cellCounts;
+    return size_of_Cell * cell_counts;
 }
 
 // Get the begin iterator
 Octree::CellIterator Octree::begin()
 {
-    return Octree::CellIterator(this->root);
+    return Octree::CellIterator(this->root_);
 }
 
 // Get the end iterator
@@ -249,20 +249,20 @@ Octree::CellIterator Octree::end()
 
 // Default constructor of iterator, init with NULL ptr
 Octree::CellIterator::CellIterator()
-:currentNode(NULL)
+: current_node(NULL)
 {
 }
 
 // Constructor of iterator with exist cell as beginer
 Octree::CellIterator::CellIterator(OctreeCell *cell)
-:currentNode(cell)
+: current_node(cell)
 {
     if(cell != NULL)
     {
         // Enqueue the cells children
-        if (!currentNode->isLeaf()) {
+        if (!current_node->isLeaf()) {
             for (int i = 0; i < 8; i ++) {
-                iteration_queue.push(currentNode->getChildren(i));
+                iteration_queue.push(current_node->getChildren(i));
             }
         }
     }
@@ -274,17 +274,17 @@ Octree::CellIterator& Octree::CellIterator::operator++(int)
     // Check if have iterated to the end
     if (iteration_queue.empty())
     {
-        currentNode = NULL;
+        current_node = NULL;
         return (*this);
     }
     
-    currentNode = iteration_queue.front();
+    current_node = iteration_queue.front();
     iteration_queue.pop();
     
     // Enqueue the children
-    if (!currentNode->isLeaf()) {
+    if (!current_node->isLeaf()) {
         for (int i = 0; i < 8; i ++) {
-            iteration_queue.push(currentNode->getChildren(i));
+            iteration_queue.push(current_node->getChildren(i));
         }
     }
     
@@ -292,6 +292,7 @@ Octree::CellIterator& Octree::CellIterator::operator++(int)
 }
 
 // Insert a cell based on position
+// TODO[Luwei]: implement this method later
 void Octree::insert(Vector3D position) {
 
 }

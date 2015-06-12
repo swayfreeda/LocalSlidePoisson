@@ -9,10 +9,11 @@
 #ifndef __Reconstructor__Datastructure__OctreeCell__
 #define __Reconstructor__Datastructure__OctreeCell__
 
+#include "Vector3D.h"
 #include <iostream>
 #include <assert.h>
-#include "Vector3D.h"
 
+// Definition of dimension
 #define DIM_X 0
 #define DIM_Y 1
 #define DIM_Z 2
@@ -23,22 +24,22 @@ class OctreeCell {
 protected:
     
     // The ptr point to the parent node
-    OctreeCell *parent;
+    OctreeCell *parent_;
     
     // Ptrs point to childrens
-    OctreeCell **childrens;
+    OctreeCell **childrens_;
 
     // Ptrs to neighbors of the current cell // all the neighbours of the current cell
-    OctreeCell **neighborCache;
+    OctreeCell **neighbor_cache_;
 
     // The depth that the current cell located in an octree
-    int depth;
+    int depth_;
 
     // Global offsets start from root node
-    int globalOffsets[3];
+    int global_offsets_[3];
     
     // Local offsets based on current depth
-    int localOffsets[3];
+    int local_offsets_[3];
     
     // Initiate the local offsets based on current depth.
     void initLocalOffsets();

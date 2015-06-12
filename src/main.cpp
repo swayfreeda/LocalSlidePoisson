@@ -43,8 +43,8 @@ int main(int argc,char **argv)
 
     Viewer viewer;
     //viewer.mesh->read(argv[1]);
-    viewer.mesh = IsoSurfaceExtractor::extractVoxel(Vector3D(-SPAN,-SPAN,-SPAN),   // Start
-                                                    Vector3D(SPAN,SPAN,SPAN),      // End
+    viewer.mesh = IsoSurfaceExtractor::ExtractVoxel(Vector3D(-SPAN, -SPAN, -SPAN),   // Start
+                                                    Vector3D(SPAN, SPAN, SPAN),      // End
                                                     0.05,                       // Stride
                                                     Heart);                    // Function
     viewer.init();

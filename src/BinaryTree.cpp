@@ -6,9 +6,8 @@
 //  Copyright (c) 2015 Luwei Yang. All rights reserved.
 //
 
-#include <BinaryTree.h>
-#include <BinaryNode.h>
-
+#include "BinaryTree.h"
+#include "BinaryNode.h"
 
 BinaryTree::BinaryTree() {
 
@@ -30,26 +29,26 @@ BinaryTree::~BinaryTree() {
 }
 
 void BinaryTree::deallocate() {
-    std::queue<BinaryNode*> delCollections;
+    std::queue<BinaryNode*> del_collections;
 
     // Find first leaf and push it to stack
-    delCollections.push(root_);
+    del_collections.push(root_);
 
     BinaryNode* cell = NULL;
 
     // Iterate the cell from root to its childrens to destory
     // binary tree
-    while (!delCollections.empty())
+    while (!del_collections.empty())
     {
-        cell = delCollections.front();
-        delCollections.pop();
+        cell = del_collections.front();
+        del_collections.pop();
 
         // Push the children to stack
         if (!cell->isLeaf()) {
             BinaryNode *leftChild = cell->leftChild();
             BinaryNode *rightChild = cell->rightChild();
-            if (leftChild != NULL) delCollections.push(leftChild);
-            if (rightChild != NULL) delCollections.push(rightChild);
+            if (leftChild != NULL) del_collections.push(leftChild);
+            if (rightChild != NULL) del_collections.push(rightChild);
         }
 
         // Delete current octree cell
@@ -105,22 +104,22 @@ BinaryTree::NodeIterator BinaryTree::end()
 
 // Default constructor of iterator, init with NULL ptr
 BinaryTree::NodeIterator::NodeIterator()
-        :currentNode(NULL)
+        : current_node(NULL)
 {
 }
 
 // Constructor of iterator with exist cell as beginer
 BinaryTree::NodeIterator::NodeIterator(BinaryNode *cell)
-        :currentNode(cell)
+        : current_node(cell)
 {
     if(cell != NULL)
     {
         // Enqueue the cells children
-        if (!currentNode->isLeaf()) {
-            BinaryNode *leftChild = currentNode->leftChild();
-            BinaryNode *rightChild = currentNode->rightChild();
-            if (leftChild != NULL) iterationQueue.push(leftChild);
-            if (rightChild != NULL) iterationQueue.push(rightChild);
+        if (!current_node->isLeaf()) {
+            BinaryNode *leftChild = current_node->leftChild();
+            BinaryNode *rightChild = current_node->rightChild();
+            if (leftChild != NULL) iteation_queue.push(leftChild);
+            if (rightChild != NULL) iteation_queue.push(rightChild);
         }
     }
 }
@@ -129,21 +128,21 @@ BinaryTree::NodeIterator::NodeIterator(BinaryNode *cell)
 BinaryTree::NodeIterator& BinaryTree::NodeIterator::operator++(int)
 {
     // Check if have iterated to the end
-    if (iterationQueue.empty())
+    if (iteation_queue.empty())
     {
-        currentNode = NULL;
+        current_node = NULL;
         return (*this);
     }
 
-    currentNode = iterationQueue.front();
-    iterationQueue.pop();
+    current_node = iteation_queue.front();
+    iteation_queue.pop();
 
     // Enqueue the children
-    if (!currentNode->isLeaf()) {
-        BinaryNode *leftChild = currentNode->leftChild();
-        BinaryNode *rightChild = currentNode->rightChild();
-        if (leftChild != NULL) iterationQueue.push(leftChild);
-        if (rightChild != NULL) iterationQueue.push(rightChild);
+    if (!current_node->isLeaf()) {
+        BinaryNode *leftChild = current_node->leftChild();
+        BinaryNode *rightChild = current_node->rightChild();
+        if (leftChild != NULL) iteation_queue.push(leftChild);
+        if (rightChild != NULL) iteation_queue.push(rightChild);
     }
 
     return (*this);

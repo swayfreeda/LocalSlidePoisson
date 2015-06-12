@@ -5,15 +5,15 @@
 #ifndef RECONSTRUCTOR_BINARYNODE_INL_H
 #define RECONSTRUCTOR_BINARYNODE_INL_H
 
-#include <BinaryNode.h>
+#include "BinaryNode.h"
 #include <iostream>
 
 BinaryNode* BinaryNode::leftChild() {
-    return this->leftChild_;
+    return this->left_child_;
 }
 
 BinaryNode* BinaryNode::rightChild() {
-    return this->rightChild_;
+    return this->right_child_;
 }
 
 BinaryNode *BinaryNode::parent() {
@@ -21,7 +21,7 @@ BinaryNode *BinaryNode::parent() {
 }
 
 bool BinaryNode::isLeaf() {
-    return (leftChild_ == NULL && rightChild_ == NULL);
+    return (left_child_ == NULL && right_child_ == NULL);
 }
 
 
