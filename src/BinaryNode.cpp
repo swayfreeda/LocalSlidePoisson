@@ -9,6 +9,23 @@
 #include "BinaryNode.h"
 #include <assert.h>
 
+void BinaryNode::setLeftChild(BinaryNode *left_child)
+{
+    this->left_child_ = left_child;
+}
+
+void BinaryNode::setRightChild(BinaryNode *right_child)
+{
+    this->right_child_ = right_child;
+}
+
+void BinaryNode::setParent(BinaryNode *parent)
+{
+    this->parent_ = parent;
+}
+
+
+// Constructor
 BinaryNode::BinaryNode():
         parent_(NULL),
         left_child_(NULL),
@@ -17,6 +34,7 @@ BinaryNode::BinaryNode():
 {
 }
 
+// Deconstructor
 BinaryNode::~BinaryNode() {
 
     // Note that we will not destory childrens
@@ -48,3 +66,4 @@ void BinaryNode::addChildren() {
     right_child_->parent_ = this;
     right_child_->depth_ = this->depth_ + 1;
 }
+

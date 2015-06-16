@@ -22,7 +22,7 @@ protected:
 
     // The depth of the binary node
     int depth_;
-
+    
 public:
 
     // Initial constructor
@@ -33,6 +33,18 @@ public:
 
     // Get depth
     inline int depth();
+    
+    // Set the depth
+    void setDepth(int depth){depth_ = depth;}
+    
+    // Set left child with new ptr
+    void setLeftChild(BinaryNode *left_child);
+    
+    // Set right child with right ptr
+    void setRightChild(BinaryNode *right_child);
+    
+    // Set parent ptr
+    void setParent(BinaryNode *parent);
     
     // Create childrens branch
     void addChildren();

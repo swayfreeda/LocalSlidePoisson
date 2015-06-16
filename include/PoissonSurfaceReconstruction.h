@@ -19,16 +19,22 @@ class FunctionNode: public BinaryNode
 {
 public:
    // gaussian function
-   Polynomial guassian_fun;
-   Polynomial dguassian_fun;
+   Polynomial<3> guassian_fun;
+   Polynomial<3> dguassian_fun;
 
+    // reload the child from base class
+    void addChildren();
+    
+    FunctionNode *leftChild();
+    FunctionNode *rightChild();
 };
 
 // class
 class FunctionTree : public BinaryTree
 {
 public:
-   void buildFunctionTree(int depth);
+    void buildFunctionTree(int depth);
+
 
 };
 
