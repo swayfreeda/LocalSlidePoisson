@@ -65,6 +65,9 @@ namespace DDG
         Mesh( const Mesh& mesh );
         // constructs a copy of mesh
 
+        // Copy the mesh
+        Mesh* copyMesh();
+        
         const Mesh& operator=( const Mesh& mesh );
         // copies mesh
 

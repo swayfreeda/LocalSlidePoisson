@@ -440,7 +440,9 @@ namespace DDG
              f != mesh->faces.end();
             f ++ )
         {
-            if( f->isBoundary() ) continue;
+            bool onBoundary = f->isBoundary();
+            if( onBoundary )
+                continue;
             
             glBegin( GL_POLYGON );
             if( renderWireframe )
@@ -516,7 +518,7 @@ namespace DDG
             // Push the childrens to stack
             if (!currentNode->isLeaf()) {
                 for (int i = 0; i < 8; i++) {
-                    collections.push(currentNode->getChildren(i));
+                    collections.push(currentNode->childrens(i));
                 }
             }
         }

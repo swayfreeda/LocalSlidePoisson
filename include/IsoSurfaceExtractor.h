@@ -12,6 +12,7 @@ using namespace DDG;
 
 class IsoSurfaceExtractor {
 protected:
+    
     // Marching Cube's Edge Table
     static int edge_table_[256];
 

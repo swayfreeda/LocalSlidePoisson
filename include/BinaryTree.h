@@ -9,10 +9,9 @@
 #ifndef Reconstructor_BinaryTree_h
 #define Reconstructor_BinaryTree_h
 
+#include "BinaryNode.h"
 #include <queue>
 #include <iostream>
-
-class BinaryNode;
 
 class BinaryTree {
     
@@ -77,7 +76,7 @@ public:
         
     private:
         std::queue<BinaryNode*> iteation_queue;
-        BinaryNode*current_node;
+        BinaryNode* current_node;
     };
 
     // Iterator methods

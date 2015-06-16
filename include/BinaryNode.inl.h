@@ -8,6 +8,11 @@
 #include "BinaryNode.h"
 #include <iostream>
 
+int BinaryNode::depth()
+{
+    return depth_;
+}
+
 BinaryNode* BinaryNode::leftChild() {
     return this->left_child_;
 }

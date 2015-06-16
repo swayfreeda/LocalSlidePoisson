@@ -9,6 +9,7 @@
 
 #include "Mesh.h"
 #include "Complex.h"
+#include "BinaryTree.h"
 #include "DenseMatrix.h"
 #include "SparseMatrix.h"
 #include "DiscreteExteriorCalculus.h"
@@ -64,7 +65,26 @@ namespace DDG
 //            cout<<endl;
 //            cout<<"A: "<<A<<endl;
 //            cout<<"x: "<<x<<endl;
-
+            
+            
+            // TEST: Binary Tree
+            BinaryTree *bin_tree = new BinaryTree();
+            bin_tree->rootNode()->addChildren();
+            bin_tree->rootNode()->rightChild()->addChildren();
+            
+            long long nodeCounts = 0;
+            
+            for (BinaryTree::NodeIterator itr = bin_tree->begin();
+                                          itr != bin_tree->end();
+                                          itr++)
+            {
+                nodeCounts++;
+                BinaryNode *node = *(itr);
+                int depth = node->depth();
+                printf("Depth: %d", depth);
+            }
+            nodeCounts = octree.nodeCounts();
+            
         }
         
     };

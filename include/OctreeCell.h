@@ -29,19 +29,20 @@ protected:
     // Ptrs point to childrens
     OctreeCell **childrens_;
 
-    // Ptrs to neighbors of the current cell // all the neighbours of the current cell
+    // Ptrs to neighbors of the current cell
+    // all 27 neighbours of the current cell
     OctreeCell **neighbor_cache_;
 
-    // The depth that the current cell located in an octree
+    // The depth_ that the current cell located in an octree
     int depth_;
 
     // Global offsets start from root node
     int global_offsets_[3];
     
-    // Local offsets based on current depth
+    // Local offsets based on current depth_
     int local_offsets_[3];
     
-    // Initiate the local offsets based on current depth.
+    // Initiate the local offsets based on current depth_.
     void initLocalOffsets();
     
     // Initial the global offsets based on root node. Note that this method
@@ -64,11 +65,11 @@ public:
     // Generate a root node
     static OctreeCell* RootNode();
     
-    // Set the depth of cell
-    inline void setDepth(int depth);
+    // Set the depth_ of cell
+    inline void setDepth(int depth_);
     
-    // Return the depth of cell
-    inline int getDepth();
+    // Return the depth_ of cell
+    inline int depth();
     
     // Return the cell's width, assume that the root's width is 1.
     inline double width();
@@ -83,20 +84,18 @@ public:
     inline bool isRoot();
     
     // Return the ptr of child according to the given index.
-    inline OctreeCell* getChildren(int index);
+    inline OctreeCell* childrens(int index);
     
     // Return the ptr of parents.
-    inline OctreeCell* getParent();
-    
-    
-    
+    inline OctreeCell* parent();
+
     // Find Corner position according to the corner index.
     Vector3D cornerPosition(int index);
     
     // Add Children to the current cell
     void addChild();
     
-    // Return the cell's offset based on the current depth.
+    // Return the cell's offset based on the current depth_.
     // dimension: 0 for x, 1 for y, 2 for z;
     inline int localOffset(int dimension);
     
@@ -125,9 +124,9 @@ public:
     static int CornerIndex(OctreeCell *node);
     
     // Return the current cell's corner index based on its parent.
-    int getCornerIndexOfParent();
+    int cornerIndexOfParent();
 
-    // Find the neighbor node at same depth via x,y,z, if has no neighbor node, return NULL
+    // Find the neighbor node at same depth_ via x,y,z, if has no neighbor node, return NULL
     OctreeCell *neighbor(int x, int y, int z);
 
     // Find the neighbor node via index, the range of index is [0, 27]
@@ -136,9 +135,9 @@ public:
     // Return the neibors array ptr
     OctreeCell **neighbors();
 
-    // For DEBUG USE, TODO(Delete this later)
+    // For DEBUG USE, TODO[Luwei]: Delete this later
     bool DB_flag;
-    
+
 };
 
 #include "OctreeCell.inl.h"

@@ -31,8 +31,11 @@ public:
     // Destructor
     ~BinaryNode();
 
+    // Get depth
+    inline int depth();
+    
     // Create childrens branch
-    void addChild();
+    void addChildren();
 
     // Return the ptr of childrens
     inline BinaryNode* leftChild();

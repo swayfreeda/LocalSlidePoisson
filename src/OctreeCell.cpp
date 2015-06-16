@@ -105,7 +105,7 @@ void OctreeCell::initGlobalOffsets()
         return;
     }
     // index of the current cell according to it's parent
-    int corner_index = getCornerIndexOfParent();
+    int corner_index = cornerIndexOfParent();
     
     // Get indices for corresponding dimension according to
     int x, y ,z;
@@ -209,7 +209,7 @@ int OctreeCell::CornerIndex(OctreeCell *child_node)
 
 //===========================================getCornerIndexOfParent===================================================//
 // Return the current cell's corner index based on its parent
-int OctreeCell::getCornerIndexOfParent()
+int OctreeCell::cornerIndexOfParent()
 {
     return CornerIndex(this);
 }
@@ -230,7 +230,7 @@ void OctreeCell::initNeighbors() {
     if (parent_ == NULL) return;
 
     OctreeCell *parent = this->parent_;
-    int child_index = this->getCornerIndexOfParent();
+    int child_index = this->cornerIndexOfParent();
 
     // Get dimension offset (x,y,z) for the current node and the diagonal node
     int x1, y1, z1, x2, y2, z2;

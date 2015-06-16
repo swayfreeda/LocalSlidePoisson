@@ -9,7 +9,7 @@
 #include "OctreeCell.h"
 
 //======================================================getChildren==================================================//
-OctreeCell* OctreeCell::getChildren(int index)
+OctreeCell* OctreeCell::childrens(int index)
 {
     if(index > 7)
         assert("Out of range of indices.");
@@ -21,7 +21,7 @@ OctreeCell* OctreeCell::getChildren(int index)
 }
 
 //======================================================getParent====================================================//
-OctreeCell* OctreeCell::getParent()
+OctreeCell* OctreeCell::parent()
 {
     return parent_;
 }
@@ -32,7 +32,7 @@ void OctreeCell::setDepth(int depth)
     this->depth_ = depth;
 }
 
-int OctreeCell::getDepth()
+int OctreeCell::depth()
 {
     return this->depth_;
 }

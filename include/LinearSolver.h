@@ -49,16 +49,16 @@ class CGSolver:public LinearSolver<T>
 {
 public:
     // Solve Ax = b via interation
-    static int Solve(const Eigen::SparseMatrix<T> &A,                       // symmetric and positive-definite matrix A
-                     const Eigen::Matrix<T, Eigen::Dynamic, 1> &b,          // right part b
-                     Eigen::Matrix<T, Eigen::Dynamic, 1> &x);               // solution
+    static int Solve(const Eigen::SparseMatrix<T> &A,                                   // symmetric and positive-definite matrix A
+                     const Eigen::Matrix<T, Eigen::Dynamic, 1> &b,                      // right part b
+                     Eigen::Matrix<T, Eigen::Dynamic, 1> &x);                           // solution
 
     // Solve Ax = b via iteration with external parameter of max iteration
     // and torlerance
-    static int Solve(const Eigen::SparseMatrix<T> &A,                       // symmetric and positive-definite matrix A
-                     const Eigen::Matrix<T, Eigen::Dynamic, 1> &b,          // right part b
-                     Eigen::Matrix<T, Eigen::Dynamic, 1> &x,                // solution
-                     const int max_iteration, const double torlerance);      // parameters, max iteration and torlerance
+    static int Solve(const Eigen::SparseMatrix<T> &A,                                   // symmetric and positive-definite matrix A
+                     const Eigen::Matrix<T, Eigen::Dynamic, 1> &b,                      // right part b
+                     Eigen::Matrix<T, Eigen::Dynamic, 1> &x,                            // solution
+                     const int max_iteration, const double torlerance);                 // parameters, max iteration and torlerance
 };
 
 // TODO[Luwei]: implement other linear solver

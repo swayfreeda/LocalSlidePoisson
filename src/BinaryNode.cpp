@@ -33,11 +33,13 @@ BinaryNode::~BinaryNode() {
     depth_ = 0;
 }
 
-void BinaryNode::addChild() {
-
-    assert(left_child_ != NULL);
-    assert(right_child_ != NULL);
-
+void BinaryNode::addChildren() {
+    
+    if (left_child_ != NULL ||
+        right_child_ != NULL)
+        return;
+    
+    
     left_child_ = new BinaryNode();
     left_child_->parent_ = this;
     left_child_->depth_ = this->depth_ + 1;

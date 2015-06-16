@@ -16,7 +16,7 @@
 class OctreeCell;
 
 class Octree {
-
+private:
     // Root node of octree
     OctreeCell *root_;
     

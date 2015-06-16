@@ -5,12 +5,11 @@
 //  Created by Luwei Yang on 5/26/15.
 //  Copyright (c) 2015 None. All rights reserved.
 //
-using namespace std;
 
 #include "Viewer.h"
 #include "IsoSurfaceExtractor.h"
 
-#define SPAN 2.0
+using namespace std;
 
 static double Sphere(double x, double y, double z)
 {
@@ -37,15 +36,28 @@ int main(int argc,char **argv)
         cout << "usage: " << argv[0] << " in.obj" << endl;
         return 1;
     }
+    
+    Mesh *mesh = new Mesh();
+    mesh->read(argv[1]);
+    
+//    Mesh *mesh2 = mesh->copyMesh();
 
-
+    
     Viewer viewer;
     //viewer.mesh->read(argv[1]);
-    viewer.mesh = IsoSurfaceExtractor::ExtractVoxel(Vector3D(-SPAN, -SPAN, -SPAN),   // Start
-                                                    Vector3D(SPAN, SPAN, SPAN),      // End
-                                                    0.05,                       // Stride
-                                                    Heart);                    // Function
+    
+    const double SPAN = 2.0;
+    viewer.mesh = mesh;
+    
+//     = IsoSurfaceExtractor::ExtractVoxel(Vector3D(-SPAN, -SPAN, -SPAN),   // Start
+//                                                    Vector3D(SPAN, SPAN, SPAN),      // End
+//                                                    0.05,                       // Stride
+//                                                    Heart);                    // Function
+
+    Mesh *cpmesh = viewer.mesh;
     viewer.init();
 
+
+    
     return 0;
 }

@@ -140,7 +140,7 @@ void Octree::generateOctreeFrom(DDG::Mesh *mesh, const int depth)
             // Find the corner index of given parent node, note that position need to
             // find which node cell the point falls in
             int child_index = OctreeCell::CornerIndex(current_center, position);
-            node = node->getChildren(child_index);
+            node = node->childrens(child_index);
             
             // Update the width
             current_radius /= 2;
@@ -179,9 +179,9 @@ void Octree::deallocate()
         // Push the children to stack
         if (!cell->isLeaf()) {
             for (int i = 0; i < 8; ++i) {
-                OctreeCell *child = cell->getChildren(i);
+                OctreeCell *child = cell->childrens(i);
                 if (child != NULL)
-                    del_collections.push(cell->getChildren(i));
+                    del_collections.push(cell->childrens(i));
             }
         }
         
@@ -214,9 +214,9 @@ long long Octree::nodeCounts() {
         // Push the children to stack
         if (!cell->isLeaf()) {
             for (int i = 0; i < 8; ++i) {
-                OctreeCell *child = cell->getChildren(i);
+                OctreeCell *child = cell->childrens(i);
                 if (child != NULL)
-                    collections.push(cell->getChildren(i));
+                    collections.push(cell->childrens(i));
             }
         }
         
@@ -262,7 +262,7 @@ Octree::CellIterator::CellIterator(OctreeCell *cell)
         // Enqueue the cells children
         if (!current_node->isLeaf()) {
             for (int i = 0; i < 8; i ++) {
-                iteration_queue.push(current_node->getChildren(i));
+                iteration_queue.push(current_node->childrens(i));
             }
         }
     }
@@ -284,7 +284,7 @@ Octree::CellIterator& Octree::CellIterator::operator++(int)
     // Enqueue the children
     if (!current_node->isLeaf()) {
         for (int i = 0; i < 8; i ++) {
-            iteration_queue.push(current_node->getChildren(i));
+            iteration_queue.push(current_node->childrens(i));
         }
     }
     
