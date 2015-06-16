@@ -6,6 +6,7 @@
 #define RECONSTRUCTOR_ISOSURFACEEXTRACTOR_H
 
 #include "Mesh.h"
+#include "Octree.h"
 #include "Vector3D.h"
 
 using namespace DDG;
@@ -36,7 +37,7 @@ public:
                                    double (*func)(double, double, double));    // indicator function pointer, input is (x,y,z)
 
 
-
+    static DDG::Mesh *ExtractOctree(Octree *tree);
 };
 
 

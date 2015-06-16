@@ -148,6 +148,10 @@ DDG::Mesh *IsoSurfaceExtractor::ExtractVoxel(Vector3D start, Vector3D end, doubl
     return mesh;
 }
 
+// TODO
+DDG::Mesh *IsoSurfaceExtractor::ExtractOctree(Octree *tree) {
+    return NULL;
+}
 
 // The Edge table that used in Marching Cube
 int IsoSurfaceExtractor::edge_table_[256] = {
@@ -443,3 +447,4 @@ int IsoSurfaceExtractor::triangle_table_[256][16] =
          {0, 9, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
          {0, 3, 8, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
          {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1}};
+

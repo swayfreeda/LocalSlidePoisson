@@ -46,5 +46,5 @@ ELSEIF(UNIX)
 set(BLAS_LIB lapack blas gfortran)
 ENDIF()
 
-add_executable(Reconstructor ${SOURCE_FILES})
+add_executable(Reconstructor ${SOURCE_FILES} src/PoissonSurfaceReconstruction.h src/PoissonSurfaceReconstruction.cpp)
 target_link_libraries(Reconstructor ${SUITESPARSE_LIB} ${BLAS_LIB} ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})

@@ -25,7 +25,7 @@ class Octree {
     
     // Max depth for octree
     int max_depth_;
-    
+
 public:
     
     // Octree constructor
