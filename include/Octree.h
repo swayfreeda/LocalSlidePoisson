@@ -25,7 +25,7 @@ private:
     
     // Max depth for octree
     int max_depth_;
-    
+
 public:
     
     // Octree constructor

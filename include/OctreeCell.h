@@ -138,6 +138,19 @@ public:
     // For DEBUG USE, TODO[Luwei]: Delete this later
     bool DB_flag;
 
+public:
+    /**
+     * for poisson, TODO[suiwei]: will refactor this later
+    */
+
+    // vector field
+    Vector3D normal;
+
+    // intermediate variable for computing vector field
+    double central_contribution;
+
+    // for marching cube
+    double corner_values[8];
 };
 
 #include "OctreeCell.inl.h"
