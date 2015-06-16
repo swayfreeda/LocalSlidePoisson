@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.1)
 project(Reconstructor)
 
 # Debug
-SET(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -O0 -Wall -g -ggdb -DGL_GLEXT_PROTOTYPES")
+SET(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -O0 -Wall -g -ggdb -DEBUG_APP -DGL_GLEXT_PROTOTYPES")
 
 # Relase
 SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -O3 -Wall -DGL_GLEXT_PROTOTYPES")
@@ -37,6 +37,7 @@ link_directories(/home/sway/Work/SFM/cmvs/lib/graclus1.2/
                  /usr/lib)
 ENDIF()
 
+# Set libraraies
 set(SUITESPARSE_LIB spqr cholmod metis colamd ccolamd camd amd umfpack)
 
 IF(APPLE)

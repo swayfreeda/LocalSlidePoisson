@@ -6,15 +6,13 @@
 //  Copyright (c) 2015 Luwei Yang. All rights reserved.
 //
 
-#include <BinaryNode.h>
+#include "BinaryNode.h"
 #include <assert.h>
-#include <iostream>
-
 
 BinaryNode::BinaryNode():
         parent_(NULL),
-        leftChild_(NULL),
-        rightChild_(NULL),
+        left_child_(NULL),
+        right_child_(NULL),
         depth_(0)
 {
 }
@@ -23,11 +21,11 @@ BinaryNode::~BinaryNode() {
 
     // Note that we will not destory childrens
     // and parent in destructor
-    if (leftChild_ != NULL)
-        leftChild_ = NULL;
+    if (left_child_ != NULL)
+        left_child_ = NULL;
 
-    if (rightChild_ != NULL)
-        rightChild_ = NULL;
+    if (right_child_ != NULL)
+        right_child_ = NULL;
 
     if (parent_ != NULL)
         parent_ = NULL;
@@ -36,14 +34,15 @@ BinaryNode::~BinaryNode() {
 }
 
 void BinaryNode::addChild() {
-    assert(leftChild_ != NULL);
-    assert(rightChild_!= NULL);
 
-    leftChild_ = new BinaryNode();
-    leftChild_->parent_ = this;
-    leftChild_->depth_ = this->depth_ + 1;
+    assert(left_child_ != NULL);
+    assert(right_child_ != NULL);
 
-    rightChild_ = new BinaryNode();
-    rightChild_->parent_ = this;
-    rightChild_->depth_ = this->depth_ + 1;
+    left_child_ = new BinaryNode();
+    left_child_->parent_ = this;
+    left_child_->depth_ = this->depth_ + 1;
+
+    right_child_ = new BinaryNode();
+    right_child_->parent_ = this;
+    right_child_->depth_ = this->depth_ + 1;
 }

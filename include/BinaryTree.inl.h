@@ -5,7 +5,7 @@
 #ifndef RECONSTRUCTOR_BINARYTREE_INL_H
 #define RECONSTRUCTOR_BINARYTREE_INL_H
 
-#include <BinaryTree.h>
+#include "BinaryTree.h"
 
 BinaryNode *BinaryTree::rootNode() {
     return root_;

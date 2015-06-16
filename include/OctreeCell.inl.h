@@ -6,41 +6,42 @@
 //  Copyright (c) 2015 None. All rights reserved.
 //
 
-#include <OctreeCell.h>
+#include "OctreeCell.h"
 
 //======================================================getChildren==================================================//
 OctreeCell* OctreeCell::getChildren(int index)
 {
     if(index > 7)
         assert("Out of range of indices.");
+
     if (isLeaf())
         return NULL;
 
-    return childrens[index];
+    return childrens_[index];
 }
 
 //======================================================getParent====================================================//
 OctreeCell* OctreeCell::getParent()
 {
-    return parent;
+    return parent_;
 }
 
 //=======================================================setDepth====================================================//
 void OctreeCell::setDepth(int depth)
 {
-    this->depth = depth;
+    this->depth_ = depth;
 }
 
 int OctreeCell::getDepth()
 {
-    return this->depth;
+    return this->depth_;
 }
 
 //=======================================================width=======================================================//
 // Return the cell's width, assume that the root's width is 1.
 double OctreeCell::width()
 {
-    return (1.0 / (double)(1 << depth));
+    return (1.0 / (double)(1 << depth_));
 }
 
 //=======================================================localOffset==================================================//
@@ -51,7 +52,7 @@ int OctreeCell::localOffset(int dimension)
 {
     if(dimension > 3)
         assert("The dimension is less than 3.");
-    return localOffsets[dimension];
+    return local_offsets_[dimension];
 }
 
 //======================================================globalOffset==================================================//
@@ -62,7 +63,7 @@ int OctreeCell::globalOffset(int dimension)
     if(dimension > 3)
         assert("The dimension is less than 3.");
 
-    return globalOffsets[dimension];
+    return global_offsets_[dimension];
 }
 
 //=====================================================isLeaf=========================================================//
@@ -70,7 +71,7 @@ int OctreeCell::globalOffset(int dimension)
 // Return if the current node is a leaf node.
 bool OctreeCell::isLeaf()
 {
-    return (this->childrens == NULL);
+    return (this->childrens_ == NULL);
 }
 
 //=====================================================isRoot=========================================================//
@@ -78,7 +79,7 @@ bool OctreeCell::isLeaf()
 // Return is the current node is a root node.
 bool OctreeCell::isRoot()
 {
-    return (this->parent == NULL);
+    return (this->parent_ == NULL);
 }
 
 //=====================================================DimensionIndices===============================================//

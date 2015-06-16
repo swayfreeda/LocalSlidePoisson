@@ -17,8 +17,8 @@ protected:
     BinaryNode *parent_;
 
     // Ptrs point to childrens
-    BinaryNode *leftChild_;
-    BinaryNode *rightChild_;
+    BinaryNode *left_child_;
+    BinaryNode *right_child_;
 
     // The depth of the binary node
     int depth_;

@@ -13,7 +13,7 @@
 #include "SparseMatrix.h"
 #include "DiscreteExteriorCalculus.h"
 #include "IsoSurfaceExtractor.h"
-#include <LinearSolver.h>
+#include "LinearSolver.h"
 
 #undef complex
 //template class Polynomial<2>;
@@ -29,18 +29,18 @@ namespace DDG
             octree.generateOctreeFrom(mesh, 4);
 
             // TEST: iterator
-            long long nodeCounts = 0;
-
-            for (Octree::CellIterator itr = octree.begin();
-                 itr != octree.end();
-                 itr++) {
-
-                nodeCounts++;
-                OctreeCell *cell = *(itr);
-                int depth = cell->getDepth();
-                printf("Depth: %d", depth);
-
-            }
+//            long long nodeCounts = 0;
+//
+//            for (Octree::CellIterator itr = octree.begin();
+//                 itr != octree.end();
+//                 itr++) {
+//
+//                nodeCounts++;
+//                OctreeCell *cell = *(itr);
+//                int depth = cell->getDepth();
+//                printf("Depth: %d", depth);
+//
+//            }
             //int nodeCounts = octree.nodeCounts();
             
             // TEST: Deallocate the octree
@@ -60,10 +60,11 @@ namespace DDG
             b[1] = 2;
             b[2] = 3;
 
-            CGSolver<double>::solve(A,b,x);
-            cout<<endl;
-            cout<<"A: "<<A<<endl;
-            cout<<"x: "<<x<<endl;
+            CGSolver<double>::Solve(A,b,x);
+//            cout<<endl;
+//            cout<<"A: "<<A<<endl;
+//            cout<<"x: "<<x<<endl;
+
         }
         
     };

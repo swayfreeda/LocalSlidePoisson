@@ -35,7 +35,6 @@
 		0FB9DE861B22047F00E3DCAC /* LinearEquation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE6C1B22047F00E3DCAC /* LinearEquation.cpp */; };
 		0FB9DE871B22047F00E3DCAC /* LinearPolynomial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE6D1B22047F00E3DCAC /* LinearPolynomial.cpp */; };
 		0FB9DE881B22047F00E3DCAC /* LinearSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE6E1B22047F00E3DCAC /* LinearSystem.cpp */; };
-		0FB9DE891B22047F00E3DCAC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE6F1B22047F00E3DCAC /* main.cpp */; };
 		0FB9DE8A1B22047F00E3DCAC /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE701B22047F00E3DCAC /* Mesh.cpp */; };
 		0FB9DE8B1B22047F00E3DCAC /* MeshIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE711B22047F00E3DCAC /* MeshIO.cpp */; };
 		0FB9DE8C1B22047F00E3DCAC /* Octree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE721B22047F00E3DCAC /* Octree.cpp */; };
@@ -51,6 +50,7 @@
 		0FB9DE961B22047F00E3DCAC /* Viewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9DE7C1B22047F00E3DCAC /* Viewer.cpp */; };
 		0FB9DE981B2204C500E3DCAC /* libcblas.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB9DE971B2204C500E3DCAC /* libcblas.dylib */; };
 		0FB9DE9A1B2204D500E3DCAC /* liblapack.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB9DE991B2204D500E3DCAC /* liblapack.dylib */; };
+		0FD846131B2B21790051519B /* CGSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FD846121B2B21790051519B /* CGSolver.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -138,7 +138,6 @@
 		0FB9DE6C1B22047F00E3DCAC /* LinearEquation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LinearEquation.cpp; sourceTree = "<group>"; };
 		0FB9DE6D1B22047F00E3DCAC /* LinearPolynomial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LinearPolynomial.cpp; sourceTree = "<group>"; };
 		0FB9DE6E1B22047F00E3DCAC /* LinearSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LinearSystem.cpp; sourceTree = "<group>"; };
-		0FB9DE6F1B22047F00E3DCAC /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		0FB9DE701B22047F00E3DCAC /* Mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = "<group>"; };
 		0FB9DE711B22047F00E3DCAC /* MeshIO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MeshIO.cpp; sourceTree = "<group>"; };
 		0FB9DE721B22047F00E3DCAC /* Octree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Octree.cpp; sourceTree = "<group>"; };
@@ -154,6 +153,8 @@
 		0FB9DE7C1B22047F00E3DCAC /* Viewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Viewer.cpp; sourceTree = "<group>"; };
 		0FB9DE971B2204C500E3DCAC /* libcblas.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcblas.dylib; path = usr/lib/libcblas.dylib; sourceTree = SDKROOT; };
 		0FB9DE991B2204D500E3DCAC /* liblapack.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblapack.dylib; path = usr/lib/liblapack.dylib; sourceTree = SDKROOT; };
+		0FD846111B2B215B0051519B /* LinearSolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearSolver.h; sourceTree = "<group>"; };
+		0FD846121B2B21790051519B /* CGSolver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CGSolver.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +232,7 @@
 		0FB9DE3C1B22047200E3DCAC /* include */ = {
 			isa = PBXGroup;
 			children = (
+				0FD846111B2B215B0051519B /* LinearSolver.h */,
 				0F30B8CA1B2968A60075CC95 /* BinaryNode.h */,
 				0F30B8CB1B2968A60075CC95 /* BinaryTree.h */,
 				0F30B8CE1B2968A60075CC95 /* Polynomial.h */,
@@ -281,6 +283,7 @@
 		0FB9DE621B22047F00E3DCAC /* src */ = {
 			isa = PBXGroup;
 			children = (
+				0FD846121B2B21790051519B /* CGSolver.cpp */,
 				0F30B8D31B2968B90075CC95 /* main.cpp */,
 				0F30B8D41B2968B90075CC95 /* BinaryNode.cpp */,
 				0F30B8D61B2968B90075CC95 /* BinaryTree.cpp */,
@@ -297,7 +300,6 @@
 				0FB9DE6C1B22047F00E3DCAC /* LinearEquation.cpp */,
 				0FB9DE6D1B22047F00E3DCAC /* LinearPolynomial.cpp */,
 				0FB9DE6E1B22047F00E3DCAC /* LinearSystem.cpp */,
-				0FB9DE6F1B22047F00E3DCAC /* main.cpp */,
 				0FB9DE701B22047F00E3DCAC /* Mesh.cpp */,
 				0FB9DE711B22047F00E3DCAC /* MeshIO.cpp */,
 				0FB9DE721B22047F00E3DCAC /* Octree.cpp */,
@@ -380,6 +382,7 @@
 				0FB9DE931B22047F00E3DCAC /* Vector2D.cpp in Sources */,
 				0FB9DE881B22047F00E3DCAC /* LinearSystem.cpp in Sources */,
 				0FB9DE831B22047F00E3DCAC /* HalfEdge.cpp in Sources */,
+				0FD846131B2B21790051519B /* CGSolver.cpp in Sources */,
 				0FB9DE7E1B22047F00E3DCAC /* Camera.cpp in Sources */,
 				0FB9DE841B22047F00E3DCAC /* Image.cpp in Sources */,
 				0FB9DE911B22047F00E3DCAC /* SparseMatrix.cpp in Sources */,
@@ -392,7 +395,6 @@
 				0FB9DE8A1B22047F00E3DCAC /* Mesh.cpp in Sources */,
 				0F30B8D91B2968B90075CC95 /* BinaryNode.cpp in Sources */,
 				0F30B8D81B2968B90075CC95 /* main.cpp in Sources */,
-				0FB9DE891B22047F00E3DCAC /* main.cpp in Sources */,
 				0FB9DE8C1B22047F00E3DCAC /* Octree.cpp in Sources */,
 				0FB9DE851B22047F00E3DCAC /* LinearContext.cpp in Sources */,
 				0FB9DE951B22047F00E3DCAC /* Vertex.cpp in Sources */,

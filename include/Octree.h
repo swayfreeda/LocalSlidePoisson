@@ -18,13 +18,13 @@ class OctreeCell;
 class Octree {
 
     // Root node of octree
-    OctreeCell *root;
+    OctreeCell *root_;
     
     // Bounding box
-    BoundingBox *boundingbox;
+    BoundingBox *bounding_box_;
     
     // Max depth for octree
-    int maxDepth;
+    int max_depth_;
     
 public:
     
@@ -80,29 +80,29 @@ public:
         // Get the cell ptr
         inline OctreeCell* operator *()
         {
-            return currentNode;
+            return current_node;
         }
         
         // Treat the iterator as OctreeCell ptr
         inline OctreeCell* operator ->()
         {
-            return currentNode;
+            return current_node;
         }
         
         inline bool operator == (const CellIterator & rhs) const
         {
-            return ((currentNode != NULL)? this->currentNode != rhs.currentNode: rhs.currentNode == NULL);
+            return ((current_node != NULL)? this->current_node != rhs.current_node : rhs.current_node == NULL);
         }
         
         inline bool operator != (const CellIterator & rhs) const
         {
             // Currently we compare the ptr address
-            return ((currentNode != NULL)? this->currentNode != rhs.currentNode: rhs.currentNode != NULL);
+            return ((current_node != NULL)? this->current_node != rhs.current_node : rhs.current_node != NULL);
         }
         
     private:
         std::queue<OctreeCell*> iteration_queue;
-        OctreeCell* currentNode;
+        OctreeCell* current_node;
     };
     
     // Get the begin iterator

@@ -17,9 +17,9 @@ class BoundingBox {
 public:
     BoundingBox(){};
     ~BoundingBox(){};
+
     Vector3D origin;
     Vector3D size;
-    
 };
 
 #endif /* defined(__Reconstructor__BoundingBox__) */
