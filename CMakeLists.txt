@@ -23,7 +23,7 @@ include_directories(include
 ELSEIF(UNIX) # for linux
 include_directories(include
                     /usr/include/suitesparse
-                     /home/sway/myLibs/eigen3.2.4/
+                   /home/sway/myLibs/Eigen3.2.5
                     ${OPENGL_INCLUDE_DIRS}
                     ${GLUT_INCLUDE_DIRS})
 ENDIF()
@@ -33,7 +33,7 @@ IF(APPLE)
 link_directories(/opt/local/lib/
                  /usr/lib)
 ELSEIF(UNIX)
-link_directories(/home/sway/Work/SFM/cmvs/lib/graclus1.2/
+link_directories(/home/sway/myLibs/graclus1.2
                  /usr/lib)
 ENDIF()
 
@@ -46,5 +46,5 @@ ELSEIF(UNIX)
 set(BLAS_LIB lapack blas gfortran)
 ENDIF()
 
-add_executable(Reconstructor ${SOURCE_FILES} src/PoissonSurfaceReconstruction.h src/PoissonSurfaceReconstruction.cpp)
+add_executable(Reconstructor ${SOURCE_FILES})
 target_link_libraries(Reconstructor ${SUITESPARSE_LIB} ${BLAS_LIB} ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
